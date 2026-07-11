@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Atendimento | SmileSpace Odontologia em BH</title>
+    <meta name="description" content="Agende sua consulta com nossos especialistas em implantes, próteses e estética dental na SmileSpace Odontologia em Belo Horizonte.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://smilespace.com.br/atendimento.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Agendar Atendimento | SmileSpace Odontologia">
+    <meta property="og:description" content="Agende sua consulta com nossos especialistas em implantes, próteses e estética dental em BH.">
+    <meta property="og:image" content="https://smilespace.com.br/img/logo.png">
+    <meta property="og:url" content="https://smilespace.com.br/atendimento.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Agendar Atendimento | SmileSpace Odontologia">
+    <meta name="twitter:description" content="Agende sua consulta com nossos especialistas em implantes, próteses e estética dental em BH.">
+    <meta name="twitter:image" content="https://smilespace.com.br/img/logo.png">
+
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --gold: #d4af37;
+            --light-gray: #fcfcfc;
+            --text-dark: #222222;
+            --text-muted: #777777;
+            --whatsapp: #25D366;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f4f4f4 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* Animações de Entrada */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseBorder {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* Cabeçalho */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeSlideUp 0.8s ease-out forwards;
+        }
+
+        .page-header img {
+            height: 65px;
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        /* Container dos Cartões */
+        .links-container {
+            width: 100%;
+            max-width: 450px; /* Tamanho perfeito para reter a proporção no mobile e desktop */
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Cartão do Profissional */
+        .doctor-card {
+            background-color: var(--secondary);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            border: 1px solid transparent;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0; /* Começa invisível para a animação */
+            animation: fadeSlideUp 0.6s ease-out forwards;
+        }
+
+        /* Delays para criar o efeito cascata nas animações */
+        .doctor-card:nth-child(1) { animation-delay: 0.2s; }
+        .doctor-card:nth-child(2) { animation-delay: 0.4s; }
+
+        .doctor-card:hover, .doctor-card:active {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        /* Avatar (Resolve o problema do posicionamento da foto) */
+        .avatar-container {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            padding: 3px;
+            flex-shrink: 0; /* Impede que a foto amasse em telas pequenas */
+            position: relative;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center; /* Garante que o rosto fique sempre no meio */
+        }
+
+        /* Selo de Online (Opcional, dá um toque moderno) */
+        .status-dot {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 14px;
+            height: 14px;
+            background-color: var(--whatsapp);
+            border-radius: 50%;
+            border: 2px solid var(--secondary);
+            animation: pulseBorder 2s infinite;
+        }
+
+        /* Informações do Cartão */
+        .info-container {
+            margin-left: 18px;
+            flex-grow: 1;
+        }
+
+        .info-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .info-container .cro {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Tag do WhatsApp simulando um botão interno */
+        .action-tag {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(37, 211, 102, 0.1);
+            color: #1b9c4b;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .action-tag i {
+            margin-right: 6px;
+            font-size: 1rem;
+        }
+
+        .doctor-card:hover .action-tag {
+            background-color: var(--whatsapp);
+            color: white;
+        }
+
+        /* Ícone de seta apontando para direita */
+        .arrow-icon {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-left: 10px;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .doctor-card:hover .arrow-icon {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        /* Rodapé */
+        footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #aaa;
+            animation: fadeSlideUp 0.8s ease-out forwards;
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        /* Ajustes sutis para telas muito pequenas (ex: iPhone SE) */
+        @media (max-width: 380px) {
+            .avatar-container { width: 70px; height: 70px; }
+            .info-container h2 { font-size: 1.15rem; }
+            .action-tag { padding: 5px 10px; font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-header">
+        <img src="img/logo.png" alt="SmileSpace Odontologia">
+        <h1>Iniciar Atendimento</h1>
+        <p>Selecione o especialista para agendar sua consulta agora mesmo.</p>
+    </header>
+
+    <main class="links-container">
+        
+        <a href="https://wa.me/553195511435?text=Olá! Gostaria de agendar uma consulta com o Dr. Gabriel Barbosa." class="doctor-card" target="_blank" rel="noopener noreferrer">
+            <div class="avatar-container">
+                <img src="img/perfil1.jpg" alt="Dr. Gabriel Barbosa - Especialista em Implantes e Próteses">
+                <div class="status-dot"></div>
+            </div>
+            <div class="info-container">
+                <h2>Dr. Gabriel Barbosa</h2>
+                <span class="cro">CRO-MG 57245</span>
+                <div class="action-tag">
+                    <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+                </div>
+            </div>
+            <i class="fas fa-chevron-right arrow-icon"></i>
+        </a>
+
+        <a href="https://wa.me/5531983571599?text=Olá! Gostaria de agendar uma consulta com o Dr. Herbert Felipe." class="doctor-card" target="_blank" rel="noopener noreferrer">
+            <div class="avatar-container">
+                <img src="img/perfil2.jpg" alt="Dr. Herbert Felipe - Especialista em Implantes e Próteses">
+                <div class="status-dot"></div>
+            </div>
+            <div class="info-container">
+                <h2>Dr. Herbert Felipe</h2>
+                <span class="cro">CRO-MG 57540</span>
+                <div class="action-tag">
+                    <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+                </div>
+            </div>
+            <i class="fas fa-chevron-right arrow-icon"></i>
+        </a>
+
+    </main>
+
+    <footer>
+        <p>© SmileSpace Odontologia</p>
+    </footer>
+
+</body>
+</html>

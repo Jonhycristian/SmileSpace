@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmileSpace Odontologia | Clínica Odontológica em Belo Horizonte</title>
+    <meta name="description" content="Clínica odontológica em BH especializada em implantes, próteses e estética dental. Tecnologia de ponta e atendimento humanizado para transformar seu sorriso.">
+    <meta name="author" content="SmileSpace Odontologia">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://smilespace.com.br/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SmileSpace Odontologia | Clínica Odontológica em Belo Horizonte">
+    <meta property="og:description" content="Clínica odontológica em BH especializada em implantes, próteses e estética dental. Tecnologia de ponta e atendimento humanizado.">
+    <meta property="og:image" content="https://smilespace.com.br/img/logo.png">
+    <meta property="og:url" content="https://smilespace.com.br/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SmileSpace Odontologia">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SmileSpace Odontologia | Clínica Odontológica em Belo Horizonte">
+    <meta name="twitter:description" content="Clínica odontológica em BH especializada em implantes, próteses e estética dental. Tecnologia de ponta e atendimento humanizado.">
+    <meta name="twitter:image" content="https://smilespace.com.br/img/logo.png">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      "name": "SmileSpace Odontologia",
+      "url": "https://smilespace.com.br/",
+      "logo": "https://smilespace.com.br/img/logo.png",
+      "image": "https://smilespace.com.br/img/logo.png",
+      "description": "Clínica odontológica em Belo Horizonte especializada em implantes, próteses e estética dental.",
+      "telephone": "+553195511435",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Belo Horizonte",
+        "addressRegion": "MG",
+        "addressCountry": "BR"
+      },
+      "medicalSpecialty": [
+        "Dentistry",
+        "Implantology",
+        "Cosmetic Dentistry"
+      ],
+      "sameAs": [
+        "https://www.instagram.com/smilespacebh/"
+      ]
+    }
+    </script>
+
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent: #f0f0f0;
+            --gold: #d4af37;
+            --light-gray: #f8f8f8;
+            --dark-gray: #333333;
+            --shadow: 0 5px 15px rgba(0,0,0,0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --whatsapp-green: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* Remove a luz/caixa azul ao clicar em botões no mobile */
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        html { scroll-padding-top: 80px; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-gray);
+            background-color: var(--secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+        /* Header Styles */
+        header {
+            background-color: var(--secondary);
+            box-shadow: var(--shadow);
+            position: fixed; width: 100%; top: 0; left: 0;
+            z-index: 1100; transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; position: relative; }
+
+        .logo { position: relative; z-index: 1110; }
+        .logo img { height: 50px; transition: transform 0.3s ease; display: block; }
+        .logo:hover img, .logo:focus img { transform: scale(1.05); }
+
+        .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; }
+        .nav-menu li { margin-left: 25px; position: relative; }
+        .nav-menu a {
+            text-decoration: none; color: var(--primary); font-weight: 500; font-size: 1rem;
+            transition: color 0.3s ease; position: relative; padding: 5px 0;
+        }
+        .nav-menu a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
+            background-color: var(--gold); transition: width 0.3s ease;
+        }
+        .nav-menu a:hover::after, .nav-menu a:focus::after, .nav-menu a.active::after { width: 100%; }
+        .nav-menu a:hover, .nav-menu a:focus { color: var(--gold); outline: none; }
+
+        .mobile-menu-btn {
+            display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer;
+            color: var(--primary); z-index: 1150; padding: 5px; outline: none;
+        }
+
+        /* Hero Carousel */
+        .hero { height: 100vh; min-height: 500px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding-top: 0; }
+        .hero-carousel { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .carousel-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.2s ease-in-out; }
+        .carousel-slide.active { opacity: 1; }
+        .carousel-slide::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)); z-index: 2; }
+        
+        .slide1 { background-image: url('img/home1.jpg'); background-color: #555; }
+        .slide2 { background-image: url('img/home2.jpg'); background-color: #444; }
+
+        .hero-content { position: relative; z-index: 3; max-width: 800px; width: 90%; margin: 0 auto; padding: 80px 20px 40px; text-align: center; }
+        .hero h1 { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 20px; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.4); color: var(--secondary); animation: fadeInUp 1s ease-out; }
+        .hero p { font-size: clamp(1rem, 2.5vw, 1.1rem); margin: 0 auto 30px auto; max-width: 700px; color: var(--accent); animation: fadeInUp 1s ease-out 0.2s forwards; opacity: 0; animation-fill-mode: forwards; }
+
+        .btn {
+            display: inline-block; background-color: var(--gold); color: var(--primary); padding: 12px 30px;
+            border-radius: 50px; text-decoration: none; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid var(--gold); font-size: 1rem; animation: fadeInUp 1s ease-out 0.4s forwards; opacity: 0; animation-fill-mode: forwards; cursor: pointer; white-space: nowrap; outline: none;
+        }
+        .hero .btn { animation: fadeInUp 1s ease-out 0.4s forwards, pulse-cta 2.5s infinite 2s; }
+        .btn:hover, .btn:focus { background-color: transparent; color: var(--gold); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); outline: none; }
+        .btn i { margin-right: 8px; }
+
+        .carousel-controls { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 4; }
+        .carousel-indicator { width: 12px; height: 12px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.5); cursor: pointer; transition: all 0.3s ease; border: none; padding: 0; outline: none; }
+        .carousel-indicator.active { background-color: var(--gold); transform: scale(1.2); }
+
+        /* General Section Styles */
+        .section { padding: 80px 0; position: relative; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: clamp(1.8rem, 5vw, 2.2rem); position: relative; display: inline-block; padding-bottom: 15px; }
+        .section-title h2::after { content: ''; position: absolute; width: 60px; height: 2px; background: var(--gold); bottom: 0; left: 50%; transform: translateX(-50%); }
+        .section-title p { max-width: 700px; margin: 15px auto 0; color: #666; font-size: 1rem; }
+
+        /* About Section */
+        .about-section { background-color: var(--light-gray); }
+        .about-container { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; }
+        .about-image-col, .about-text-col { flex: 1; min-width: 300px; }
+        .about-image-col img { width: 100%; height: auto; max-height: 450px; object-fit: cover; border-radius: 10px; box-shadow: var(--shadow); background-color: #eee; }
+        .about-text-col h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 20px; color: var(--primary); }
+        .about-text-col p { margin-bottom: 15px; line-height: 1.8; color: var(--dark-gray); }
+        .about-text-col ul { list-style: none; padding-left: 0; margin-top: 20px; }
+        .about-text-col ul li { position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1rem; font-weight: 500; }
+        .about-text-col ul li i { position: absolute; left: 0; top: 4px; color: var(--gold); font-size: 1.1rem; }
+        .about-content { display: none; }
+
+        /* Dentists Section */
+        .dentists { background-color: var(--light-gray); }
+        .dentists-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .dentist-card { background: var(--secondary); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); width: 100%; max-width: 350px; transition: transform 0.3s ease, box-shadow 0.3s ease; opacity: 0; transform: translateY(20px); }
+        .dentist-card.animated { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+        .dentist-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .dentist-img { height: 350px; overflow: hidden; background-color: #eee; }
+        .dentist-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .dentist-card:hover .dentist-img img { transform: scale(1.05); }
+        .dentist-info { padding: 25px; text-align: center; }
+        .dentist-info h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .dentist-info .cro { color: var(--gold); font-weight: 500; margin-bottom: 15px; display: block; font-size: 0.9rem; }
+        .dentist-info ul { list-style: none; text-align: left; margin-top: 15px; padding-left: 0; }
+        .dentist-info ul li { margin-bottom: 8px; padding-left: 25px; position: relative; font-size: 0.9rem; }
+        .dentist-info ul li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 2px; color: var(--gold); }
+        .social-links { display: flex; justify-content: center; gap: 12px; margin-top: 20px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background-color: var(--light-gray); color: var(--primary); transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease; text-decoration: none; font-size: 1rem; border: 1px solid #eee; outline: none; }
+        .social-links a:hover, .social-links a:focus { background-color: var(--gold); transform: translateY(-3px); color: var(--primary); border-color: var(--gold); }
+
+        /* Services Section */
+        .services-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .service-card { background: var(--secondary); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #eee; opacity: 0; transform: translateY(20px); display: flex; flex-direction: column; }
+        .service-card.animated { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .service-icon { height: 140px; display: flex; align-items: center; justify-content: center; background-color: var(--light-gray); font-size: 2.5rem; color: var(--gold); transition: background-color 0.3s ease, color 0.3s ease; flex-shrink: 0; }
+        .service-card:hover .service-icon { background-color: var(--gold); color: var(--secondary); }
+        .service-content { padding: 25px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
+        .service-content h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--primary); }
+        .service-content p { font-size: 0.9rem; margin-bottom: 15px; color: #666; flex-grow: 1; }
+        .service-features { list-style: none; margin-top: auto; text-align: left; padding-left: 0; }
+        .service-features li { position: relative; padding-left: 22px; margin-bottom: 6px; font-size: 0.85rem; color: var(--dark-gray); }
+        .service-features li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 3px; color: var(--gold); font-size: 0.8rem; }
+
+        /* Videos Section */
+        .videos { background: #f0f0f0; padding: 80px 0; position: relative; }
+        .videos-container { display: flex; overflow-x: auto; padding: 20px 10px; scrollbar-width: none; gap: 25px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+        .videos-container::-webkit-scrollbar { display: none; }
+        .video-card { flex: 0 0 300px; height: 530px; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); position: relative; background: #fff; scroll-snap-align: center; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .video-card:hover { transform: scale(1.02); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+        .video-player { position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; background-color: #eee; }
+        .video-player video { width: 100%; height: 100%; object-fit: cover; }
+        
+        .sound-control { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 15; background: rgba(0,0,0,0.4); border-radius: 50%; width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; transition: all 0.3s ease; opacity: 0.8; border: 1px solid rgba(255,255,255,0.5); outline: none; }
+        .sound-control:hover { background: rgba(0,0,0,0.6); transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+        .sound-control i { font-size: 1.2rem; }
+        @keyframes pulse-sound { 0% { transform: translate(-50%, -50%) scale(1.0); } 50% { transform: translate(-50%, -50%) scale(1.15); } 100% { transform: translate(-50%, -50%) scale(1.0); } }
+        .sound-control.pulse { animation: pulse-sound 0.3s ease-out; }
+        
+        .video-header { position: absolute; top: 0; left: 0; width: 100%; padding: 15px 60px 15px 15px; display: flex; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent); color: white; z-index: 10; }
+        .video-author { display: flex; align-items: center; gap: 8px; cursor: pointer; flex-grow: 1; margin-right: 10px; overflow: hidden; }
+        .author-avatar { width: 38px; height: 38px; border-radius: 50%; overflow: hidden; border: 2px solid var(--gold); flex-shrink: 0; background-color: #ccc; }
+        .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .video-author div { line-height: 1.2; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+        .video-author strong { font-size: 0.9rem; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .video-author p { font-size: 0.75rem; opacity: 0.8; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .follow-btn { background: var(--gold); color: var(--primary); border: none; padding: 5px 14px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; cursor: pointer; transition: all 0.3s ease; z-index: 11; flex-shrink: 0; outline: none; }
+        .follow-btn.following { background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.5); }
+        
+        .media-counter { position: absolute; top: 15px; left: auto; right: 15px; background: rgba(0,0,0,0.4); color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 500; z-index: 10; align-items: center; }
+        .media-counter i { margin-right: 4px; font-size: 0.6rem; }
+        
+        .video-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px 15px 20px 15px; background: linear-gradient(to top, rgba(0,0,0,0.8) 10%, transparent 100%); color: white; z-index: 5; display: flex; flex-direction: column; justify-content: flex-end; }
+        .video-info { position: relative; padding-right: 60px; }
+        .video-info h3 { font-size: 1.1rem; margin-bottom: 5px; line-height: 1.3; font-weight: 500; }
+        .video-info p { -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; line-height: 1.4; max-height: calc(1.4em * 2); transition: max-height 0.3s ease; opacity: 0.9; }
+        .video-info p.expanded { max-height: 100px; overflow: auto; }
+        .show-more-btn { background: transparent; border: none; color: rgba(255,255,255,0.8); font-weight: 600; padding: 3px 0; font-size: 0.75rem; cursor: pointer; text-align: left; display: inline-block; margin-top: 2px; outline: none; }
+        .show-more-btn:hover { color: white; }
+        .video-tag { display: inline-block; background: rgba(212, 175, 55, 0.2); color: var(--gold); padding: 3px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 500; margin-top: 5px; }
+        .video-controls { position: absolute; right: 15px; bottom: 20px; display: flex; flex-direction: column; gap: 18px; align-items: center; z-index: 10; }
+        .video-control-btn { display: flex; flex-direction: column; align-items: center; color: white; font-size: 0.75rem; cursor: pointer; font-weight: 500; border: none; background: none; padding: 0; outline: none; }
+        .video-control-btn i { background: transparent; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 2px; font-size: 1.3rem; transition: all 0.2s ease; color: white; }
+        .video-control-btn .fa-heart.fas { color: #ff4d4d; }
+        .video-control-btn:hover i { background: rgba(255,255,255,0.15); transform: scale(1.1); }
+        .video-control-btn span { opacity: 0.9; }
+
+        /* Location Section */
+        #location { background-color: var(--light-gray); }
+        .location-container { display: flex; flex-wrap: wrap; gap: 40px; align-items: stretch; }
+        .location-info { flex: 1; min-width: 300px; background: var(--secondary); padding: 30px; border-radius: 10px; box-shadow: var(--shadow); transition: var(--transition); display: flex; flex-direction: column; }
+        .location-info:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.12); transform: translateY(-5px); }
+        .location-info h3 { font-size: 1.6rem; margin-bottom: 25px; }
+        .info-item { display: flex; margin-bottom: 18px; align-items: flex-start; }
+        .info-item i { color: var(--gold); font-size: 1.3rem; min-width: 35px; text-align: center; margin-right: 10px; margin-top: 3px; }
+        .info-content h4 { margin-bottom: 5px; font-size: 1.1rem; }
+        .info-content p { margin-bottom: 5px; color: var(--dark-gray); font-size: 1rem; }
+        
+        .location-map { flex: 1; min-width: 300px; height: 450px; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid #eee; transition: var(--transition); }
+        .location-map:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.12); transform: translateY(-5px); }
+        .location-map iframe { width: 100%; height: 100%; border: none; }
+        .location-apps { display: flex; gap: 15px; margin-top: auto; padding-top: 25px; flex-wrap: wrap; }
+        .location-app-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 18px; border-radius: 5px; text-decoration: none; color: white; font-weight: 500; transition: all 0.3s ease; min-width: 130px; font-size: 0.9rem; outline: none; }
+        .location-app-btn i { margin-right: 8px; font-size: 1.1rem; }
+        .location-app-btn:hover, .location-app-btn:focus { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); filter: brightness(1.1); outline: none; }
+        .waze-btn { background-color: #33CCFF; }
+        .google-maps-btn { background-color: #4285F4; }
+        .apple-maps-btn { background-color: #000000; }
+        
+        .copy-address-btn {
+            background-color: var(--gold); color: var(--primary); border: none; padding: 10px 18px; border-radius: 5px;
+            cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 500; transition: all 0.3s ease;
+            display: inline-flex; align-items: center; margin-top: 15px; font-size: 0.9rem; outline: none; width: max-content;
+        }
+        .copy-address-btn i { margin-right: 8px; font-size: 1rem; }
+        .copy-address-btn:hover, .copy-address-btn:focus { background-color: #c9a22e; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); outline: none; }
+
+        /* TOAST NOTIFICATION STYLES */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--dark-gray);
+            color: var(--secondary);
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 3000;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 500;
+            font-size: 0.95rem;
+            pointer-events: none;
+        }
+        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; pointer-events: auto; }
+        .toast.success { background-color: #4CAF50; }
+        .toast.error { background-color: #F44336; }
+
+        /* Contact Section */
+        .contact { background-color: var(--light-gray); }
+        .contact-container { display: flex; justify-content: center; gap: 40px; }
+        .contact-info { flex-basis: 100%; max-width: 700px; min-width: 300px; text-align: center; background: var(--secondary); padding: 40px; border-radius: 10px; box-shadow: var(--shadow); transition: var(--transition); }
+        .contact-info:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.12); transform: translateY(-5px); }
+        .contact-info h3 { font-size: 1.8rem; margin-bottom: 25px; }
+        .contact-info p { font-size: 1rem; margin-bottom: 30px; color: #666; }
+        .contact-info .info-item { justify-content: center; text-align: left; margin-bottom: 25px; }
+        .contact-info .info-item i { margin-top: 5px; font-size: 1.5rem; min-width: 40px; }
+        #contactAgendarBtn { margin-top: 30px; display: inline-block; }
+
+        /* Footer */
+        footer { background-color: var(--primary); color: #ccc; padding: 60px 0 30px; }
+        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
+        .footer-col h3 { font-size: 1.3rem; margin-bottom: 25px; position: relative; padding-bottom: 12px; color: var(--secondary); font-weight: 500; }
+        .footer-col h3::after { content: ''; position: absolute; width: 40px; height: 2px; background: var(--gold); bottom: 0; left: 0; }
+        .footer-col p { margin-bottom: 12px; color: #bbb; font-size: 0.9rem; line-height: 1.7; }
+        .footer-col p i { margin-right: 8px; width: 15px; text-align: center; color: var(--gold); }
+        .footer-links { list-style: none; padding-left: 0; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #bbb; text-decoration: none; transition: all 0.3s ease; font-size: 0.9rem; display: inline-block; outline: none; }
+        .footer-links a:hover, .footer-links a:focus { color: var(--gold); padding-left: 8px; transform: translateX(3px); outline: none; }
+        .footer-col .social-links a { background-color: #333; color: #ccc; width: 36px; height: 36px; font-size: 0.9rem; }
+        .footer-col .social-links a:hover, .footer-col .social-links a:focus { background-color: var(--gold); color: var(--primary); outline: none; }
+        .copyright { text-align: center; padding-top: 40px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); color: #999; font-size: 0.85rem; }
+        .copyright a { color: var(--gold); text-decoration: none; font-weight: 500; outline: none;}
+        .copyright a:hover, .copyright a:focus { text-decoration: underline; outline: none; }
+
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse-whatsapp { 0% { transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); } 50% { transform: scale(1.08); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); } 100% { transform: scale(1); box-shadow: 0 5px 15px rgba(0,0,0,0.2); } }
+        @keyframes pulse-cta { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); } 70% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
+
+        /* Chat Modal Styles */
+        .hidden { display: none !important; }
+        .chat-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(6px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 15px; }
+        .chat-modal-overlay:not(.hidden) { opacity: 1; }
+        .chat-modal-content { background: var(--secondary); padding: 30px; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); width: 100%; max-width: 480px; position: relative; transform: scale(0.95); transition: transform 0.3s ease; max-height: 90vh; overflow-y: auto; }
+        .chat-modal-overlay:not(.hidden) .chat-modal-content { transform: scale(1); }
+        .chat-close-btn { position: absolute; top: 10px; right: 15px; background: transparent; border: none; font-size: 2.5rem; color: #aaa; cursor: pointer; line-height: 1; transition: color 0.3s ease; padding: 5px; outline: none; }
+        .chat-close-btn:hover, .chat-close-btn:focus { color: var(--primary); outline: none; }
+        .chat-step h4 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary); margin-bottom: 10px; text-align: center; }
+        .chat-message { font-size: 1rem; color: var(--dark-gray); text-align: center; margin-bottom: 25px; }
+        .chat-options { display: flex; flex-direction: column; gap: 10px; }
+        .chat-option-btn, .chat-doctor-btn { background: var(--light-gray); border: 1px solid #eee; color: var(--dark-gray); padding: 15px; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.95rem; cursor: pointer; text-align: left; transition: all 0.3s ease; width: 100%; display: block; outline: none; }
+        .chat-option-btn:hover, .chat-doctor-btn:hover, .chat-option-btn:focus, .chat-doctor-btn:focus { background: var(--gold); color: var(--primary); border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3); outline: none; }
+        .chat-input, .chat-textarea { width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Montserrat', sans-serif; font-size: 1rem; transition: all 0.3s ease; background-color: #fdfdfd; margin-bottom: 15px; outline: none; }
+        .chat-input:focus, .chat-textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2); outline: none; background-color: white; }
+        .chat-textarea { min-height: 80px; resize: vertical; }
+        .chat-next-btn { display: inline-block; background-color: var(--gold); color: var(--primary); padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; border: 2px solid var(--gold); font-size: 1rem; cursor: pointer; width: 100%; text-align: center; outline: none; }
+        .chat-next-btn:hover, .chat-next-btn:focus { background-color: transparent; color: var(--gold); transform: translateY(-2px); outline: none; }
+        .chat-next-btn i { margin-left: 8px; }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; z-index: 1010; }
+        .floating-whatsapp-btn { background-color: var(--whatsapp-green); color: var(--secondary); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; animation: pulse-whatsapp 2s infinite ease-in-out; outline: none; }
+        .floating-whatsapp-btn:hover, .floating-whatsapp-btn:focus { transform: scale(1.08) translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.25); outline: none; filter: brightness(1.1); animation-play-state: paused; }
+        .whatsapp-tooltip { position: absolute; bottom: 10px; right: 100%; margin-right: 15px; background-color: rgba(0, 0, 0, 0.8); color: white; padding: 5px 12px; border-radius: 5px; font-size: 0.85rem; font-weight: 500; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; transform: translateX(10px); pointer-events: none; }
+        .floating-whatsapp:hover .whatsapp-tooltip, .floating-whatsapp-btn:focus + .whatsapp-tooltip { opacity: 1; visibility: visible; transform: translateX(0); }
+        .whatsapp-tooltip::after { content: ''; position: absolute; top: 50%; left: 100%; margin-top: -5px; border-width: 5px; border-style: solid; border-color: transparent transparent transparent rgba(0, 0, 0, 0.8); }
+
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+        .mobile-only { display: none; }
+
+        /* Responsive */
+        @media (max-width: 1200px) { .hero h1 { font-size: 2.7rem; } .video-card { flex: 0 0 280px; height: 500px; } }
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.3rem; } .section { padding: 70px 0; } .video-card { flex: 0 0 260px; height: 480px; }
+            .footer-container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } .about-image-col img { max-height: 400px; }
+        }
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: block; }
+            .nav-menu { position: fixed; top: 0; left: -100%; flex-direction: column; background: var(--secondary); width: 80%; max-width: 300px; height: 100vh; text-align: left; transition: left 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.1); padding: 100px 30px 30px; z-index: 1050; }
+            .nav-menu.active { left: 0; } .nav-menu li { margin: 15px 0; } .hero h1 { font-size: 2rem; }
+            .location-container, .contact-container { flex-direction: column; }
+            .location-map { height: 350px; }
+            .contact-info { max-width: none; }
+            .video-card { flex: 0 0 260px; height: 480px; } .video-controls { right: 10px; bottom: 15px; gap: 15px; }
+            .video-control-btn i { width: 36px; height: 36px; font-size: 1.2rem; } .video-control-btn span { font-size: 0.7rem; }
+            .video-info { padding-right: 50px; } .follow-btn { padding: 4px 10px; font-size: 0.75rem; }
+            .sound-control { width: 34px; height: 34px; right: 10px; } .sound-control i { font-size: 1rem; }
+            .media-counter { top: 10px; left: auto; right: 10px; } .media-counter.mobile-only { display: flex; }
+            .dentists-container { flex-direction: column; align-items: center; } .dentist-card { max-width: 90%; margin-bottom: 30px; }
+            .services-container { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 20px 0; scrollbar-width: none; gap: 15px; }
+            .services-container::-webkit-scrollbar { display: none; } .service-card { flex: 0 0 280px; scroll-snap-align: start; }
+            .location-apps { flex-direction: column; gap: 10px; align-items: stretch; } .location-app-btn { width: 100%; justify-content: flex-start; } .copy-address-btn { width: 100%; justify-content: center; }
+            .floating-whatsapp { bottom: 20px; right: 20px; } .floating-whatsapp-btn { width: 55px; height: 55px; font-size: 1.8rem; } .whatsapp-tooltip { display: none; }
+        }
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 1.8rem; } .section-title h2 { font-size: 1.8rem; } .dentist-card { max-width: 100%; } .contact-info { margin-bottom: 30px; padding: 25px; }
+            .footer-container { grid-template-columns: 1fr; } .footer-col { margin-bottom: 20px; }
+            .videos-container { padding-left: calc( (100% - 85vw) / 2 ); padding-right: calc( (100% - 85vw) / 2 ); gap: 15px; }
+            .video-card { flex: 0 0 85vw; height: 75vh; }
+            .video-controls { gap: 12px; } .video-control-btn i { font-size: 1.1rem; width: 34px; height: 34px; } .video-control-btn span { font-size: 0.65rem; }
+            .service-card { flex: 0 0 85vw; } .chat-modal-content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <img src="img/logo.png" alt="SmileSpace Odontologia - Clínica Odontológica Especializada em BH">
+            </a>
+            <nav>
+                <ul class="nav-menu" id="nav-menu-list">
+                    <li><a href="#home" class="active">Início</a></li>
+                    <li><a href="#dentists">Dentistas</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#about">Sobre Nós</a></li>
+                    <li><a href="#videos">Galeria</a></li>
+                    <li><a href="#location">Localização</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu-list">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-carousel" aria-hidden="true">
+                <div class="carousel-slide slide1 active"></div>
+                <div class="carousel-slide slide2"></div>
+            </div>
+            <div class="carousel-controls">
+                <button class="carousel-indicator active" data-slide="0" aria-label="Slide 1" aria-pressed="true"></button>
+                <button class="carousel-indicator" data-slide="1" aria-label="Slide 2" aria-pressed="false"></button>
+            </div>
+            <div class="hero-content">
+                <h1>Sorrir transforma vidas. A SmileSpace transforma o seu sorriso.</h1>
+                <p>Tratamentos odontológicos de alta qualidade, aliando tecnologia de ponta e atendimento personalizado para resultados que unem estética, funcionalidade e bem-estar.</p>
+                <button class="btn" id="heroAgendarBtn"><i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar Consulta</button>
+            </div>
+        </section>
+
+        <section id="dentists" class="section dentists">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nossos Dentistas</h2>
+                    <p>Especialistas em reabilitação oral com abordagem humanizada</p>
+                </div>
+                <div class="dentists-container">
+                    <article class="dentist-card">
+                        <div class="dentist-img">
+                            <img src="img/perfil1.jpg" alt="Dr. Gabriel Barbosa - Dentista Especialista em Implantes e Próteses em Belo Horizonte" loading="lazy">
+                        </div>
+                        <div class="dentist-info">
+                            <h3>Dr. Gabriel Barbosa</h3>
+                            <span class="cro">CRO-MG 57245</span>
+                            <ul>
+                                <li>Implantodontia e próteses</li>
+                                <li>Experiência em fluxo digital (>2 anos)</li>
+                                <li>Habilidade em venopunção (PRF/sedação)</li>
+                                <li>Abordagem humanizada e personalizada</li>
+                            </ul>
+                            <div class="social-links">
+                                <a href="https://www.instagram.com/drgabrielbarbosa_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Dr. Gabriel Barbosa"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                                <a href="https://wa.me/553195511435" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Dr. Gabriel Barbosa"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="dentist-card">
+                        <div class="dentist-img">
+                            <img src="img/perfil2.jpg" alt="Dr. Herbert Felipe - Dentista Especialista em Implantes e Próteses em Belo Horizonte" loading="lazy">
+                        </div>
+                        <div class="dentist-info">
+                            <h3>Dr. Herbert Felipe</h3>
+                            <span class="cro">CRO-MG 57540</span>
+                            <ul>
+                                <li>Implantodontia e próteses</li>
+                                <li>Experiência em fluxo digital (>2 anos)</li>
+                                <li>Habilidade em venopunção (PRF/sedação)</li>
+                                <li>Abordagem humanizada e personalizada</li>
+                            </ul>
+                            <div class="social-links">
+                                <a href="https://www.instagram.com/hfelipejr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Dr. Herbert Felipe"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                                <a href="https://wa.me/5531983571599" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Dr. Herbert Felipe"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Nossos Serviços</h2>
+                    <p>Tecnologia e excelência em cada tratamento</p>
+                </div>
+                <div class="services-container">
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-tooth" aria-hidden="true"></i></div>
+                        <div class="service-content">
+                            <h3>Implantes Dentários</h3>
+                            <p>Soluções permanentes para substituição de dentes perdidos, com tecnologia de ponta e materiais de alta qualidade.</p>
+                            <ul class="service-features"><li>Planejamento digital 3D</li><li>Cirurgia guiada</li><li>Garantia extendida</li></ul>
+                        </div>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-teeth-open" aria-hidden="true"></i></div>
+                        <div class="service-content">
+                            <h3>Próteses Dentárias</h3>
+                            <p>Fixas, removíveis ou sobre implantes, projetadas para máxima funcionalidade e conforto.</p>
+                            <ul class="service-features"><li>Próteses fixas em zirconia</li><li>Próteses flexíveis</li><li>Totalmente personalizadas</li></ul>
+                        </div>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-teeth" aria-hidden="true"></i></div>
+                        <div class="service-content">
+                            <h3>Prótese Protocolo</h3>
+                            <p>Prótese total fixa sobre implantes, ideal para reabilitação completa com estética e segurança.</p>
+                            <ul class="service-features"><li>Estabilidade imediata</li><li>Conforto superior</li><li>Materiais de alta resistência</li></ul>
+                        </div>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-smile" aria-hidden="true"></i></div>
+                        <div class="service-content">
+                            <h3>Facetas / Lentes de Contato</h3>
+                            <p>Estética digital com naturalidade para transformar seu sorriso de forma harmoniosa.</p>
+                            <ul class="service-features"><li>Lentes de cerâmica</li><li>Design digital do sorriso</li><li>Resultado natural</li></ul>
+                        </div>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-snowflake" aria-hidden="true"></i></div>
+                        <div class="service-content">
+                            <h3>Clareamento Dental</h3>
+                            <p>Consultório, caseiro ou combinado para um sorriso mais branco e radiante.</p>
+                            <ul class="service-features"><li>Técnica LED acelerada</li><li>Sem sensibilidade</li><li>Resultado em uma sessão</li></ul>
+                        </div>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-syringe" aria-hidden="true"></i></div>
+                        <div class="service-content">
+                            <h3>Cirurgias e Enxertos</h3>
+                            <p>Extrações e reconstruções ósseas seguras realizadas com técnica e precisão.</p>
+                            <ul class="service-features"><li>Enxertos ósseos</li><li>Elevação de seio maxilar</li><li>Uso de PRF (Plasma Rico em Fibrina)</li></ul>
+                        </div>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-tooth" aria-hidden="true"></i></div>
+                        <div class="service-content">
+                            <h3>Tratamento de Canal</h3>
+                            <p>Tratamento endodôntico para preservar dentes danificados por cárie ou trauma.</p>
+                            <ul class="service-features"><li>Técnica rotatória</li><li>Localizador apical digital</li><li>Menor desconforto</li></ul>
+                        </div>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon"><i class="fas fa-laptop-medical" aria-hidden="true"></i></div>
+                        <div class="service-content">
+                            <h3>Fluxo Digital Completo</h3>
+                            <p>Planejamento 3D, escaneamento intraoral e prototipagem para tratamentos precisos.</p>
+                            <ul class="service-features"><li>Scanner intraoral</li><li>Planejamento virtual</li><li>Guias cirúrgicos impressos</li></ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="videos" class="section videos">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Momentos SmileSpace</h2>
+                    <p>Confira nossa Galeria no estilo Reels</p>
+                </div>
+                <div class="videos-container">
+                    <article class="video-card" data-instagram="https://www.instagram.com/smilespacebh/reel/DA6VhmcPAb7/">
+                        <div class="video-player">
+                            <video autoplay loop muted playsinline preload="metadata">
+                                <source src="img/video1.mp4" type="video/mp4">
+                                Seu navegador não suporta vídeos HTML5.
+                            </video>
+                            <button class="sound-control" aria-label="Ativar som"><i class="fas fa-volume-mute" aria-hidden="true"></i></button>
+                            <div class="media-counter mobile-only" aria-hidden="true"><i class="fas fa-clone"></i><span>1/6</span></div>
+                            <div class="video-header">
+                                <div class="video-author">
+                                    <div class="author-avatar"><img src="img/logo.webp" alt="Logo SmileSpace"></div>
+                                    <div><strong>Smile Space</strong><p>Reabilitação Oral</p></div>
+                                </div>
+                                <button class="follow-btn" aria-pressed="false">Seguir</button>
+                            </div>
+                            <div class="video-overlay">
+                                <div class="video-info">
+                                    <h3>Seja bem vindo a Smile Space!</h3>
+                                    <p>Um espaço dedicado à reabilitação oral com foco na multidisciplinaridade. Prontos para atendê-lo com excelência!</p>
+                                    <button class="show-more-btn" aria-expanded="false">Ver mais</button>
+                                    <span class="video-tag">#SmileSpace</span>
+                                </div>
+                            </div>
+                            <div class="video-controls">
+                                <button class="video-control-btn" aria-label="Curtir" aria-pressed="false"><i class="far fa-heart" aria-hidden="true"></i><span>2.1K</span></button>
+                                <button class="video-control-btn" aria-label="Comentar"><i class="fas fa-comment" aria-hidden="true"></i><span>48</span></button>
+                                <button class="video-control-btn" aria-label="Compartilhar"><i class="fas fa-share" aria-hidden="true"></i><span>Compart.</span></button>
+                                <button class="video-control-btn" aria-label="Áudio original"><i class="fas fa-music" aria-hidden="true"></i><span>Áudio</span></button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="video-card" data-instagram="https://www.instagram.com/smilespacebh/reel/DCphL9Ihaq1/">
+                        <div class="video-player">
+                            <video autoplay loop muted playsinline preload="metadata">
+                                <source src="img/video2.mp4" type="video/mp4">
+                                Seu navegador não suporta vídeos HTML5.
+                            </video>
+                            <button class="sound-control" aria-label="Ativar som"><i class="fas fa-volume-mute" aria-hidden="true"></i></button>
+                            <div class="media-counter mobile-only" aria-hidden="true"><i class="fas fa-clone"></i><span>2/6</span></div>
+                            <div class="video-header">
+                                <div class="video-author">
+                                    <div class="author-avatar"><img src="img/logo.webp" alt="Logo SmileSpace"></div>
+                                    <div><strong>Smile Space</strong><p>Reabilitação Oral</p></div>
+                                </div>
+                                <button class="follow-btn" aria-pressed="false">Seguir</button>
+                            </div>
+                            <div class="video-overlay">
+                                <div class="video-info">
+                                    <h3>Sorriso Radiante para as Festas</h3>
+                                    <p>Que tal começar as celebrações com um sorriso mais branco? O clareamento dental é a escolha perfeita para brilhar.</p>
+                                    <button class="show-more-btn" aria-expanded="false">Ver mais</button>
+                                    <span class="video-tag">#Clareamento</span>
+                                </div>
+                            </div>
+                            <div class="video-controls">
+                                <button class="video-control-btn" aria-label="Curtir" aria-pressed="false"><i class="far fa-heart" aria-hidden="true"></i><span>1.8K</span></button>
+                                <button class="video-control-btn" aria-label="Comentar"><i class="fas fa-comment" aria-hidden="true"></i><span>36</span></button>
+                                <button class="video-control-btn" aria-label="Compartilhar"><i class="fas fa-share" aria-hidden="true"></i><span>Compart.</span></button>
+                                <button class="video-control-btn" aria-label="Áudio original"><i class="fas fa-music" aria-hidden="true"></i><span>Áudio</span></button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="video-card" data-instagram="https://www.instagram.com/smilespacebh/reel/DD20ScjRVMzi7qIpbM26TMLrloqsswHjdVyfB00/">
+                        <div class="video-player">
+                            <video autoplay loop muted playsinline preload="metadata">
+                                <source src="img/video3.mp4" type="video/mp4">
+                                Seu navegador não suporta vídeos HTML5.
+                            </video>
+                            <button class="sound-control" aria-label="Ativar som"><i class="fas fa-volume-mute" aria-hidden="true"></i></button>
+                            <div class="media-counter mobile-only" aria-hidden="true"><i class="fas fa-clone"></i><span>3/6</span></div>
+                            <div class="video-header">
+                                <div class="video-author">
+                                    <div class="author-avatar"><img src="img/logo.webp" alt="Logo SmileSpace"></div>
+                                    <div><strong>Smile Space</strong><p>Reabilitação Oral</p></div>
+                                </div>
+                                <button class="follow-btn" aria-pressed="false">Seguir</button>
+                            </div>
+                            <div class="video-overlay">
+                                <div class="video-info">
+                                    <h3>Tecnologia ao seu favor</h3>
+                                    <p>O scanner intraoral permite tratamentos odontológicos mais precisos, confortáveis e eficazes. Conheça!</p>
+                                    <button class="show-more-btn" aria-expanded="false">Ver mais</button>
+                                    <span class="video-tag">#Tecnologia</span>
+                                </div>
+                            </div>
+                            <div class="video-controls">
+                                <button class="video-control-btn" aria-label="Curtir" aria-pressed="false"><i class="far fa-heart" aria-hidden="true"></i><span>2.4K</span></button>
+                                <button class="video-control-btn" aria-label="Comentar"><i class="fas fa-comment" aria-hidden="true"></i><span>52</span></button>
+                                <button class="video-control-btn" aria-label="Compartilhar"><i class="fas fa-share" aria-hidden="true"></i><span>Compart.</span></button>
+                                <button class="video-control-btn" aria-label="Áudio original"><i class="fas fa-music" aria-hidden="true"></i><span>Áudio</span></button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="video-card" data-instagram="https://www.instagram.com/smilespacebh/reel/DGBWyVoRg1c/">
+                        <div class="video-player">
+                            <video autoplay loop muted playsinline preload="metadata">
+                                <source src="img/hfelipejr.mp4" type="video/mp4">
+                                Seu navegador não suporta vídeos HTML5.
+                            </video>
+                            <button class="sound-control" aria-label="Ativar som"><i class="fas fa-volume-mute" aria-hidden="true"></i></button>
+                            <div class="media-counter mobile-only" aria-hidden="true"><i class="fas fa-clone"></i><span>4/6</span></div>
+                            <div class="video-header">
+                                <div class="video-author">
+                                    <div class="author-avatar"><img src="img/logo.webp" alt="Logo SmileSpace"></div>
+                                    <div><strong>Smile Space</strong><p>Reabilitação Oral</p></div>
+                                </div>
+                                <button class="follow-btn" aria-pressed="false">Seguir</button>
+                            </div>
+                            <div class="video-overlay">
+                                <div class="video-info">
+                                    <h3>Tecnologia e habilidade</h3>
+                                    <p>Hoje, na Smile Space, nossa equipe realizou uma cirurgia de implante com precisão e cuidado. Tecnologia aliada à excelência.</p>
+                                    <button class="show-more-btn" aria-expanded="false">Ver mais</button>
+                                    <span class="video-tag">#ImplanteDental</span>
+                                </div>
+                            </div>
+                            <div class="video-controls">
+                                <button class="video-control-btn" aria-label="Curtir" aria-pressed="false"><i class="far fa-heart" aria-hidden="true"></i><span>1.5K</span></button>
+                                <button class="video-control-btn" aria-label="Comentar"><i class="fas fa-comment" aria-hidden="true"></i><span>28</span></button>
+                                <button class="video-control-btn" aria-label="Compartilhar"><i class="fas fa-share" aria-hidden="true"></i><span>Compart.</span></button>
+                                <button class="video-control-btn" aria-label="Áudio original"><i class="fas fa-music" aria-hidden="true"></i><span>Áudio</span></button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="video-card" data-instagram="https://www.instagram.com/smilespacebh/reel/DJr4cyvRfhJ/">
+                        <div class="video-player">
+                            <video autoplay loop muted playsinline preload="metadata">
+                                <source src="img/video5.mp4" type="video/mp4">
+                                Seu navegador não suporta vídeos HTML5.
+                            </video>
+                            <button class="sound-control" aria-label="Ativar som"><i class="fas fa-volume-mute" aria-hidden="true"></i></button>
+                            <div class="media-counter mobile-only" aria-hidden="true"><i class="fas fa-clone"></i><span>5/6</span></div>
+                            <div class="video-header">
+                                <div class="video-author">
+                                    <div class="author-avatar"><img src="img/logo.webp" alt="Logo SmileSpace"></div>
+                                    <div><strong>Smile Space</strong><p>Reabilitação Oral</p></div>
+                                </div>
+                                <button class="follow-btn" aria-pressed="false">Seguir</button>
+                            </div>
+                            <div class="video-overlay">
+                                <div class="video-info">
+                                    <h3>Seu sorriso merece cuidado especial</h3>
+                                    <p>Nossa clínica está pronta para te receber com tecnologia, conforto e um atendimento personalizado. Agende sua consulta!</p>
+                                    <button class="show-more-btn" aria-expanded="false">Ver mais</button>
+                                    <span class="video-tag">#Agendamento</span>
+                                </div>
+                            </div>
+                            <div class="video-controls">
+                                <button class="video-control-btn" aria-label="Curtir" aria-pressed="false"><i class="far fa-heart" aria-hidden="true"></i><span>3.2K</span></button>
+                                <button class="video-control-btn" aria-label="Comentar"><i class="fas fa-comment" aria-hidden="true"></i><span>64</span></button>
+                                <button class="video-control-btn" aria-label="Compartilhar"><i class="fas fa-share" aria-hidden="true"></i><span>Compart.</span></button>
+                                <button class="video-control-btn" aria-label="Áudio original"><i class="fas fa-music" aria-hidden="true"></i><span>Áudio</span></button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="video-card" data-instagram="https://www.instagram.com/smilespacebh/reel/DL2uLKGR5lb/">
+                        <div class="video-player">
+                            <video autoplay loop muted playsinline preload="metadata">
+                                <source src="img/video6.mp4" type="video/mp4">
+                                Seu navegador não suporta vídeos HTML5.
+                            </video>
+                            <button class="sound-control" aria-label="Ativar som"><i class="fas fa-volume-mute" aria-hidden="true"></i></button>
+                            <div class="media-counter mobile-only" aria-hidden="true"><i class="fas fa-clone"></i><span>6/6</span></div>
+                            <div class="video-header">
+                                <div class="video-author">
+                                    <div class="author-avatar"><img src="img/logo.webp" alt="Logo SmileSpace"></div>
+                                    <div><strong>Smile Space</strong><p>Reabilitação Oral</p></div>
+                                </div>
+                                <button class="follow-btn" aria-pressed="false">Seguir</button>
+                            </div>
+                            <div class="video-overlay">
+                                <div class="video-info">
+                                    <h3>Como chegar na SmileSpace</h3>
+                                    <p>De portas abertas para cuidar do seu sorriso! Conheça o caminho até nossa clínica no coração de Belo Horizonte.</p>
+                                    <button class="show-more-btn" aria-expanded="false">Ver mais</button>
+                                    <span class="video-tag">#Localização</span>
+                                </div>
+                            </div>
+                            <div class="video-controls">
+                                <button class="video-control-btn" aria-label="Curtir" aria-pressed="false"><i class="far fa-heart" aria-hidden="true"></i><span>2.7K</span></button>
+                                <button class="video-control-btn" aria-label="Comentar"><i class="fas fa-comment" aria-hidden="true"></i><span>41</span></button>
+                                <button class="video-control-btn" aria-label="Compartilhar"><i class="fas fa-share" aria-hidden="true"></i><span>Compart.</span></button>
+                                <button class="video-control-btn" aria-label="Áudio original"><i class="fas fa-music" aria-hidden="true"></i><span>Áudio</span></button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section about-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Sobre Nós</h2>
+                    <p>Conheça nossa história e filosofia de trabalho</p>
+                </div>
+                <div class="about-container">
+                    <div class="about-image-col">
+                        <img src="img/home1.jpg" alt="Interior da clínica SmileSpace" loading="lazy">
+                    </div>
+                    <div class="about-text-col">
+                        <h3>Paixão por transformar sorrisos</h3>
+                        <p>A SmileSpace Odontologia nasceu da paixão por transformar sorrisos e melhorar a qualidade de vida de nossos pacientes. Localizada no coração de Belo Horizonte, nossa clínica oferece um ambiente acolhedor e equipamentos de última geração.</p>
+                        <p>Cada detalhe é cuidadosamente planejado para sua segurança, conforto e satisfação. Nosso compromisso é oferecer tratamentos odontológicos de excelência, combinando técnica apurada, materiais de alta qualidade e tecnologia avançada.</p>
+                        <ul>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Foco em reabilitação oral e estética.</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Tecnologia de ponta (Fluxo Digital).</li>
+                            <li><i class="fas fa-check-circle" aria-hidden="true"></i> Atendimento humanizado e personalizado.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="location" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Localização</h2>
+                    <p>Venha nos visitar em nosso consultório</p>
+                </div>
+                <div class="location-container">
+                    <div class="location-info">
+                        <h3>Nossa Clínica</h3>
+                        <p>Estamos localizados no coração de Belo Horizonte, com fácil acesso e ambiente acolhedor.</p>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                            <div class="info-content">
+                                <h4>Endereço</h4>
+                                <p id="clinic-address">Rua São Paulo, 638 – Sala 444 – Centro, Belo Horizonte/MG</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            <div class="info-content">
+                                <h4>Horário de Funcionamento</h4>
+                                <p>Segunda a Sexta: 8h às 18h</p>
+                                <p>Sábado: 8h às 12h</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-parking" aria-hidden="true"></i>
+                            <div class="info-content">
+                                <h4>Estacionamento</h4>
+                                <p>Conveniado com estacionamento na rua ao lado.</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-wheelchair" aria-hidden="true"></i>
+                            <div class="info-content">
+                                <h4>Acessibilidade</h4>
+                                <p>Nosso espaço é totalmente acessível para pessoas com mobilidade reduzida.</p>
+                            </div>
+                        </div>
+                        <div class="location-apps">
+                            <a href="https://waze.com/ul/h7h2y8jgdx" class="location-app-btn waze-btn" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-waze" aria-hidden="true"></i> Waze
+                            </a>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=SmileSpace+-+R.+São+Paulo,+638+-+Centro,+Belo+Horizonte+-+MG,+30170-131" class="location-app-btn google-maps-btn" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-google" aria-hidden="true"></i> Google Maps
+                            </a>
+                            <a href="https://maps.apple.com/?daddr=Rua+S%C3%A3o+Paulo,+638+-+Centro,+Belo+Horizonte+-+MG" class="location-app-btn apple-maps-btn" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Apple Maps
+                            </a>
+                        </div>
+                        <button class="copy-address-btn" id="copyAddressBtn">
+                            <i class="far fa-copy" aria-hidden="true"></i> Copiar Endereço
+                        </button>
+                    </div>
+                    <div class="location-map">
+                        <iframe 
+                            title="Mapa da localização da SmileSpace" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.0560754897143!2d-43.94073862413726!3d-19.92196698146522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699e4b7b25867%3A0x8e83b8b6e680d2ad!2sR.%20S%C3%A3o%20Paulo%2C%20638%20-%20Centro%2C%20Belo%20Horizonte%20-%20MG%2C%2030170-131!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>SmileSpace</h3>
+                    <p>Transformando sorrisos com tecnologia, excelência e atendimento humanizado em Belo Horizonte.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li> <li><a href="#dentists">Dentistas</a></li> <li><a href="#services">Serviços</a></li>
+                        <li><a href="#about">Sobre Nós</a></li> <li><a href="#videos">Galeria</a></li> <li><a href="#location">Localização</a></li> <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Serviços</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Implantes Dentários</a></li> <li><a href="#services">Próteses Dentárias</a></li>
+                        <li><a href="#services">Facetas/Lentes</a></li> <li><a href="#services">Clareamento Dental</a></li>
+                        <li><a href="#services">Cirurgias e Enxertos</a></li> <li><a href="#services">Fluxo Digital</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Rua São Paulo, 638 – Sala 444 – Centro, BH/MG</p>
+                    <p><i class="fas fa-phone-alt" aria-hidden="true"></i> <a href="https://wa.me/553195511435" target="_blank" rel="noopener noreferrer">+55 31 9551-1435</a> (Dr. Gabriel Barbosa)</p>
+                    <p><i class="fas fa-phone-alt" aria-hidden="true"></i> <a href="https://wa.me/5531983571599" target="_blank" rel="noopener noreferrer">+55 31 8357-1599</a> (Dr. Herbert Felipe)</p>
+                    <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:contato@smilespace.com">contato@smilespace.com</a></p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© <span id="currentYear"></span> SmileSpace Odontologia. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-whatsapp">
+        <button class="floating-whatsapp-btn" id="floatingAgendarBtn" aria-label="Agendar consulta via WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        </button>
+        <span class="whatsapp-tooltip">Agende sua consulta</span>
+    </div>
+
+    <div id="toast" class="toast hidden">
+        <i class="fas fa-info-circle"></i>
+        <span id="toastMessage">Mensagem</span>
+    </div>
+
+    <div class="chat-modal-overlay hidden" id="chatModal" role="dialog" aria-modal="true" aria-labelledby="chatModalTitle">
+        <div class="chat-modal-content">
+            <button class="chat-close-btn" id="chatCloseBtn" aria-label="Fechar janela de agendamento">×</button>
+
+            <div class="chat-step" id="chatStep1" role="document" tabindex="-1">
+                <h4 id="chatModalTitle">Iniciar Agendamento</h4>
+                <p class="chat-message">Olá! Para agilizar seu atendimento, qual o principal motivo da sua consulta?</p>
+                <div class="chat-options">
+                    <button class="chat-option-btn" data-reason="Implantes Dentários (Avaliação/Consulta)">Implantes Dentários (Avaliação/Consulta)</button>
+                    <button class="chat-option-btn" data-reason="Próteses Dentárias (Fixa, Móvel, Protocolo)">Próteses Dentárias (Fixa, Móvel, Protocolo)</button>
+                    <button class="chat-option-btn" data-reason="Estética (Lentes de Contato / Facetas)">Estética (Lentes de Contato / Facetas)</button>
+                    <button class="chat-option-btn" data-reason="Clareamento Dental">Clareamento Dental</button>
+                    <button class="chat-option-btn" data-reason="Tratamento de Canal">Tratamento de Canal</button>
+                    <button class="chat-option-btn" data-reason="Cirurgias / Extrações / Enxertos">Cirurgias / Extrações / Enxertos</button>
+                    <button class="chat-option-btn" data-reason="Avaliação Geral / Check-up / Limpeza">Avaliação Geral / Check-up / Limpeza</button>
+                    <button class="chat-option-btn" data-reason="Outro Motivo (Descrever)">Outro Motivo (Descrever)</button>
+                </div>
+            </div>
+
+            <div class="chat-step hidden" id="chatStep1_5" role="document" tabindex="-1">
+                <form id="formStep1_5">
+                    <h4>Qual o motivo?</h4>
+                    <p class="chat-message">Por favor, descreva brevemente o motivo da sua consulta.</p>
+                    <label for="chatReasonOther" class="sr-only">Descreva o motivo</label>
+                    <textarea id="chatReasonOther" class="chat-textarea" rows="3" required placeholder="Ex: Dor de dente, quebrou um pedaço..."></textarea>
+                    <button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                </form>
+            </div>
+
+            <div class="chat-step hidden" id="chatStep2" role="document" tabindex="-1">
+                <form id="formStep2">
+                    <h4>Mais detalhes (Opcional)</h4>
+                    <p class="chat-message">Você gostaria de adicionar mais algum detalhe sobre o que está sentindo ou o que deseja?</p>
+                    <label for="chatDetails" class="sr-only">Detalhes adicionais</label>
+                    <textarea id="chatDetails" class="chat-textarea" rows="3" placeholder="Ex: Estou com sensibilidade, quero saber preços..."></textarea>
+                    <button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
+                </form>
+            </div>
+
+            <div class="chat-step hidden" id="chatStep3" role="document" tabindex="-1">
+                <form id="formStep3">
+                    <h4>Seu Nome</h4>
+                    <p class="chat-message">Para um atendimento personalizado, por favor, nos informe seu nome completo.</p>
+                    <label for="chatName" class="sr-only">Nome Completo</label>
+                    <input type="text" id="chatName" class="chat-input" required placeholder="Seu nome completo" autocomplete="name">
+                    <button type="submit" class="chat-next-btn">Escolher Dentista <i class="fas fa-user-md" aria-hidden="true"></i></button>
+                </form>
+            </div>
+
+            <div class="chat-step hidden" id="chatStep4" role="document" tabindex="-1">
+                <h4>Escolha o Profissional</h4>
+                <p class="chat-message">Para finalizar, com qual dentista você gostaria de ser atendido?</p>
+                <div class="chat-options">
+                    <button class="chat-doctor-btn" data-doctor="Dr. Gabriel Barbosa" data-phone="553195511435">Dr. Gabriel Barbosa</button>
+                    <button class="chat-doctor-btn" data-doctor="Dr. Herbert Felipe" data-phone="5531983571599">Dr. Herbert Felipe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Menu Mobile Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const isActive = navMenu.classList.toggle('active');
+                mobileMenuBtn.setAttribute('aria-expanded', String(isActive));
+                mobileMenuBtn.innerHTML = isActive ?
+                    '<i class="fas fa-times" aria-hidden="true"></i>' : '<i class="fas fa-bars" aria-hidden="true"></i>';
+                mobileMenuBtn.setAttribute('aria-label', isActive ? 'Fechar menu' : 'Abrir menu');
+            });
+        }
+
+        document.addEventListener('click', (event) => {
+            const isClickInsideNav = navMenu?.contains(event.target);
+            const isClickOnButton = mobileMenuBtn?.contains(event.target);
+            if (navMenu?.classList.contains('active') && !isClickInsideNav && !isClickOnButton) {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                mobileMenuBtn.setAttribute('aria-label', 'Abrir menu');
+            }
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        if (header) {
+            const handleScroll = () => { header.classList.toggle('scrolled', window.scrollY > 50); };
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            handleScroll();
+        }
+
+        // Scroll Suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#' || this.id === 'heroAgendarBtn' || this.id === 'contactAgendarBtn' || this.id === 'floatingAgendarBtn') {
+                    if(targetId !== '#') e.preventDefault();
+                    return;
+                }
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    const headerOffset = header?.offsetHeight || 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+
+                    document.querySelectorAll('.nav-menu a').forEach(a => {
+                        a.classList.toggle('active', a.getAttribute('href') === targetId);
+                    });
+                    
+                    if (navMenu?.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        });
+
+        // Carrossel do Início
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        if (slides.length > 1 && indicators.length === slides.length) {
+            let currentSlide = 0;
+            let slideInterval;
+
+            const changeSlide = (slideIndex) => {
+                slides.forEach((slide, index) => { slide.classList.toggle('active', index === slideIndex); });
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === slideIndex);
+                    indicator.setAttribute('aria-pressed', String(index === slideIndex));
+                });
+                currentSlide = slideIndex;
+            };
+
+            const autoRotate = () => { changeSlide((currentSlide + 1) % slides.length); };
+            const startAutoRotate = () => { clearInterval(slideInterval); slideInterval = setInterval(autoRotate, 5000); };
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => { changeSlide(index); startAutoRotate(); });
+            });
+            startAutoRotate();
+        }
+
+        // Ano do Copyright
+        const currentYearSpan = document.getElementById('currentYear');
+        if (currentYearSpan) { currentYearSpan.textContent = new Date().getFullYear(); }
+
+        // --- SISTEMA DE TOAST NOTIFICATION ---
+        let toastTimeout;
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const icon = toast.querySelector('i');
+
+            if(!toast || !toastMessage || !icon) return;
+
+            // Reseta classes e limpa tempo anterior se houver
+            clearTimeout(toastTimeout);
+            toast.className = `toast ${type}`;
+            
+            icon.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-circle';
+            toastMessage.textContent = message;
+
+            // Mostra o toast
+            requestAnimationFrame(() => {
+                toast.classList.add('show');
+            });
+
+            // Esconde depois de 3.5s
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3500);
+        }
+
+        // Detecção de Dispositivo
+        function detectDevice() {
+            try {
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+                const appleMapsBtn = document.querySelector('.apple-maps-btn');
+                if (appleMapsBtn && !isIOS) appleMapsBtn.style.display = 'none';
+            } catch (e) { console.error("Error detecting device:", e); }
+        }
+
+        // Animação ao rolar a página
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.service-card, .dentist-card');
+            const windowHeight = window.innerHeight;
+            elements.forEach(element => {
+                if (element.classList.contains('animated')) return; 
+                const elementPosition = element.getBoundingClientRect().top;
+                const animationPoint = windowHeight * 0.85; 
+                if(elementPosition < animationPoint) element.classList.add('animated');
+            });
+        };
+
+        detectDevice();
+        animateOnScroll(); 
+        window.addEventListener('scroll', animateOnScroll, { passive: true }); 
+
+        // Botão Copiar Endereço
+        const copyBtn = document.getElementById('copyAddressBtn');
+        const addressEl = document.getElementById('clinic-address');
+        if (copyBtn && addressEl && navigator.clipboard) {
+            copyBtn.addEventListener('click', function() {
+                const address = addressEl.textContent || addressEl.innerText; 
+                 if(!address) return; 
+
+                navigator.clipboard.writeText(address.trim()).then(() => { 
+                    showToast('Endereço copiado com sucesso!', 'success');
+                }).catch(err => {
+                    console.error('Falha ao copiar: ', err);
+                    showToast('Erro ao copiar endereço!', 'error');
+                });
+            });
+        } else if (copyBtn) {
+            copyBtn.style.display = 'none';
+        }
+
+        // Seção de Vídeos (Lógica)
+        const videosContainer = document.querySelector('.videos-container');
+        let currentlyUnmutedVideo = null;
+
+        document.querySelectorAll('.sound-control').forEach(control => {
+            control.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.add('pulse');
+                setTimeout(() => this.classList.remove('pulse'), 300);
+
+                const videoPlayer = this.closest('.video-player');
+                const clickedVideo = videoPlayer?.querySelector('video');
+                const soundIcon = this.querySelector('i');
+
+                if (!clickedVideo || !soundIcon) return;
+                const isMuting = !clickedVideo.muted;
+
+                if (!isMuting) {
+                    document.querySelectorAll('.videos-container video').forEach(otherVideo => {
+                        if (otherVideo !== clickedVideo && !otherVideo.muted) {
+                            otherVideo.muted = true;
+                            const otherControlIcon = otherVideo.closest('.video-player')?.querySelector('.sound-control i');
+                            if (otherControlIcon) otherControlIcon.className = 'fas fa-volume-mute';
+                        }
+                    });
+                    currentlyUnmutedVideo = clickedVideo;
+                } else {
+                    if (currentlyUnmutedVideo === clickedVideo) currentlyUnmutedVideo = null;
+                }
+
+                clickedVideo.muted = !clickedVideo.muted;
+                soundIcon.className = clickedVideo.muted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+            });
+        });
+
+        document.querySelectorAll('.video-control-btn .fa-heart').forEach(heart => {
+            if(!heart.classList.contains('fas') && !heart.classList.contains('far')) heart.classList.add('far');
+            const button = heart.closest('.video-control-btn');
+            
+            heart.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isLiked = this.classList.toggle('fas');
+                this.classList.toggle('far', !isLiked);
+
+                const countSpan = button?.querySelector('span');
+                if(!countSpan) return;
+                let currentText = countSpan.textContent || "0";
+                let count = 0;
+                if (currentText.includes('K')) count = parseFloat(currentText.replace('K', '')) * 1000;
+                else count = parseInt(currentText.replace(/\D/g,''));
+                if (isNaN(count)) count = 0;
+                count = isLiked ? count + 1 : Math.max(0, count - 1);
+                if (count >= 10000) countSpan.textContent = Math.floor(count / 1000) + 'K';
+                else if (count >= 1000) countSpan.textContent = (count / 1000).toFixed(1).replace('.0', '') + 'K';
+                else countSpan.textContent = count;
+            });
+        });
+
+        document.querySelectorAll('.video-header .follow-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const isFollowing = this.classList.toggle('following');
+                this.textContent = isFollowing ? "Seguindo" : "Seguir";
+            });
+        });
+
+        document.querySelectorAll('.show-more-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const paragraph = this.closest('.video-info')?.querySelector('p');
+                if (paragraph) {
+                    const isExpanded = paragraph.classList.toggle('expanded');
+                    this.textContent = isExpanded ? 'Ver menos' : 'Ver mais';
+                }
+            });
+        });
+
+        if ('IntersectionObserver' in window) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target.querySelector('video');
+                    if (!video) return;
+                    try {
+                        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                            if (video.paused) video.play().catch(e => console.warn("Autoplay:", e));
+                        } else {
+                            if (!video.paused) video.pause();
+                        }
+                    } catch (error) {}
+                });
+            }, { threshold: 0.5 });
+            document.querySelectorAll('.video-card').forEach(card => videoObserver.observe(card));
+        }
+
+        document.querySelectorAll('.video-card').forEach(card => {
+            const instagramLink = card.getAttribute('data-instagram');
+            if (!instagramLink) return;
+            card.addEventListener('click', function(e) {
+                const clickedControl = e.target.closest('.sound-control, .video-controls button, .show-more-btn, .follow-btn, .video-author a, .video-author div');
+                if (!clickedControl) window.open(instagramLink, '_blank', 'noopener,noreferrer');
+            });
+             const authorLink = card.querySelector('.video-author');
+             if(authorLink) {
+                 authorLink.addEventListener('click', (e) => {
+                     e.stopPropagation(); 
+                    window.open('https://www.instagram.com/smilespacebh/', '_blank', 'noopener,noreferrer');
+                 });
+             }
+        });
+
+        // --- LÓGICA DO MODAL DE CHAT ---
+        const heroAgendarBtn = document.getElementById('heroAgendarBtn');
+        const contactAgendarBtn = document.getElementById('contactAgendarBtn');
+        const floatingAgendarBtn = document.getElementById('floatingAgendarBtn'); 
+        const chatModal = document.getElementById('chatModal');
+        const chatCloseBtn = document.getElementById('chatCloseBtn');
+
+        const chatStep1 = document.getElementById('chatStep1');
+        const chatStep1_5 = document.getElementById('chatStep1_5');
+        const chatStep2 = document.getElementById('chatStep2');
+        const chatStep3 = document.getElementById('chatStep3');
+        const chatStep4 = document.getElementById('chatStep4');
+        const allSteps = [chatStep1, chatStep1_5, chatStep2, chatStep3, chatStep4].filter(Boolean); 
+
+        const formStep1_5 = document.getElementById('formStep1_5');
+        const inputReasonOther = document.getElementById('chatReasonOther');
+        const formStep2 = document.getElementById('formStep2');
+        const inputDetails = document.getElementById('chatDetails');
+        const formStep3 = document.getElementById('formStep3');
+        const inputName = document.getElementById('chatName');
+
+        let selectedReason = ''; let selectedDetails = ''; let selectedName = '';
+        let previouslyFocusedElement = null; 
+
+        function goToStep(stepToShow) {
+            if(!stepToShow) return;
+            allSteps.forEach(step => step.classList.toggle('hidden', step !== stepToShow));
+            
+            const firstInteractiveElement = stepToShow.querySelector('input, textarea, button:not(.chat-close-btn)');
+            if (firstInteractiveElement && firstInteractiveElement.tagName === 'BUTTON') {
+                setTimeout(() => firstInteractiveElement.focus(), 150);
+            }
+            
+            chatModal?.querySelector('.chat-modal-content')?.scrollTo(0, 0); 
+        }
+
+        function openChat(triggerButton) {
+            if (!chatModal) return;
+            previouslyFocusedElement = triggerButton || document.activeElement; 
+            chatModal.classList.remove('hidden');
+            goToStep(chatStep1);
+        }
+
+        function closeChat() {
+            if(!chatModal) return;
+            chatModal.classList.add('hidden');
+            selectedReason = ''; selectedDetails = ''; selectedName = '';
+            [formStep1_5, formStep2, formStep3].forEach(form => form?.reset());
+            if (previouslyFocusedElement) {
+                previouslyFocusedElement.focus();
+                previouslyFocusedElement = null; 
+            }
+        }
+
+        if (chatModal && chatCloseBtn && allSteps.length > 0) {
+            heroAgendarBtn?.addEventListener('click', (e) => { e.preventDefault(); openChat(heroAgendarBtn); });
+            contactAgendarBtn?.addEventListener('click', (e) => { e.preventDefault(); openChat(contactAgendarBtn); });
+            floatingAgendarBtn?.addEventListener('click', (e) => { e.preventDefault(); openChat(floatingAgendarBtn); }); 
+
+            chatCloseBtn.addEventListener('click', closeChat);
+            chatModal.addEventListener('click', (e) => { if (e.target === chatModal) closeChat(); });
+            chatModal.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeChat(); });
+
+            document.querySelectorAll('#chatStep1 .chat-option-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    selectedReason = btn.getAttribute('data-reason');
+                    goToStep(selectedReason === 'Outro Motivo (Descrever)' ? chatStep1_5 : chatStep2);
+                });
+            });
+
+            if (formStep1_5 && inputReasonOther) {
+                formStep1_5.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (inputReasonOther.value.trim() === '') { inputReasonOther.focus(); return; }
+                    selectedReason = inputReasonOther.value.trim();
+                    goToStep(chatStep2);
+                });
+            }
+
+            if (formStep2 && inputDetails) {
+                formStep2.addEventListener('submit', (e) => { e.preventDefault(); selectedDetails = inputDetails.value.trim(); goToStep(chatStep3); });
+            }
+
+            if (formStep3 && inputName) {
+                formStep3.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (inputName.value.trim() === '' || inputName.value.trim().split(' ').length < 2) {
+                        inputName.focus(); 
+                        showToast("Por favor, digite seu nome e sobrenome.", "error"); // Toast no lugar do Alert!
+                        return;
+                    }
+                    selectedName = inputName.value.trim();
+                    goToStep(chatStep4);
+                });
+            }
+
+            document.querySelectorAll('#chatStep4 .chat-doctor-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const phone = btn.getAttribute('data-phone'); if (!phone) return;
+                    let message = `Olá! Meu nome é ${selectedName}.\n\n*Motivo da Consulta:*\n${selectedReason}\n`;
+                    if (selectedDetails !== '') message += `\n*Mais detalhes:*\n${selectedDetails}\n`;
+                    message += "\nGostaria de agendar uma consulta."; 
+                    const encodedMessage = encodeURIComponent(message);
+                    const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
+                    window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+                    closeChat();
+                });
+            });
+        }
+
+        // Foco ajustado no chat para não quebrar a tela no mobile
+        const chatInputsForScroll = chatModal.querySelectorAll('.chat-input, .chat-textarea');
+        if (chatInputsForScroll.length > 0) {
+            chatInputsForScroll.forEach(input => {
+                input.addEventListener('focus', () => {
+                    setTimeout(() => { input.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 300); 
+                });
+            });
+        }
+    }); 
+</script>
+</body>
+</html>
