@@ -324,6 +324,14 @@
         .footer-col h3 { font-size: 1.3rem; margin-bottom: 25px; position: relative; padding-bottom: 12px; color: var(--secondary); font-weight: 500; }
         .footer-col h3::after { content: ''; position: absolute; width: 40px; height: 2px; background: var(--gold); bottom: 0; left: 0; }
         .footer-col p { margin-bottom: 12px; color: #bbb; font-size: 0.9rem; line-height: 1.7; }
+        .footer-col p a { color: #bbb; text-decoration: none; transition: color 0.3s ease; }
+        .footer-col p a:hover { color: var(--gold); }
+        .footer-logo-container { background: #fff; padding: 15px 20px; border-radius: 8px; display: inline-block; margin-bottom: 20px; }
+        .footer-logo { max-width: 160px; height: auto; display: block; }
+        .btn-review { display: inline-flex; align-items: center; gap: 8px; background-color: #fff; color: #333; padding: 10px 18px; border-radius: 5px; text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-top: 10px; transition: all 0.3s ease; }
+        .btn-review:hover { background-color: var(--gold); color: #fff; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(212,175,55,0.4); }
+        .btn-review i.fa-google { color: #DB4437; }
+        .btn-review:hover i.fa-google { color: #fff; }
         .footer-col p i { margin-right: 8px; width: 15px; text-align: center; color: var(--gold); }
         .footer-links { list-style: none; padding-left: 0; }
         .footer-links li { margin-bottom: 12px; }
@@ -861,9 +869,14 @@
     <footer>
         <div class="container">
             <div class="footer-container">
-                <div class="footer-col">
-                    <h3>SmileSpace</h3>
+                <div class="footer-col brand-col">
+                    <div class="footer-logo-container">
+                        <img src="img/logo.png" alt="SmileSpace Logo" class="footer-logo">
+                    </div>
                     <p>Transformando sorrisos com tecnologia, excelência e atendimento humanizado em Belo Horizonte.</p>
+                    <a href="https://maps.app.goo.gl/jJdKzQUpdLcD5Zp78" target="_blank" rel="noopener noreferrer" class="btn-review">
+                        <i class="fab fa-google"></i> Avalie-nos no Google
+                    </a>
                 </div>
                 <div class="footer-col">
                     <h3>Links Rápidos</h3>
