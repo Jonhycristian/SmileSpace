@@ -130,9 +130,10 @@
 
         .mobile-menu-btn {
             display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer;
-            color: var(--secondary); text-shadow: 0 1px 3px rgba(0,0,0,0.5); z-index: 1150; padding: 5px; outline: none;
+            color: var(--secondary); text-shadow: 0 1px 3px rgba(0,0,0,0.5); z-index: 1150; padding: 5px; outline: none; transition: opacity 0.3s ease, visibility 0.3s ease;
         }
         header.scrolled .mobile-menu-btn { color: var(--primary); text-shadow: none; }
+        header:not(.scrolled) .mobile-menu-btn { opacity: 0; visibility: hidden; pointer-events: none; }
 
         /* Hero Carousel */
         .hero { height: 100vh; min-height: 500px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding-top: 0; }
@@ -387,7 +388,8 @@
         .chat-next-btn i { margin-left: 8px; }
 
         /* Floating WhatsApp Button */
-        .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; z-index: 1010; }
+        .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; z-index: 1010; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        body:not(.scrolled) .floating-whatsapp { opacity: 0; visibility: hidden; pointer-events: none; }
         .floating-whatsapp-btn { background-color: var(--whatsapp-green); color: var(--secondary); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease; animation: pulse-whatsapp 2s infinite ease-in-out; outline: none; }
         .floating-whatsapp-btn:hover, .floating-whatsapp-btn:focus { transform: scale(1.08) translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.25); outline: none; filter: brightness(1.1); animation-play-state: paused; }
         .whatsapp-tooltip { position: absolute; bottom: 10px; right: 100%; margin-right: 15px; background-color: rgba(0, 0, 0, 0.8); color: white; padding: 5px 12px; border-radius: 5px; font-size: 0.85rem; font-weight: 500; white-space: nowrap; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; transform: translateX(10px); pointer-events: none; }
@@ -447,7 +449,7 @@
         }
         @media (max-width: 576px) {
             .hero h1 { font-size: 1.8rem; } .section-title h2 { font-size: 1.8rem; } .dentist-card { max-width: 100%; } .contact-info { margin-bottom: 30px; padding: 25px; }
-            .footer-container { grid-template-columns: 1fr; } .footer-col { margin-bottom: 20px; }
+            .footer-container { grid-template-columns: 1fr; } .footer-col { margin-bottom: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; } .footer-col p { justify-content: center; } .footer-col h3::after { left: 50%; transform: translateX(-50%); }
             .videos-container { padding-left: calc( (100% - 85vw) / 2 ); padding-right: calc( (100% - 85vw) / 2 ); gap: 15px; }
             .video-card { flex: 0 0 85vw; height: 75vh; }
             .video-controls { gap: 12px; } .video-control-btn i { font-size: 1.1rem; width: 34px; height: 34px; } .video-control-btn span { font-size: 0.65rem; }
@@ -913,12 +915,9 @@
                             </a>
                         </div>
                         <div class="location-actions">
-                            <button class="copy-address-btn" id="copyAddressBtn">
+                            <button class="copy-address-btn" id="copyAddressBtn" style="width: 100%; justify-content: center;">
                                 <i class="far fa-copy" aria-hidden="true"></i> Copiar Endereço
                             </button>
-                            <a href="https://maps.app.goo.gl/jJdKzQUpdLcD5Zp78" target="_blank" rel="noopener noreferrer" class="review-location-btn">
-                                <i class="fab fa-google" aria-hidden="true"></i> Avalie-nos no Maps
-                            </a>
                         </div>
                     </div>
                     <div class="location-map">
@@ -1099,7 +1098,11 @@
         // Header Scroll Effect
         const header = document.getElementById('header');
         if (header) {
-            const handleScroll = () => { header.classList.toggle('scrolled', window.scrollY > 50); };
+            const handleScroll = () => { 
+                const isScrolled = window.scrollY > 50;
+                header.classList.toggle('scrolled', isScrolled); 
+                document.body.classList.toggle('scrolled', isScrolled);
+            };
             window.addEventListener('scroll', handleScroll, { passive: true });
             handleScroll();
         }
