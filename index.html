@@ -109,7 +109,7 @@
         .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; position: relative; }
 
         .logo { position: relative; z-index: 1110; }
-        .logo img { height: 50px; transition: transform 0.3s ease, filter 0.4s ease; display: block; }
+        .logo img { height: 80px; transition: transform 0.3s ease, filter 0.4s ease; display: block; }
         header:not(.scrolled) .logo img { filter: brightness(0) invert(1); } /* Branco no topo */
         .logo:hover img, .logo:focus img { transform: scale(1.05); }
 
@@ -429,12 +429,12 @@
             .footer-container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } .about-image-col img { max-height: 400px; }
         }
         @media (max-width: 768px) {
-            .header-container { justify-content: center; }
-            .nav-menu { position: absolute; top: 75px; left: 50%; transform: translateX(-50%) translateY(-15px); flex-direction: column; background: #fff; width: 90%; max-width: 250px; height: auto; text-align: center; transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.15); padding: 15px 0; border-radius: 12px; z-index: 1050; opacity: 0; visibility: hidden; pointer-events: none; }
+            .header-container { justify-content: center; cursor: pointer; }
+            .nav-menu { position: absolute; top: 115px; left: 50%; transform: translateX(-50%) translateY(-15px); flex-direction: column; background: #fff; width: 85%; max-width: 220px; height: auto; text-align: center; transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.15); padding: 10px 0; border-radius: 12px; z-index: 1050; opacity: 0; visibility: hidden; pointer-events: none; }
             .nav-menu::before { content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid #fff; }
             .nav-menu.active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-            .nav-menu li { margin: 2px 0; }
-            .nav-menu a { color: #333 !important; font-weight: 600; padding: 10px; display: block; border-bottom: 1px solid #eee; text-shadow: none !important; }
+            .nav-menu li { margin: 0; }
+            .nav-menu a { color: #333 !important; font-weight: 500; font-size: 0.95rem; padding: 10px; display: block; border-bottom: 1px solid #f0f0f0; text-shadow: none !important; }
             .nav-menu li:last-child a { border-bottom: none; }
             .nav-menu a.active { color: var(--gold) !important; } .hero h1 { font-size: 2rem; }
             .location-container, .contact-container { flex-direction: column; }
@@ -1071,14 +1071,16 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Menu Mobile Toggle
-        // Menu Mobile Toggle (via Logo)
-        const headerLogoBtn = document.querySelector('.logo');
+        // Menu Mobile Toggle (via Cabeçalho)
+        const headerContainer = document.querySelector('.header-container');
         const navMenu = document.querySelector('.nav-menu');
-        if (headerLogoBtn && navMenu) {
-            headerLogoBtn.addEventListener('click', (event) => {
+        if (headerContainer && navMenu) {
+            headerContainer.addEventListener('click', (event) => {
                 if (window.innerWidth <= 768) {
-                    event.preventDefault(); // Impede rolagem ao topo se clicado para abrir menu no mobile
+                    // Evita fechar se clicar dentro de um link já aberto
+                    if (navMenu.contains(event.target)) return;
+                    
+                    event.preventDefault(); 
                     event.stopPropagation();
                     navMenu.classList.toggle('active');
                 }
@@ -1087,8 +1089,8 @@
 
         document.addEventListener('click', (event) => {
             const isClickInsideNav = navMenu?.contains(event.target);
-            const isClickOnLogo = headerLogoBtn?.contains(event.target);
-            if (navMenu?.classList.contains('active') && !isClickInsideNav && !isClickOnLogo) {
+            const isClickOnHeader = headerContainer?.contains(event.target);
+            if (navMenu?.classList.contains('active') && !isClickInsideNav && !isClickOnHeader) {
                 navMenu.classList.remove('active');
             }
         });
@@ -1097,7 +1099,9 @@
         const header = document.getElementById('header');
         if (header) {
             const handleScroll = () => { 
-                const isScrolled = window.scrollY > 50;
+                // Transparente até descer quase metade da página
+                const threshold = Math.min(window.innerHeight * 0.45, 450);
+                const isScrolled = window.scrollY > threshold;
                 header.classList.toggle('scrolled', isScrolled); 
                 document.body.classList.toggle('scrolled', isScrolled);
             };
