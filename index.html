@@ -109,7 +109,7 @@
         .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; position: relative; }
 
         .logo { position: relative; z-index: 1110; }
-        .logo img { height: 80px; transition: transform 0.3s ease, filter 0.4s ease; display: block; }
+        .logo img { height: 60px; transition: transform 0.3s ease, filter 0.4s ease; display: block; }
         header:not(.scrolled) .logo img { filter: brightness(0) invert(1); } /* Branco no topo */
         .logo:hover img, .logo:focus img { transform: scale(1.05); }
 
@@ -1021,8 +1021,8 @@
             <button class="chat-close-btn" id="chatCloseBtn" aria-label="Fechar janela de agendamento">×</button>
 
             <div class="chat-step" id="chatStep1" role="document" tabindex="-1">
-                <h4 id="chatModalTitle">Iniciar Agendamento</h4>
-                <p class="chat-message">Olá! Para agilizar seu atendimento, qual o principal motivo da sua consulta?</p>
+                <h4 id="chatModalTitle">Como podemos te ajudar?</h4>
+                <p class="chat-message">Olá! É um prazer receber você na SmileSpace. Para começarmos, qual é o principal motivo do seu contato hoje?</p>
                 <div class="chat-options">
                     <button class="chat-option-btn" data-reason="Implantes Dentários (Avaliação/Consulta)">Implantes Dentários (Avaliação/Consulta)</button>
                     <button class="chat-option-btn" data-reason="Próteses e Protocolos (Fixa, Móvel, Implante)">Próteses e Protocolos (Fixa, Móvel, Implante)</button>
@@ -1038,8 +1038,8 @@
 
             <div class="chat-step hidden" id="chatStep1_5" role="document" tabindex="-1">
                 <form id="formStep1_5">
-                    <h4>Qual o motivo?</h4>
-                    <p class="chat-message">Por favor, descreva brevemente o motivo da sua consulta.</p>
+                    <h4>Mais sobre o motivo</h4>
+                    <p class="chat-message">Por favor, conte-nos um pouquinho mais sobre o que você está buscando ou sentindo.</p>
                     <label for="chatReasonOther" class="sr-only">Descreva o motivo</label>
                     <textarea id="chatReasonOther" class="chat-textarea" rows="3" required placeholder="Ex: Dor de dente, quebrou um pedaço..."></textarea>
                     <button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
@@ -1048,8 +1048,8 @@
 
             <div class="chat-step hidden" id="chatStep2" role="document" tabindex="-1">
                 <form id="formStep2">
-                    <h4>Mais detalhes (Opcional)</h4>
-                    <p class="chat-message">Você gostaria de adicionar mais algum detalhe sobre o que está sentindo ou o que deseja?</p>
+                    <h4>Detalhes adicionais (Opcional)</h4>
+                    <p class="chat-message">Quer nos dar mais algum detalhe? Assim já deixamos tudo preparado para o seu atendimento (ex: locais de dor, sensibilidade, etc).</p>
                     <label for="chatDetails" class="sr-only">Detalhes adicionais</label>
                     <textarea id="chatDetails" class="chat-textarea" rows="3" placeholder="Ex: Estou com sensibilidade, quero saber preços..."></textarea>
                     <button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
@@ -1058,8 +1058,8 @@
 
             <div class="chat-step hidden" id="chatStep3" role="document" tabindex="-1">
                 <form id="formStep3">
-                    <h4>Seu Nome</h4>
-                    <p class="chat-message">Para um atendimento personalizado, por favor, nos informe seu nome completo.</p>
+                    <h4>Como podemos te chamar?</h4>
+                    <p class="chat-message">Para que possamos te oferecer um atendimento mais próximo e personalizado, qual é o seu nome completo?</p>
                     <label for="chatName" class="sr-only">Nome Completo</label>
                     <input type="text" id="chatName" class="chat-input" required placeholder="Seu nome completo" autocomplete="name">
                     <button type="submit" class="chat-next-btn">Escolher Dentista <i class="fas fa-user-md" aria-hidden="true"></i></button>
@@ -1068,7 +1068,7 @@
 
             <div class="chat-step hidden" id="chatStep4" role="document" tabindex="-1">
                 <h4>Escolha o Profissional</h4>
-                <p class="chat-message">Para finalizar, com qual dentista você gostaria de ser atendido?</p>
+                <p class="chat-message">Para finalizar, com qual de nossos especialistas você prefere conversar agora?</p>
                 <div class="chat-options">
                     <button class="chat-doctor-btn" data-doctor="Dr. Gabriel Barbosa" data-phone="553195511435">Dr. Gabriel Barbosa</button>
                     <button class="chat-doctor-btn" data-doctor="Dr. Herbert Felipe" data-phone="5531983571599">Dr. Herbert Felipe</button>
