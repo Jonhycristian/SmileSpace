@@ -291,11 +291,10 @@
         .copy-address-btn i { margin-right: 8px; font-size: 1.1rem; }
         .copy-address-btn:hover, .copy-address-btn:focus { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(201, 162, 46, 0.4); outline: none; }
 
-        .video-help-box { margin: 15px 0; padding: 15px; background: linear-gradient(135deg, #f8f9fa, #ffffff); border-radius: 12px; text-align: center; border: 1px solid #eaeaea; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .video-help-box p { margin: 0 0 10px 0; font-weight: 600; color: #333; font-size: 0.95rem; }
-        .video-help-box .btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 10px 20px; font-size: 0.9rem; border-radius: 25px; box-shadow: 0 4px 15px rgba(201, 162, 46, 0.3); border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; }
-        .video-help-box .btn-primary i { margin-right: 8px; font-size: 1.1rem; }
-        .video-help-box .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(201, 162, 46, 0.4); }
+        .video-help-container { margin: 25px 0 15px 0; }
+        .video-help-btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 25px; font-size: 0.95rem; border-radius: 30px; background: linear-gradient(135deg, var(--gold), #c9a22e); color: var(--primary); box-shadow: 0 4px 15px rgba(201, 162, 46, 0.3); border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; width: 100%; transition: all 0.3s ease; }
+        .video-help-btn i { margin-right: 10px; font-size: 1.3rem; }
+        .video-help-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(201, 162, 46, 0.4); }
         
         .review-location-btn {
             background-color: #fff; color: #333; border: 1px solid #ddd; padding: 10px 18px; border-radius: 5px;
@@ -925,10 +924,9 @@
                             </div>
                         </div>
                         
-                        <div class="video-help-box">
-                            <p>Ainda tem dúvidas de como chegar?</p>
-                            <button onclick="openLocationVideo()" class="btn-primary">
-                                <i class="fas fa-play-circle"></i> Assista ao nosso vídeo
+                        <div class="video-help-container">
+                            <button onclick="openLocationVideo()" class="video-help-btn">
+                                <i class="fas fa-play-circle"></i> Assista ao nosso vídeo de como chegar
                             </button>
                         </div>
                         
@@ -944,7 +942,7 @@
                             </a>
                         </div>
                         <div class="location-actions">
-                            <button class="copy-address-btn" id="copyAddressBtn" style="width: 100%; justify-content: center;">
+                            <button class="copy-address-btn" id="copyAddressBtn">
                                 <i class="far fa-copy" aria-hidden="true"></i> Copiar Endereço
                             </button>
                         </div>
