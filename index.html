@@ -1108,8 +1108,8 @@
         const header = document.getElementById('header');
         if (header) {
             const handleScroll = () => { 
-                // Transparente até descer quase metade da página
-                const threshold = Math.min(window.innerHeight * 0.45, 450);
+                // Transparente até rolar cerca de 20% da tela
+                const threshold = Math.min(window.innerHeight * 0.20, 200);
                 const isScrolled = window.scrollY > threshold;
                 header.classList.toggle('scrolled', isScrolled); 
                 document.body.classList.toggle('scrolled', isScrolled);
