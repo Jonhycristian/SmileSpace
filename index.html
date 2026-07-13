@@ -147,7 +147,9 @@
         .hero-content { position: relative; z-index: 3; max-width: 800px; width: 90%; margin: 0 auto; padding: 80px 20px 40px; text-align: center; }
         .hero-main-logo { max-width: 90%; height: auto; max-height: 70px; margin: 10px auto; filter: brightness(0) invert(1); transition: transform 0.4s ease, opacity 0.4s ease; transform-origin: center top; display: block; animation: fadeInUp 1s ease-out; }
         body.scrolled .hero-main-logo { transform: scale(0.6); opacity: 0; pointer-events: none; }
-        .hero h1 { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 20px; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.4); color: var(--secondary); animation: fadeInUp 1s ease-out; }
+        .hero h1 { margin-bottom: 20px; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.4); color: var(--secondary); animation: fadeInUp 1s ease-out; }
+        .hero-top-text { display: block; margin-bottom: 5px; font-size: clamp(1.5rem, 6vw, 3rem); }
+        .hero-bottom-text { display: block; margin-top: 5px; font-size: clamp(1.1rem, 5vw, 2.5rem); white-space: nowrap; }
         .hero p { font-size: clamp(1rem, 2.5vw, 1.1rem); margin: 40px auto 60px auto; max-width: 700px; color: var(--accent); animation: fadeInUp 1s ease-out 0.2s forwards; opacity: 0; animation-fill-mode: forwards; }
 
         .btn {
@@ -450,7 +452,7 @@
             .nav-menu li { margin: 0; }
             .nav-menu a { color: #333 !important; font-weight: 500; font-size: 1.1rem; padding: 12px; display: block; border-bottom: 1px solid #f0f0f0; text-shadow: none !important; }
             .nav-menu li:last-child a { border-bottom: none; }
-            .nav-menu a.active { color: var(--gold) !important; } .hero h1 { font-size: 2.2rem; margin-bottom: 5vh; line-height: 1.3; } .hero p { margin-bottom: 18vh; font-size: 1.05rem; padding: 0 10px; } .hero-content { margin-top: -8vh; }
+            .nav-menu a.active { color: var(--gold) !important; } .hero p { margin-top: 10vh; margin-bottom: 12vh; font-size: 1.05rem; padding: 0 10px; } .hero-content { margin-top: -8vh; }
             .location-container, .contact-container { flex-direction: column; }
             .location-map { height: 350px; }
             .contact-info { max-width: none; }
@@ -526,9 +528,9 @@
             </div>
             <div class="hero-content">
                 <h1>
-                    <span style="display: block; margin-bottom: 5px;">Sorrir transforma vidas.</span>
+                    <span class="hero-top-text">Sorrir transforma vidas.</span>
                     <img src="img/logo.png" alt="SmileSpace" class="hero-main-logo">
-                    <span style="display: block; margin-top: 5px;">transforma o seu sorriso.</span>
+                    <span class="hero-bottom-text">transforma o seu sorriso.</span>
                 </h1>
                 <p>Tratamentos odontológicos de alta qualidade, aliando tecnologia de ponta e atendimento personalizado para resultados que unem estética, funcionalidade e bem-estar.</p>
                 <button class="btn" id="heroAgendarBtn"><i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar Consulta</button>
