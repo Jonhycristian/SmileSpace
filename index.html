@@ -495,6 +495,7 @@
                     <li><a href="#about">Sobre Nós</a></li>
                     <li><a href="#videos">Galeria</a></li>
                     <li><a href="#location">Localização</a></li>
+                    <li><a href="#" class="open-chat-link">Contato</a></li>
                 </ul>
             </nav>
         </div>
@@ -978,7 +979,7 @@
                     <h3>Links Rápidos</h3>
                     <ul class="footer-links">
                         <li><a href="#home">Início</a></li> <li><a href="#dentists">Dentistas</a></li> <li><a href="#services">Serviços</a></li>
-                        <li><a href="#about">Sobre Nós</a></li> <li><a href="#videos">Galeria</a></li> <li><a href="#location">Localização</a></li>
+                        <li><a href="#about">Sobre Nós</a></li> <li><a href="#videos">Galeria</a></li> <li><a href="#location">Localização</a></li> <li><a href="#" class="open-chat-link">Contato</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1415,6 +1416,10 @@
             heroAgendarBtn?.addEventListener('click', (e) => { e.preventDefault(); openChat(heroAgendarBtn); });
             contactAgendarBtn?.addEventListener('click', (e) => { e.preventDefault(); openChat(contactAgendarBtn); });
             floatingAgendarBtn?.addEventListener('click', (e) => { e.preventDefault(); openChat(floatingAgendarBtn); }); 
+            
+            document.querySelectorAll('.open-chat-link').forEach(link => {
+                link.addEventListener('click', (e) => { e.preventDefault(); openChat(link); });
+            });
 
             chatCloseBtn.addEventListener('click', closeChat);
             chatModal.addEventListener('click', (e) => { if (e.target === chatModal) closeChat(); });
