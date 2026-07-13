@@ -366,15 +366,17 @@
         .hidden { display: none !important; }
         .chat-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(6px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; padding: 15px; }
         .chat-modal-overlay:not(.hidden) { opacity: 1; }
-        .chat-modal-content { background: var(--secondary); padding: 30px; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); width: 100%; max-width: 480px; position: relative; transform: scale(0.95); transition: transform 0.3s ease; max-height: 90vh; overflow-y: auto; }
+        .chat-modal-content { background: var(--secondary); padding: 40px 30px 30px; border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.25); width: 100%; max-width: 500px; position: relative; transform: scale(0.95); transition: transform 0.3s ease; max-height: 90vh; overflow-y: auto; }
         .chat-modal-overlay:not(.hidden) .chat-modal-content { transform: scale(1); }
-        .chat-close-btn { position: absolute; top: 10px; right: 15px; background: transparent; border: none; font-size: 2.5rem; color: #aaa; cursor: pointer; line-height: 1; transition: color 0.3s ease; padding: 5px; outline: none; }
-        .chat-close-btn:hover, .chat-close-btn:focus { color: var(--primary); outline: none; }
-        .chat-step h4 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary); margin-bottom: 10px; text-align: center; }
-        .chat-message { font-size: 1rem; color: var(--dark-gray); text-align: center; margin-bottom: 25px; }
-        .chat-options { display: flex; flex-direction: column; gap: 10px; }
-        .chat-option-btn, .chat-doctor-btn { background: var(--light-gray); border: 1px solid #eee; color: var(--dark-gray); padding: 15px; border-radius: 8px; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.95rem; cursor: pointer; text-align: left; transition: all 0.3s ease; width: 100%; display: block; outline: none; }
-        .chat-option-btn:hover, .chat-doctor-btn:hover, .chat-option-btn:focus, .chat-doctor-btn:focus { background: var(--gold); color: var(--primary); border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3); outline: none; }
+        .chat-close-btn { position: absolute; top: 15px; right: 15px; background: #f0f0f0; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: none; font-size: 1.5rem; color: #555; cursor: pointer; line-height: 1; transition: all 0.3s ease; outline: none; z-index: 10; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .chat-close-btn:hover, .chat-close-btn:focus { background: #ff4c4c; color: white; transform: rotate(90deg); outline: none; }
+        .chat-step h4 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary); margin-bottom: 10px; text-align: center; }
+        .chat-message { font-size: 1.05rem; color: var(--dark-gray); text-align: center; margin-bottom: 30px; line-height: 1.5; }
+        .chat-options { display: flex; flex-direction: column; gap: 12px; }
+        .chat-option-btn, .chat-doctor-btn { background: #f9f9f9; border: 2px solid #eaeaea; color: var(--dark-gray); padding: 16px 20px; border-radius: 12px; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 0.95rem; cursor: pointer; text-align: left; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); width: 100%; display: block; outline: none; position: relative; overflow: hidden; }
+        .chat-option-btn::after, .chat-doctor-btn::after { content: '\f105'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); opacity: 0; transition: opacity 0.3s ease, right 0.3s ease; color: var(--primary); }
+        .chat-option-btn:hover::after, .chat-doctor-btn:hover::after, .chat-option-btn:focus::after, .chat-doctor-btn:focus::after { opacity: 1; right: 15px; }
+        .chat-option-btn:hover, .chat-doctor-btn:hover, .chat-option-btn:focus, .chat-doctor-btn:focus { background: var(--gold); color: var(--primary); border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4); outline: none; padding-right: 40px; }
         .chat-input, .chat-textarea { width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 5px; font-family: 'Montserrat', sans-serif; font-size: 1rem; transition: all 0.3s ease; background-color: #fdfdfd; margin-bottom: 15px; outline: none; }
         .chat-input:focus, .chat-textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2); outline: none; background-color: white; }
         .chat-textarea { min-height: 80px; resize: vertical; }
@@ -392,6 +394,29 @@
 
         .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
         .mobile-only { display: none; }
+
+        /* About Carousel */
+        .about-carousel { position: relative; width: 100%; height: 100%; min-height: 400px; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); background: #eee; }
+        .about-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out; }
+        .about-slide.active { opacity: 1; }
+
+        /* Social Banner */
+        .social-banner-section { padding: 50px 0 20px; background: transparent; }
+        .social-banner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
+        .social-banner-half { padding: 50px 30px; text-align: center; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .instagram-half { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .google-half { background: white; color: var(--dark-gray); border: 1px solid #eaeaea; }
+        .google-half h3, .google-half p { color: var(--dark-gray); margin: 0 0 10px 0; }
+        .social-banner-half i { font-size: 3.5rem; margin-bottom: 15px; }
+        .google-half i { color: #DB4437; }
+        .social-banner-half h3 { font-size: 1.6rem; font-family: 'Playfair Display', serif; }
+        .social-banner-half p { margin-bottom: 25px; font-size: 1.05rem; opacity: 0.95; }
+        .social-banner-btn { display: inline-block; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; }
+        .instagram-half .social-banner-btn { background: white; color: #dc2743; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .instagram-half .social-banner-btn:hover { background: var(--dark-gray); color: white; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        .google-half .social-banner-btn { background: #DB4437; color: white; box-shadow: 0 4px 15px rgba(219,68,55,0.2); }
+        .google-half .social-banner-btn:hover { background: var(--dark-gray); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+        @media (max-width: 768px) { .social-banner { grid-template-columns: 1fr; } .social-banner-half { padding: 40px 20px; } }
 
         /* Responsive */
         @media (max-width: 1200px) { .hero h1 { font-size: 2.7rem; } .video-card { flex: 0 0 280px; height: 500px; } }
@@ -508,7 +533,7 @@
                             </ul>
                             <div class="social-links">
                                 <a href="https://www.instagram.com/drgabrielbarbosa_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Dr. Gabriel Barbosa"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                                <a href="https://wa.me/553195511435" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Dr. Gabriel Barbosa"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                                <a href="https://wa.me/553195511435?text=Vim%20pelo%20site%20da%20Smile%20Space%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Dr. Gabriel Barbosa"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </article>
@@ -527,7 +552,7 @@
                             </ul>
                             <div class="social-links">
                                 <a href="https://www.instagram.com/hfelipejr/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Dr. Herbert Felipe"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                                <a href="https://wa.me/5531983571599" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Dr. Herbert Felipe"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                                <a href="https://wa.me/5531983571599?text=Vim%20pelo%20site%20da%20Smile%20Space%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Dr. Herbert Felipe"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </article>
@@ -815,7 +840,10 @@
                 </div>
                 <div class="about-container">
                     <div class="about-image-col">
-                        <img src="img/home1.jpg" alt="Interior da clínica SmileSpace" loading="lazy">
+                        <div class="about-carousel" aria-hidden="true">
+                            <img src="img/home1.jpg" alt="Interior da clínica SmileSpace" class="about-slide active" loading="lazy">
+                            <img src="img/home2.jpg" alt="Equipe SmileSpace" class="about-slide" loading="lazy">
+                        </div>
                     </div>
                     <div class="about-text-col">
                         <h3>Paixão por transformar sorrisos</h3>
@@ -897,6 +925,25 @@
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-banner-section">
+            <div class="container">
+                <div class="social-banner">
+                    <div class="social-banner-half instagram-half">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                        <h3>Acompanhe nosso dia a dia</h3>
+                        <p>Veja casos reais, dicas e conheça nossa rotina.</p>
+                        <a href="https://www.instagram.com/smilespacebh/" target="_blank" rel="noopener noreferrer" class="social-banner-btn">Siga no Instagram</a>
+                    </div>
+                    <div class="social-banner-half google-half">
+                        <i class="fab fa-google" aria-hidden="true"></i>
+                        <h3>Veja o que dizem sobre nós</h3>
+                        <p>Pacientes felizes e sorrisos transformados.</p>
+                        <a href="https://maps.app.goo.gl/jJdKzQUpdLcD5Zp78" target="_blank" rel="noopener noreferrer" class="social-banner-btn">Avalie no Google</a>
                     </div>
                 </div>
             </div>
@@ -1424,6 +1471,17 @@
                 const scrollPercentage = (scrollTop / scrollHeight) * 100;
                 scrollProgressBar.style.width = scrollPercentage + '%';
             });
+        }
+
+        // About Us Carousel
+        const aboutSlides = document.querySelectorAll('.about-slide');
+        if (aboutSlides.length > 0) {
+            let currentAboutSlide = 0;
+            setInterval(() => {
+                aboutSlides[currentAboutSlide].classList.remove('active');
+                currentAboutSlide = (currentAboutSlide + 1) % aboutSlides.length;
+                aboutSlides[currentAboutSlide].classList.add('active');
+            }, 4000);
         }
     }); 
 </script>
