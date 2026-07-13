@@ -274,13 +274,22 @@
         .google-maps-btn { background-color: #4285F4; }
         .apple-maps-btn { background-color: #000000; }
         
+        .location-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 15px; }
         .copy-address-btn {
             background-color: var(--gold); color: var(--primary); border: none; padding: 10px 18px; border-radius: 5px;
             cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 500; transition: all 0.3s ease;
-            display: inline-flex; align-items: center; margin-top: 15px; font-size: 0.9rem; outline: none; width: max-content;
+            display: inline-flex; align-items: center; font-size: 0.9rem; outline: none; width: max-content;
         }
         .copy-address-btn i { margin-right: 8px; font-size: 1rem; }
         .copy-address-btn:hover, .copy-address-btn:focus { background-color: #c9a22e; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); outline: none; }
+        
+        .review-location-btn {
+            background-color: #fff; color: #333; border: 1px solid #ddd; padding: 10px 18px; border-radius: 5px;
+            cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; transition: all 0.3s ease;
+            display: inline-flex; align-items: center; font-size: 0.9rem; text-decoration: none; width: max-content;
+        }
+        .review-location-btn i.fa-google { margin-right: 8px; color: #DB4437; font-size: 1.1rem; }
+        .review-location-btn:hover, .review-location-btn:focus { background-color: #f8f8f8; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: #ccc; }
 
         /* TOAST NOTIFICATION STYLES */
         .toast {
@@ -849,9 +858,14 @@
                                 <i class="fas fa-map-marker-alt" aria-hidden="true"></i> Apple Maps
                             </a>
                         </div>
-                        <button class="copy-address-btn" id="copyAddressBtn">
-                            <i class="far fa-copy" aria-hidden="true"></i> Copiar Endereço
-                        </button>
+                        <div class="location-actions">
+                            <button class="copy-address-btn" id="copyAddressBtn">
+                                <i class="far fa-copy" aria-hidden="true"></i> Copiar Endereço
+                            </button>
+                            <a href="https://maps.app.goo.gl/jJdKzQUpdLcD5Zp78" target="_blank" rel="noopener noreferrer" class="review-location-btn">
+                                <i class="fab fa-google" aria-hidden="true"></i> Avalie-nos no Maps
+                            </a>
+                        </div>
                     </div>
                     <div class="location-map">
                         <iframe 
