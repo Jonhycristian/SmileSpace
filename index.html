@@ -1461,9 +1461,9 @@
             document.querySelectorAll('#chatStep4 .chat-doctor-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const phone = btn.getAttribute('data-phone'); if (!phone) return;
-                    let message = `Olá! Meu nome é ${selectedName}.\n\n*Motivo da Consulta:*\n${selectedReason}\n`;
-                    if (selectedDetails !== '') message += `\n*Mais detalhes:*\n${selectedDetails}\n`;
-                    message += "\nGostaria de agendar uma consulta."; 
+                    let message = `Olá, equipe SmileSpace! 👋\n\nMeu nome é *${selectedName}* e estou vindo do site.\n\n🦷 *Motivo principal:*\n_${selectedReason}_\n`;
+                    if (selectedDetails !== '') message += `\n📝 *Detalhes adicionais:*\n_${selectedDetails}_\n`;
+                    message += "\nGostaria de agendar um horário com vocês. Como podemos prosseguir? ✨"; 
                     const encodedMessage = encodeURIComponent(message);
                     const whatsappURL = `https://wa.me/${phone}?text=${encodedMessage}`;
                     window.open(whatsappURL, '_blank', 'noopener,noreferrer');
