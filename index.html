@@ -93,24 +93,23 @@
 
         /* Header Styles */
         header {
-            background-color: transparent;
-            box-shadow: none;
-            position: fixed; width: 100%; top: 0; left: 0;
-            z-index: 1100; transition: background-color 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        header.scrolled {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
             border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            position: fixed; width: 100%; top: 0; left: 0;
+            z-index: 1100; transition: transform 0.4s ease, opacity 0.4s ease;
+            transform: translateY(-100%); opacity: 0; pointer-events: none;
+        }
+
+        header.scrolled {
+            transform: translateY(0); opacity: 1; pointer-events: auto;
         }
 
         .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; position: relative; }
 
         .logo { position: relative; z-index: 1110; }
         .logo img { height: 60px; transition: transform 0.3s ease, filter 0.4s ease; display: block; }
-        header:not(.scrolled) .logo img { filter: brightness(0) invert(1); } /* Branco no topo */
         .logo:hover img, .logo:focus img { transform: scale(1.05); }
 
         .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; }
@@ -146,6 +145,8 @@
         .slide2 { background-image: url('img/home2.jpg'); background-color: #444; }
 
         .hero-content { position: relative; z-index: 3; max-width: 800px; width: 90%; margin: 0 auto; padding: 80px 20px 40px; text-align: center; }
+        .hero-main-logo { max-width: 90%; height: auto; max-height: 120px; margin-bottom: 20px; filter: brightness(0) invert(1); transition: transform 0.4s ease, opacity 0.4s ease; transform-origin: center top; display: inline-block; animation: fadeInUp 1s ease-out; }
+        body.scrolled .hero-main-logo { transform: scale(0.6); opacity: 0; pointer-events: none; }
         .hero h1 { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 20px; line-height: 1.2; text-shadow: 0 2px 8px rgba(0,0,0,0.4); color: var(--secondary); animation: fadeInUp 1s ease-out; }
         .hero p { font-size: clamp(1rem, 2.5vw, 1.1rem); margin: 0 auto 50px auto; max-width: 700px; color: var(--accent); animation: fadeInUp 1s ease-out 0.2s forwards; opacity: 0; animation-fill-mode: forwards; }
 
@@ -524,7 +525,8 @@
                 <button class="carousel-indicator" data-slide="1" aria-label="Slide 2" aria-pressed="false"></button>
             </div>
             <div class="hero-content">
-                <h1>Sorrir transforma vidas. A SmileSpace transforma o seu sorriso.</h1>
+                <img src="img/logo.png" alt="SmileSpace" class="hero-main-logo">
+                <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">Sorrir transforma vidas. A SmileSpace transforma o seu sorriso.</h1>
                 <p>Tratamentos odontológicos de alta qualidade, aliando tecnologia de ponta e atendimento personalizado para resultados que unem estética, funcionalidade e bem-estar.</p>
                 <button class="btn" id="heroAgendarBtn"><i class="fab fa-whatsapp" aria-hidden="true"></i> Agendar Consulta</button>
             </div>
