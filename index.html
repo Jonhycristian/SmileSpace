@@ -287,6 +287,12 @@
         }
         .copy-address-btn i { margin-right: 8px; font-size: 1rem; }
         .copy-address-btn:hover, .copy-address-btn:focus { background-color: #c9a22e; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); outline: none; }
+
+        .video-help-box { margin: 30px 0 20px 0; padding: 25px 20px; background: linear-gradient(135deg, #f8f9fa, #ffffff); border-radius: 15px; text-align: center; border: 1px solid #eaeaea; box-shadow: 0 8px 25px rgba(0,0,0,0.05); }
+        .video-help-box p { margin: 0 0 15px 0; font-weight: 700; color: var(--secondary); font-size: 1.1rem; }
+        .video-help-box .btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; font-size: 1rem; border-radius: 30px; box-shadow: 0 4px 15px rgba(201, 162, 46, 0.3); border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; }
+        .video-help-box .btn-primary i { margin-right: 8px; font-size: 1.2rem; }
+        .video-help-box .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(201, 162, 46, 0.4); }
         
         .review-location-btn {
             background-color: #fff; color: #333; border: 1px solid #ddd; padding: 10px 18px; border-radius: 5px;
@@ -906,11 +912,11 @@
                             </div>
                         </div>
                         
-                        <div class="video-help-box" style="margin: 25px 0 15px 0; padding: 20px; background: #f9f9f9; border-radius: 12px; text-align: center; border: 1px solid #eee; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
-                            <p style="margin: 0 0 12px 0; font-weight: 600; color: var(--dark-gray); font-size: 1.05rem;">Ainda tem dúvidas de como chegar?</p>
-                            <a href="#videos" class="btn-primary" style="display: inline-block; padding: 12px 24px; font-size: 0.95rem; border-radius: 30px;">
-                                <i class="fas fa-play-circle" style="margin-right: 6px;"></i> Assista ao nosso vídeo
-                            </a>
+                        <div class="video-help-box">
+                            <p>Ainda tem dúvidas de como chegar?</p>
+                            <button onclick="openLocationVideo()" class="btn-primary">
+                                <i class="fas fa-play-circle"></i> Assista ao nosso vídeo
+                            </button>
                         </div>
                         
                         <div class="location-apps">
@@ -1078,8 +1084,44 @@
         </div>
     </div>
 
+    <!-- Location Video Modal -->
+    <div class="chat-modal-overlay hidden" id="locationVideoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle" style="z-index: 2005;">
+        <div class="chat-modal-content" style="padding: 20px; max-width: 400px; text-align: center;">
+            <button class="chat-close-btn" onclick="closeLocationVideo()" aria-label="Fechar vídeo">×</button>
+            <h4 id="videoModalTitle" style="margin-bottom: 15px; font-size: 1.2rem;">Como chegar na SmileSpace</h4>
+            <video id="locationVideoPlayer" controls style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+                <source src="img/video3.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+        </div>
+    </div>
+
 <script>
+    function openLocationVideo() {
+        const modal = document.getElementById('locationVideoModal');
+        const video = document.getElementById('locationVideoPlayer');
+        if(modal && video) {
+            modal.classList.remove('hidden');
+            video.play();
+        }
+    }
+    function closeLocationVideo() {
+        const modal = document.getElementById('locationVideoModal');
+        const video = document.getElementById('locationVideoPlayer');
+        if(modal && video) {
+            modal.classList.add('hidden');
+            video.pause();
+            video.currentTime = 0;
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+        const locationVideoModal = document.getElementById('locationVideoModal');
+        if(locationVideoModal) {
+            locationVideoModal.addEventListener('click', (e) => {
+                if(e.target === locationVideoModal) closeLocationVideo();
+            });
+        }
         // Menu Mobile Toggle (via Cabeçalho)
         const headerContainer = document.querySelector('.header-container');
         const navMenu = document.querySelector('.nav-menu');
