@@ -93,14 +93,14 @@
 
         /* Header Styles */
         header {
-            background-color: var(--secondary);
-            box-shadow: var(--shadow);
+            background-color: transparent;
+            box-shadow: none;
             position: fixed; width: 100%; top: 0; left: 0;
-            z-index: 1100; transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            z-index: 1100; transition: background-color 0.4s ease, box-shadow 0.4s ease;
         }
 
         header.scrolled {
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
             border-bottom: 1px solid rgba(0, 0, 0, 0.03);
@@ -109,15 +109,18 @@
         .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; position: relative; }
 
         .logo { position: relative; z-index: 1110; }
-        .logo img { height: 50px; transition: transform 0.3s ease; display: block; }
+        .logo img { height: 50px; transition: transform 0.3s ease, filter 0.4s ease; display: block; }
+        header:not(.scrolled) .logo img { filter: brightness(0) invert(1); } /* Branco no topo */
         .logo:hover img, .logo:focus img { transform: scale(1.05); }
 
         .nav-menu { display: flex; list-style: none; margin: 0; padding: 0; }
         .nav-menu li { margin-left: 25px; position: relative; }
         .nav-menu a {
-            text-decoration: none; color: var(--primary); font-weight: 500; font-size: 1rem;
+            text-decoration: none; color: var(--secondary); font-weight: 500; font-size: 1rem;
             transition: color 0.3s ease; position: relative; padding: 5px 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
+        header.scrolled .nav-menu a { color: var(--primary); text-shadow: none; }
         .nav-menu a::after {
             content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0;
             background-color: var(--gold); transition: width 0.3s ease;
@@ -127,8 +130,9 @@
 
         .mobile-menu-btn {
             display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer;
-            color: var(--primary); z-index: 1150; padding: 5px; outline: none;
+            color: var(--secondary); text-shadow: 0 1px 3px rgba(0,0,0,0.5); z-index: 1150; padding: 5px; outline: none;
         }
+        header.scrolled .mobile-menu-btn { color: var(--primary); text-shadow: none; }
 
         /* Hero Carousel */
         .hero { height: 100vh; min-height: 500px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; padding-top: 0; }
@@ -549,17 +553,17 @@
                     <article class="service-card">
                         <div class="service-icon"><i class="fas fa-teeth-open" aria-hidden="true"></i></div>
                         <div class="service-content">
-                            <h3>Próteses Dentárias</h3>
-                            <p>Fixas, removíveis ou sobre implantes, projetadas para máxima funcionalidade e conforto.</p>
-                            <ul class="service-features"><li>Próteses fixas em zirconia</li><li>Próteses flexíveis</li><li>Totalmente personalizadas</li></ul>
+                            <h3>Próteses e Protocolos</h3>
+                            <p>Reabilitação oral completa com próteses fixas, flexíveis e protocolos sobre implantes.</p>
+                            <ul class="service-features"><li>Próteses fixas em zirconia</li><li>Protocolo sobre implantes</li><li>Estética e segurança</li></ul>
                         </div>
                     </article>
                     <article class="service-card">
-                        <div class="service-icon"><i class="fas fa-teeth" aria-hidden="true"></i></div>
+                        <div class="service-icon"><i class="fas fa-grin-beam" aria-hidden="true"></i></div>
                         <div class="service-content">
-                            <h3>Prótese Protocolo</h3>
-                            <p>Prótese total fixa sobre implantes, ideal para reabilitação completa com estética e segurança.</p>
-                            <ul class="service-features"><li>Estabilidade imediata</li><li>Conforto superior</li><li>Materiais de alta resistência</li></ul>
+                            <h3>Ortodontia</h3>
+                            <p>Aparelhos estéticos, metálicos e alinhadores invisíveis para um sorriso perfeitamente alinhado.</p>
+                            <ul class="service-features"><li>Alinhadores Invisíveis</li><li>Aparelhos estéticos</li><li>Tratamento rápido</li></ul>
                         </div>
                     </article>
                     <article class="service-card">
@@ -922,9 +926,9 @@
                 <div class="footer-col">
                     <h3>Serviços</h3>
                     <ul class="footer-links">
-                        <li><a href="#services">Implantes Dentários</a></li> <li><a href="#services">Próteses Dentárias</a></li>
-                        <li><a href="#services">Facetas/Lentes</a></li> <li><a href="#services">Clareamento Dental</a></li>
-                        <li><a href="#services">Cirurgias e Enxertos</a></li> <li><a href="#services">Fluxo Digital</a></li>
+                        <li><a href="#services">Implantes Dentários</a></li> <li><a href="#services">Próteses e Protocolos</a></li>
+                        <li><a href="#services">Ortodontia e Alinhadores</a></li> <li><a href="#services">Facetas/Lentes</a></li>
+                        <li><a href="#services">Clareamento Dental</a></li> <li><a href="#services">Fluxo Digital</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -963,7 +967,8 @@
                 <p class="chat-message">Olá! Para agilizar seu atendimento, qual o principal motivo da sua consulta?</p>
                 <div class="chat-options">
                     <button class="chat-option-btn" data-reason="Implantes Dentários (Avaliação/Consulta)">Implantes Dentários (Avaliação/Consulta)</button>
-                    <button class="chat-option-btn" data-reason="Próteses Dentárias (Fixa, Móvel, Protocolo)">Próteses Dentárias (Fixa, Móvel, Protocolo)</button>
+                    <button class="chat-option-btn" data-reason="Próteses e Protocolos (Fixa, Móvel, Implante)">Próteses e Protocolos (Fixa, Móvel, Implante)</button>
+                    <button class="chat-option-btn" data-reason="Ortodontia (Aparelhos e Alinhadores Invisíveis)">Ortodontia (Aparelhos e Alinhadores Invisíveis)</button>
                     <button class="chat-option-btn" data-reason="Estética (Lentes de Contato / Facetas)">Estética (Lentes de Contato / Facetas)</button>
                     <button class="chat-option-btn" data-reason="Clareamento Dental">Clareamento Dental</button>
                     <button class="chat-option-btn" data-reason="Tratamento de Canal">Tratamento de Canal</button>
