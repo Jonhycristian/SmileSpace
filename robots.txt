@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://smilespace.com.br/sitemap.xml
