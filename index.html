@@ -512,8 +512,8 @@
             .footer-container { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } .about-image-col img { max-height: 400px; }
         }
         @media (max-width: 768px) {
-            /* Header sempre visível no mobile para o menu funcionar no topo */
-            header { transform: translateY(0); opacity: 1; pointer-events: auto; }
+            /* Mobile segue o PC: header escondido no topo, aparece ao rolar */
+            header.menu-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
             .header-container { justify-content: space-between; cursor: default; }
             .mobile-menu-btn { display: block; color: var(--primary); }
             .nav-menu { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(-15px); flex-direction: column; background: #fff; width: 92%; max-width: 280px; height: auto; text-align: center; transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; box-shadow: 0 15px 40px rgba(0,0,0,0.2); padding: 15px 0; border-radius: 16px; z-index: 1050; opacity: 0; visibility: hidden; pointer-events: none; }
@@ -1221,6 +1221,7 @@
 
         function closeMobileMenu() {
             if (navMenu?.classList.contains('active')) navMenu.classList.remove('active');
+            document.getElementById('header')?.classList.remove('menu-open');
             if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
             if (mobileMenuIcon) mobileMenuIcon.className = 'fas fa-bars';
             if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-label', 'Abrir menu');
@@ -1230,6 +1231,7 @@
             mobileMenuBtn.addEventListener('click', (event) => {
                 event.stopPropagation();
                 const isOpen = navMenu.classList.toggle('active');
+                document.getElementById('header')?.classList.toggle('menu-open', isOpen);
                 mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
                 mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
                 if (mobileMenuIcon) mobileMenuIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
