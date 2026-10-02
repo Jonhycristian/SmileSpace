@@ -514,8 +514,8 @@
         @media (max-width: 768px) {
             /* Mobile segue o PC: header escondido no topo, aparece ao rolar */
             header.menu-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
-            .header-container { justify-content: space-between; cursor: default; }
-            .mobile-menu-btn { display: block; color: var(--primary); }
+            .header-container { justify-content: center; cursor: pointer; }
+            .mobile-menu-btn { display: none !important; }
             .nav-menu { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(-15px); flex-direction: column; background: #fff; width: 92%; max-width: 280px; height: auto; text-align: center; transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; box-shadow: 0 15px 40px rgba(0,0,0,0.2); padding: 15px 0; border-radius: 16px; z-index: 1050; opacity: 0; visibility: hidden; pointer-events: none; }
             .nav-menu::before { content: ''; position: absolute; top: -8px; left: 50%; transform: translateX(-50%); border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid #fff; }
             .nav-menu.active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
@@ -1207,11 +1207,9 @@
                 if(e.target === locationVideoModal) closeLocationVideo();
             });
         }
-        // Menu Mobile Toggle (botão hambúrguer)
+        // Menu Mobile Toggle (toque no cabeçalho, sem hambúrguer visível)
         const headerContainer = document.querySelector('.header-container');
         const navMenu = document.querySelector('.nav-menu');
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenuIcon = mobileMenuBtn?.querySelector('i');
 
         function setActiveLink(targetId) {
             document.querySelectorAll('.nav-menu a').forEach(a => {
@@ -1222,26 +1220,28 @@
         function closeMobileMenu() {
             if (navMenu?.classList.contains('active')) navMenu.classList.remove('active');
             document.getElementById('header')?.classList.remove('menu-open');
-            if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            if (mobileMenuIcon) mobileMenuIcon.className = 'fas fa-bars';
-            if (mobileMenuBtn) mobileMenuBtn.setAttribute('aria-label', 'Abrir menu');
         }
 
-        if (mobileMenuBtn && navMenu) {
-            mobileMenuBtn.addEventListener('click', (event) => {
+        function toggleMobileMenu() {
+            if (!navMenu) return;
+            const isOpen = navMenu.classList.toggle('active');
+            document.getElementById('header')?.classList.toggle('menu-open', isOpen);
+        }
+
+        if (headerContainer && navMenu) {
+            headerContainer.addEventListener('click', (event) => {
+                if (window.innerWidth > 768) return;
+                if (navMenu.contains(event.target)) return; // links fecham pelo scroll suave
+                event.preventDefault();
                 event.stopPropagation();
-                const isOpen = navMenu.classList.toggle('active');
-                document.getElementById('header')?.classList.toggle('menu-open', isOpen);
-                mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
-                mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
-                if (mobileMenuIcon) mobileMenuIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+                toggleMobileMenu();
             });
         }
 
         document.addEventListener('click', (event) => {
             const isClickInsideNav = navMenu?.contains(event.target);
-            const isClickOnBtn = mobileMenuBtn?.contains(event.target);
-            if (navMenu?.classList.contains('active') && !isClickInsideNav && !isClickOnBtn) {
+            const isClickOnHeader = headerContainer?.contains(event.target);
+            if (navMenu?.classList.contains('active') && !isClickInsideNav && !isClickOnHeader) {
                 closeMobileMenu();
             }
         });
