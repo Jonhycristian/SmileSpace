@@ -442,88 +442,80 @@
         @keyframes pulse-cta { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); } 70% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
         @keyframes pulse-cta-white { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5); } 70% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(255, 255, 255, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); } }
 
-        /* Chat Premium — SmileSpace Concierge */
+        /* Atendimento SmileSpace — experiência premium minimalista */
         .hidden { display: none !important; }
-        .chat-modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8,8,8,0.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.32s ease; padding: 14px; }
+        .chat-modal-overlay { position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(15,15,15,0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s ease; padding: 16px; }
         .chat-modal-overlay:not(.hidden) { opacity: 1; }
-        .chat-modal-content { background: #faf8f4; border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.4); width: 100%; max-width: 430px; position: relative; transform: translateY(18px) scale(0.97); transition: transform 0.35s cubic-bezier(0.175,0.885,0.32,1.15); max-height: 92vh; max-height: 92dvh; display: flex; flex-direction: column; overflow: hidden; border: 1px solid rgba(212,175,55,0.25); }
-        .chat-modal-overlay:not(.hidden) .chat-modal-content { transform: translateY(0) scale(1); }
-        .chat-premium-header { background: linear-gradient(135deg, #0a0a0a 0%, #232323 100%); color: #fff; padding: 16px 18px 14px; display: flex; align-items: center; gap: 12px; position: relative; }
-        .chat-premium-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
-        .chat-avatar { width: 46px; height: 46px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid var(--gold); overflow: hidden; }
-        .chat-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .chat-modal-content { background: #ffffff; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.18); width: 100%; max-width: 420px; position: relative; transform: translateY(8px); transition: transform 0.22s ease, opacity 0.22s ease; opacity: 0; max-height: 92vh; max-height: 92dvh; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #eeeeee; }
+        .chat-modal-overlay:not(.hidden) .chat-modal-content { transform: translateY(0); opacity: 1; }
+        .chat-premium-header { background: #ffffff; color: #111111; padding: 18px 18px 13px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f1f1f1; }
         .chat-header-text { flex: 1; min-width: 0; }
-        .chat-header-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.05rem; letter-spacing: 0.2px; }
-        .chat-online { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #b9f5c9; margin-top: 2px; }
-        .chat-online-dot { width: 8px; height: 8px; border-radius: 50%; background: #25D366; box-shadow: 0 0 0 3px rgba(37,211,102,0.25); animation: onlineBlink 2s infinite; }
-        @keyframes onlineBlink { 0%,100% { opacity: 1; } 50% { opacity: 0.55; } }
-        .chat-close-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; color: #fff; cursor: pointer; line-height: 1; transition: all 0.25s ease; flex-shrink: 0; }
-        .chat-close-btn:hover { background: rgba(255,255,255,0.22); transform: rotate(90deg); }
-        .chat-progress { height: 4px; background: rgba(0,0,0,0.07); position: relative; }
-        .chat-progress-fill { height: 100%; width: 25%; background: linear-gradient(90deg, #b8952e, var(--gold)); border-radius: 0 4px 4px 0; transition: width 0.45s cubic-bezier(0.4,0,0.2,1); }
-        .chat-progress-label { display: flex; justify-content: space-between; align-items: center; padding: 10px 22px 0; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.6px; text-transform: uppercase; color: #a08c3a; }
-        .chat-body { flex: 1; overflow-y: auto; padding: 18px 18px 14px; display: flex; flex-direction: column; gap: 12px; background: radial-gradient(circle at 20% 0%, rgba(212,175,55,0.07), transparent 55%), #faf8f4; -webkit-overflow-scrolling: touch; }
-        .chat-body::-webkit-scrollbar { width: 5px; }
-        .chat-body::-webkit-scrollbar-thumb { background: #ddd0a8; border-radius: 10px; }
-        .chat-step { display: flex; flex-direction: column; gap: 12px; animation: chatIn 0.4s ease both; }
+        .chat-header-text strong { display: block; font-family: 'Playfair Display', serif; font-size: 1.12rem; font-weight: 600; letter-spacing: 0.1px; color: #111; line-height: 1.2; }
+        .chat-header-sub { display: block; font-size: 0.78rem; color: #8a8a8a; margin-top: 2px; font-weight: 500; letter-spacing: 0.2px; }
+        .chat-close-btn { background: #f4f4f4; border: 1px solid transparent; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: #333; cursor: pointer; line-height: 1; transition: background 0.2s ease, transform 0.2s ease; flex-shrink: 0; }
+        .chat-close-btn:hover { background: #e9e9e9; }
+        .chat-close-btn:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+        .chat-progress { height: 2px; background: #f1f1f1; position: relative; }
+        .chat-progress-fill { height: 100%; width: 25%; background: #111111; border-radius: 0 2px 2px 0; transition: width 0.22s ease; }
+        .chat-progress-label { display: flex; justify-content: center; align-items: center; padding: 10px 20px 0; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: #9a9a9a; }
+        .chat-body { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 20px 20px 18px; display: flex; flex-direction: column; background: #ffffff; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+        .chat-body::-webkit-scrollbar { width: 4px; }
+        .chat-body::-webkit-scrollbar-thumb { background: #e2e2e2; border-radius: 10px; }
+        .chat-step { display: flex; flex-direction: column; gap: 12px; animation: ssStepIn 0.2s ease both; }
         .chat-step.hidden { display: none !important; }
-        @keyframes chatIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        .chat-bubble-bot { background: #fff; border: 1px solid #eee5cd; border-radius: 4px 16px 16px 16px; padding: 13px 15px; font-size: 0.93rem; line-height: 1.55; color: #2b2b2b; box-shadow: 0 3px 12px rgba(0,0,0,0.05); max-width: 92%; }
-        .chat-bubble-bot b { color: #000; }
-        .chat-bubble-user { align-self: flex-end; background: #111; color: #fff; border-radius: 16px 4px 16px 16px; padding: 10px 15px; font-size: 0.88rem; box-shadow: 0 3px 12px rgba(0,0,0,0.15); max-width: 90%; animation: chatIn 0.3s ease both; }
-        .chat-bubble-user i { color: var(--gold); margin-right: 6px; }
-        .chat-typing { display: inline-flex; gap: 5px; padding: 13px 16px; background: #fff; border: 1px solid #eee5cd; border-radius: 4px 16px 16px 16px; width: max-content; }
-        .chat-typing span { width: 7px; height: 7px; border-radius: 50%; background: #c9b36a; animation: typingBounce 1.2s infinite; }
-        .chat-typing span:nth-child(2) { animation-delay: 0.15s; } .chat-typing span:nth-child(3) { animation-delay: 0.3s; }
-        @keyframes typingBounce { 0%,60%,100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-5px); opacity: 1; } }
-        .chat-options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .chat-options-list { display: flex; flex-direction: column; gap: 10px; }
-        .chat-option-btn { background: #fff; border: 1.5px solid #e9e0c8; color: #2b2b2b; padding: 13px 12px; border-radius: 14px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.82rem; cursor: pointer; text-align: center; transition: all 0.22s ease; display: flex; flex-direction: column; align-items: center; gap: 8px; line-height: 1.35; }
-        .chat-option-btn i { font-size: 1.35rem; color: #b8952e; transition: all 0.22s ease; }
-        .chat-option-btn small { font-weight: 400; color: #888; font-size: 0.7rem; }
-        .chat-option-btn:hover, .chat-option-btn.selected { background: #111; color: #fff; border-color: #111; transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
-        .chat-option-btn:hover i, .chat-option-btn.selected i { color: var(--gold); }
-        .chat-option-btn:hover small, .chat-option-btn.selected small { color: #ccc; }
-        .chat-option-btn.wide { grid-column: 1 / -1; flex-direction: row; justify-content: flex-start; text-align: left; padding: 12px 15px; }
-        .chat-option-btn.wide i { font-size: 1.1rem; }
-        .chat-doctor-card { background: #fff; border: 1.5px solid #e9e0c8; border-radius: 16px; padding: 12px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: all 0.22s ease; width: 100%; text-align: left; font-family: 'Montserrat', sans-serif; }
-        .chat-doctor-card:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(212,175,55,0.25); background: #111; color: #fff; }
-        .chat-doctor-card:hover .doc-cro, .chat-doctor-card:hover .doc-status { color: #d9cd9a; }
-        .chat-doctor-card img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex-shrink: 0; }
+        @keyframes ssStepIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @media (prefers-reduced-motion: reduce) { .chat-step { animation: none; } .chat-modal-content, .chat-modal-overlay { transition: none; } }
+        .ss-title { font-family: 'Playfair Display', serif; font-size: 1.38rem; line-height: 1.25; color: #111; font-weight: 600; margin: 2px 0 0; }
+        .ss-sub { font-size: 0.9rem; color: #6f6f6f; line-height: 1.55; margin: 0 0 4px; }
+        .chat-options-list { display: flex; flex-direction: column; gap: 9px; margin-top: 4px; }
+        .chat-option-btn { background: #fff; border: 1px solid #e9e9e9; color: #1c1c1c; padding: 12px 13px; border-radius: 14px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; text-align: left; transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease; display: flex; align-items: center; gap: 12px; line-height: 1.35; width: 100%; min-height: 56px; }
+        .chat-option-btn .ss-ico { width: 38px; height: 38px; border-radius: 11px; background: #f6f6f4; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .chat-option-btn .ss-ico i { font-size: 1.02rem; color: #6d6350; }
+        .chat-option-btn .ss-label { flex: 1; min-width: 0; }
+        .chat-option-btn .ss-arrow { color: #c9c9c9; font-size: 0.8rem; flex-shrink: 0; transition: transform 0.18s ease, color 0.18s ease; }
+        .chat-option-btn:hover { border-color: #111; box-shadow: 0 4px 14px rgba(0,0,0,0.07); transform: translateY(-1px); }
+        .chat-option-btn:hover .ss-arrow { color: #111; transform: translateX(2px); }
+        .chat-option-btn:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+        .chat-option-btn.selected { border-color: #111; box-shadow: 0 4px 14px rgba(0,0,0,0.08); }
+        .chat-doctor-card { background: #fff; border: 1px solid #e9e9e9; border-radius: 16px; padding: 13px 13px; display: flex; align-items: center; gap: 13px; cursor: pointer; transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease; width: 100%; text-align: left; font-family: 'Montserrat', sans-serif; min-height: 76px; }
+        .chat-doctor-card:hover { border-color: #111; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,0.09); }
+        .chat-doctor-card:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+        .chat-doctor-card img { width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 1px solid #e6e6e6; flex-shrink: 0; background: #f4f4f4; }
         .doc-info { flex: 1; min-width: 0; }
-        .doc-info strong { display: block; font-size: 0.9rem; }
-        .doc-cro { font-size: 0.72rem; color: #888; }
-        .doc-status { font-size: 0.72rem; color: #1b9c4b; font-weight: 600; display: flex; align-items: center; gap: 5px; margin-top: 2px; }
-        .doc-status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #25D366; display: inline-block; }
-        .doc-arrow { color: var(--gold); font-size: 1rem; }
-        .chat-field { display: flex; flex-direction: column; gap: 10px; }
-        .chat-input, .chat-textarea { width: 100%; padding: 14px 16px; border: 1.5px solid #e2d9bd; border-radius: 14px; font-family: 'Montserrat', sans-serif; font-size: 0.95rem; transition: all 0.25s ease; background: #fff; outline: none; color: #222; }
-        .chat-input:focus, .chat-textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(212,175,55,0.15); }
-        .chat-textarea { min-height: 88px; resize: vertical; }
-        .chat-actions { display: flex; gap: 10px; }
-        .chat-next-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #c9a22e, var(--gold)); color: #111; padding: 14px 22px; border-radius: 50px; font-weight: 700; border: none; font-size: 0.92rem; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.25s ease; box-shadow: 0 6px 18px rgba(212,175,55,0.35); }
-        .chat-next-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(212,175,55,0.45); filter: brightness(1.05); }
-        .chat-ghost-btn { background: transparent; border: 1.5px solid #d8cdaa; color: #7a6c3a; padding: 13px 18px; border-radius: 50px; font-weight: 600; font-size: 0.85rem; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.25s ease; white-space: nowrap; }
-        .chat-ghost-btn:hover { border-color: #111; color: #111; }
-        .chat-back { background: none; border: none; color: #999; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 4px 2px; font-family: 'Montserrat', sans-serif; align-self: flex-start; }
+        .doc-info strong { display: block; font-size: 0.93rem; color: #111; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .doc-cro { font-size: 0.76rem; color: #8a8a8a; font-weight: 500; }
+        .doc-wa { display: inline-flex; align-items: center; gap: 5px; font-size: 0.74rem; color: #1b9c4b; font-weight: 600; margin-top: 4px; background: rgba(37,211,102,0.1); padding: 3px 9px; border-radius: 999px; }
+        .doc-wa i { font-size: 0.8rem; }
+        .doc-arrow { color: #c9c9c9; font-size: 0.85rem; flex-shrink: 0; }
+        .chat-doctor-card:hover .doc-arrow { color: #111; }
+        .chat-field { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+        .chat-field label { font-size: 0.82rem; font-weight: 600; color: #555; }
+        .chat-field label.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+        .chat-input, .chat-textarea { width: 100%; padding: 14px 15px; border: 1px solid #e0e0e0; border-radius: 12px; font-family: 'Montserrat', sans-serif; font-size: 16px; transition: border-color 0.18s ease, box-shadow 0.18s ease; background: #fff; outline: none; color: #1c1c1c; line-height: 1.5; }
+        .chat-input::placeholder, .chat-textarea::placeholder { color: #a8a8a8; font-size: 0.9rem; }
+        .chat-input:focus, .chat-textarea:focus { border-color: #111; box-shadow: 0 0 0 3px rgba(0,0,0,0.06); }
+        .chat-input[aria-invalid="true"] { border-color: #b3261e; box-shadow: 0 0 0 3px rgba(179,38,30,0.08); }
+        .chat-textarea { min-height: 96px; resize: vertical; }
+        .chat-error { display: none; background: #fdecea; border: 1px solid #f5c6c2; color: #8f1d17; border-radius: 10px; padding: 10px 12px; font-size: 0.82rem; line-height: 1.5; font-weight: 500; }
+        .chat-error.show { display: block; animation: ssStepIn 0.2s ease both; }
+        .chat-actions { display: flex; gap: 10px; margin-top: 2px; }
+        .chat-next-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #111111; color: #ffffff; padding: 14px 22px; border-radius: 999px; font-weight: 600; border: 1px solid #111; font-size: 0.93rem; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: transform 0.18s ease, background 0.18s ease; min-height: 50px; }
+        .chat-next-btn:hover { transform: translateY(-1px); background: #222; }
+        .chat-next-btn:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+        .chat-next-btn i { font-size: 0.85rem; }
+        .chat-next-btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
+        .chat-back { background: none; border: none; color: #8a8a8a; font-size: 0.83rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; padding: 8px 2px; font-family: 'Montserrat', sans-serif; align-self: flex-start; min-height: 36px; }
         .chat-back:hover { color: #111; }
-        .chat-summary { background: #111; color: #f5efdc; border-radius: 16px; padding: 16px; font-size: 0.85rem; line-height: 1.7; border: 1px solid rgba(212,175,55,0.4); }
-        .chat-summary .row { display: flex; gap: 8px; align-items: flex-start; padding: 3px 0; }
-        .chat-summary .row i { color: var(--gold); width: 16px; margin-top: 4px; flex-shrink: 0; }
-        .chat-summary .row span { color: #fff; font-weight: 600; }
-        .wa-preview { background: #e7dfcf url('') ; background-color: #ece5dd; border-radius: 16px; padding: 14px 12px; border: 1px solid #d5cdb8; }
-        .wa-preview-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: #7a6c3a; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-        .wa-bubble { background: #dcf8c6; border-radius: 4px 12px 12px 12px; padding: 12px 13px; font-size: 0.82rem; line-height: 1.6; color: #222; box-shadow: 0 2px 6px rgba(0,0,0,0.1); white-space: pre-line; word-break: break-word; }
-        .wa-bubble .wa-time { display: block; text-align: right; font-size: 0.65rem; color: #8a9b8a; margin-top: 6px; }
-        .chat-final-actions { display: flex; flex-direction: column; gap: 10px; }
-        .chat-wa-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #25D366; color: #fff; padding: 15px 22px; border-radius: 50px; font-weight: 700; border: none; font-size: 0.95rem; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.25s ease; box-shadow: 0 8px 22px rgba(37,211,102,0.4); text-decoration: none; width: 100%; }
-        .chat-wa-btn:hover { transform: translateY(-2px); filter: brightness(1.06); box-shadow: 0 12px 28px rgba(37,211,102,0.5); }
-        .chat-wa-btn i { font-size: 1.3rem; }
-        .chat-copy-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #fff; color: #111; padding: 12px 20px; border-radius: 50px; font-weight: 600; border: 1.5px solid #e2d9bd; font-size: 0.85rem; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: all 0.25s ease; width: 100%; }
-        .chat-copy-btn:hover { border-color: #111; transform: translateY(-1px); }
-        .chat-note { font-size: 0.72rem; color: #999; text-align: center; line-height: 1.5; }
-        .chat-secure { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.7rem; color: #aaa; padding: 2px 0 4px; }
-        @media (max-width: 480px) { .chat-modal-content { max-width: 100%; border-radius: 22px; } .chat-options-grid { grid-template-columns: 1fr 1fr; gap: 8px; } .chat-option-btn { font-size: 0.78rem; padding: 11px 8px; } }
+        .chat-back:focus-visible { outline: 2px solid #111; outline-offset: 2px; border-radius: 6px; }
+        .chat-secure { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.7rem; color: #b0b0b0; padding: 9px 10px 11px; border-top: 1px solid #f4f4f4; background: #fff; }
+        @media (max-width: 480px) {
+          .chat-modal-overlay { padding: 10px; align-items: center; }
+          .chat-modal-content { max-width: 100%; border-radius: 18px; max-height: 94vh; max-height: 94dvh; }
+          .chat-body { padding: 18px 16px 16px; }
+          .ss-title { font-size: 1.28rem; }
+          .chat-option-btn { min-height: 58px; font-size: 0.88rem; }
+          .chat-next-btn { min-height: 52px; }
+        }
 
         /* Floating WhatsApp Button */
         .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; z-index: 1010; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0.3s ease; }
@@ -1169,97 +1161,87 @@
     <div class="chat-modal-overlay hidden" id="chatModal" role="dialog" aria-modal="true" aria-labelledby="chatModalTitle">
         <div class="chat-modal-content">
             <div class="chat-premium-header">
-                <div class="chat-avatar"><img src="img/logo.png" alt="SmileSpace" style="object-fit:contain;padding:6px;background:#000;"></div>
                 <div class="chat-header-text">
-                    <strong id="chatModalTitle">Triagem SmileSpace</strong>
-                    <span class="chat-online"><span class="chat-online-dot"></span> Online agora · responde em segundos</span>
+                    <strong id="chatModalTitle">SmileSpace</strong>
+                    <span class="chat-header-sub">Atendimento</span>
                 </div>
-                <button class="chat-close-btn" id="chatCloseBtn" aria-label="Fechar">×</button>
+                <button class="chat-close-btn" id="chatCloseBtn" aria-label="Fechar atendimento">×</button>
             </div>
-            <div class="chat-progress"><div class="chat-progress-fill" id="chatProgressFill"></div></div>
-            <div class="chat-progress-label"><span id="chatStepLabel">Etapa 1 de 4 · Motivo</span><span>~30 seg</span></div>
+            <div class="chat-progress" aria-hidden="true"><div class="chat-progress-fill" id="chatProgressFill"></div></div>
+            <div class="chat-progress-label"><span id="chatStepLabel">Etapa 1 de 4</span></div>
 
             <div class="chat-body" id="chatBody">
-                <div class="chat-step" id="chatStep1">
-                    <div class="chat-bubble-bot">Olá, seja bem-vindo(a) à <b>SmileSpace</b>. Vou te ajudar a agendar em menos de 30 segundos. Primeiro, o que você procura?</div>
-                    <div class="chat-options-grid">
-                        <button class="chat-option-btn" data-reason="Implantes Dentários"><i class="fas fa-tooth"></i>Implantes<small>Avaliação e reposição</small></button>
-                        <button class="chat-option-btn" data-reason="Próteses e Protocolos"><i class="fas fa-teeth"></i>Próteses<small>Fixa, móvel e protocolo</small></button>
-                        <button class="chat-option-btn" data-reason="Aparelho e Alinhadores"><i class="fas fa-smile"></i>Aparelho<small>Invisível e fixo</small></button>
-                        <button class="chat-option-btn" data-reason="Facetas e Lentes"><i class="fas fa-star"></i>Estética<small>Facetas e lentes</small></button>
-                        <button class="chat-option-btn" data-reason="Clareamento Dental"><i class="fas fa-sun"></i>Clareamento<small>Dentes mais brancos</small></button>
-                        <button class="chat-option-btn" data-reason="Tratamento de Canal"><i class="fas fa-plus-circle"></i>Canal<small>Dor e urgência</small></button>
-                        <button class="chat-option-btn wide" data-reason="Avaliação Geral / Limpeza"><i class="fas fa-clipboard-check"></i>Avaliação Geral / Limpeza</button>
-                        <button class="chat-option-btn wide" data-reason="Outro Motivo"><i class="fas fa-comment-dots"></i>Outro motivo — quero descrever</button>
+                <div class="chat-step" id="chatStep1" role="group" aria-labelledby="ssTitle1">
+                    <h2 class="ss-title" id="ssTitle1">Como podemos ajudar?</h2>
+                    <p class="ss-sub">Escolha o motivo principal do seu contato.</p>
+                    <div class="chat-options-list">
+                        <button class="chat-option-btn" data-reason="Implantes Dentários"><span class="ss-ico"><i class="fas fa-tooth" aria-hidden="true"></i></span><span class="ss-label">Implantes</span><i class="fas fa-chevron-right ss-arrow" aria-hidden="true"></i></button>
+                        <button class="chat-option-btn" data-reason="Próteses e Protocolos"><span class="ss-ico"><i class="fas fa-teeth" aria-hidden="true"></i></span><span class="ss-label">Próteses</span><i class="fas fa-chevron-right ss-arrow" aria-hidden="true"></i></button>
+                        <button class="chat-option-btn" data-reason="Aparelho e Alinhadores"><span class="ss-ico"><i class="fas fa-smile" aria-hidden="true"></i></span><span class="ss-label">Ortodontia</span><i class="fas fa-chevron-right ss-arrow" aria-hidden="true"></i></button>
+                        <button class="chat-option-btn" data-reason="Facetas e Lentes"><span class="ss-ico"><i class="fas fa-star" aria-hidden="true"></i></span><span class="ss-label">Estética</span><i class="fas fa-chevron-right ss-arrow" aria-hidden="true"></i></button>
+                        <button class="chat-option-btn" data-reason="Clareamento Dental"><span class="ss-ico"><i class="fas fa-sun" aria-hidden="true"></i></span><span class="ss-label">Clareamento</span><i class="fas fa-chevron-right ss-arrow" aria-hidden="true"></i></button>
+                        <button class="chat-option-btn" data-reason="Tratamento de Canal"><span class="ss-ico"><i class="fas fa-plus-circle" aria-hidden="true"></i></span><span class="ss-label">Canal</span><i class="fas fa-chevron-right ss-arrow" aria-hidden="true"></i></button>
+                        <button class="chat-option-btn" data-reason="Avaliação Geral / Limpeza"><span class="ss-ico"><i class="fas fa-clipboard-check" aria-hidden="true"></i></span><span class="ss-label">Avaliação e limpeza</span><i class="fas fa-chevron-right ss-arrow" aria-hidden="true"></i></button>
+                        <button class="chat-option-btn" data-reason="Outro Motivo"><span class="ss-ico"><i class="fas fa-comment-dots" aria-hidden="true"></i></span><span class="ss-label">Outro motivo</span><i class="fas fa-chevron-right ss-arrow" aria-hidden="true"></i></button>
                     </div>
                 </div>
 
-                <div class="chat-step hidden" id="chatStep1_5">
-                    <div class="chat-bubble-bot">Claro. Me conta em uma frase <b>o que você está sentindo ou buscando?</b></div>
-                    <form id="formStep1_5" class="chat-field">
-                        <label for="chatReasonOther" class="sr-only">Descreva o motivo</label>
-                        <textarea id="chatReasonOther" class="chat-textarea" rows="3" required placeholder="Ex: Quebrei um dente, sinto dor ao mastigar..."></textarea>
-                        <div class="chat-actions"><button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right"></i></button></div>
-                        <button type="button" class="chat-back" data-back="chatStep1"><i class="fas fa-arrow-left"></i> Voltar</button>
+                <div class="chat-step hidden" id="chatStep1_5" role="group" aria-labelledby="ssTitle15">
+                    <h2 class="ss-title" id="ssTitle15">Conte um pouco mais</h2>
+                    <p class="ss-sub">Não encontrou o que procura? Descreva brevemente o motivo do seu contato.</p>
+                    <form id="formStep1_5" class="chat-field" novalidate>
+                        <label for="chatReasonOther" class="sr-only">Descreva o motivo do contato</label>
+                        <textarea id="chatReasonOther" class="chat-textarea" rows="3" placeholder="Ex.: avaliação, dúvida sobre tratamento..." autocomplete="off"></textarea>
+                        <div class="chat-error" id="chatReasonOtherError" role="alert"></div>
+                        <div class="chat-actions"><button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button></div>
+                        <button type="button" class="chat-back" data-back="chatStep1"><i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar</button>
                     </form>
                 </div>
 
-                <div class="chat-step hidden" id="chatStep2">
-                    <div class="chat-bubble-bot">Quer deixar algum <b>detalhe</b> para já chegarmos preparados? <span style="color:#888">(opcional)</span></div>
-                    <form id="formStep2" class="chat-field">
-                        <label for="chatDetails" class="sr-only">Detalhes adicionais</label>
-                        <textarea id="chatDetails" class="chat-textarea" rows="2" placeholder="Ex: Sensibilidade no lado direito, prefiro manhã..."></textarea>
+                <div class="chat-step hidden" id="chatStep2" role="group" aria-labelledby="ssTitle2">
+                    <h2 class="ss-title" id="ssTitle2">Quer nos contar mais?</h2>
+                    <p class="ss-sub">Se quiser, deixe alguma informação que possa nos ajudar no atendimento.</p>
+                    <form id="formStep2" class="chat-field" novalidate>
+                        <label for="chatDetails">Conte-nos um pouco mais (opcional)</label>
+                        <textarea id="chatDetails" class="chat-textarea" rows="3" placeholder="Conte-nos um pouco mais (opcional)" autocomplete="off"></textarea>
                         <div class="chat-actions">
-                            <button type="button" class="chat-ghost-btn" id="skipDetailsBtn">Pular</button>
-                            <button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right"></i></button>
+                            <button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button>
                         </div>
-                        <button type="button" class="chat-back" data-back="prev"><i class="fas fa-arrow-left"></i> Voltar</button>
+                        <button type="button" class="chat-back" data-back="prev"><i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar</button>
                     </form>
                 </div>
 
-                <div class="chat-step hidden" id="chatStep3">
-                    <div class="chat-bubble-bot">E <b>como podemos te chamar?</b> Digite seu nome e sobrenome.</div>
-                    <form id="formStep3" class="chat-field">
-                        <label for="chatName" class="sr-only">Nome completo</label>
-                        <input type="text" id="chatName" class="chat-input" required placeholder="Ex: Maria Silva" autocomplete="name">
-                        <div class="chat-actions"><button type="submit" class="chat-next-btn">Escolher dentista <i class="fas fa-user-md"></i></button></div>
-                        <button type="button" class="chat-back" data-back="chatStep2"><i class="fas fa-arrow-left"></i> Voltar</button>
+                <div class="chat-step hidden" id="chatStep3" role="group" aria-labelledby="ssTitle3">
+                    <h2 class="ss-title" id="ssTitle3">Como podemos te chamar?</h2>
+                    <p class="ss-sub">Informe seu nome para que nossa equipe possa continuar o atendimento.</p>
+                    <form id="formStep3" class="chat-field" novalidate>
+                        <label for="chatName" class="sr-only">Nome e sobrenome</label>
+                        <input type="text" id="chatName" class="chat-input" placeholder="Nome e sobrenome" autocomplete="name" enterkeyhint="next">
+                        <div class="chat-error" id="chatNameError" role="alert"></div>
+                        <div class="chat-actions"><button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button></div>
+                        <button type="button" class="chat-back" data-back="chatStep2"><i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar</button>
                     </form>
                 </div>
 
-                <div class="chat-step hidden" id="chatStep4">
-                    <div class="chat-bubble-bot">Quase lá. <b>Com quem você prefere falar?</b></div>
+                <div class="chat-step hidden" id="chatStep4" role="group" aria-labelledby="ssTitle4">
+                    <h2 class="ss-title" id="ssTitle4">Com quem você gostaria de falar?</h2>
+                    <p class="ss-sub">Escolha um profissional para continuar pelo WhatsApp.</p>
                     <div class="chat-options-list">
                         <button class="chat-doctor-card" data-doctor="Dr. Gabriel Barbosa" data-phone="553195511435">
-                            <img src="img/perfil1.jpg" alt="Dr. Gabriel Barbosa">
-                            <span class="doc-info"><strong>Dr. Gabriel Barbosa</strong><span class="cro">CRO-MG 57245 · Implantes e Próteses</span><span class="doc-status">Disponível hoje</span></span>
-                            <i class="fas fa-chevron-right doc-arrow"></i>
+                            <img src="img/perfil1.jpg" alt="Foto do Dr. Gabriel Barbosa" loading="lazy" decoding="async">
+                            <span class="doc-info"><strong>Dr. Gabriel Barbosa</strong><span class="doc-cro">CRO-MG 57245</span><span class="doc-wa"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</span></span>
+                            <i class="fas fa-chevron-right doc-arrow" aria-hidden="true"></i>
                         </button>
                         <button class="chat-doctor-card" data-doctor="Dr. Herbert Felipe" data-phone="5531983571599">
-                            <img src="img/perfil2.jpg" alt="Dr. Herbert Felipe">
-                            <span class="doc-info"><strong>Dr. Herbert Felipe</strong><span class="cro">CRO-MG 57540 · Implantes e Próteses</span><span class="doc-status">Disponível hoje</span></span>
-                            <i class="fas fa-chevron-right doc-arrow"></i>
+                            <img src="img/perfil2.jpg" alt="Foto do Dr. Herbert Felipe" loading="lazy" decoding="async">
+                            <span class="doc-info"><strong>Dr. Herbert Felipe</strong><span class="doc-cro">CRO-MG 57540</span><span class="doc-wa"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</span></span>
+                            <i class="fas fa-chevron-right doc-arrow" aria-hidden="true"></i>
                         </button>
                     </div>
-                    <button type="button" class="chat-back" data-back="chatStep3"><i class="fas fa-arrow-left"></i> Voltar</button>
-                </div>
-
-                <div class="chat-step hidden" id="chatStep5">
-                    <div class="chat-bubble-bot">Tudo pronto. Confira como sua mensagem vai chegar no nosso WhatsApp:</div>
-                    <div class="chat-summary" id="chatSummaryBox"></div>
-                    <div class="wa-preview">
-                        <div class="wa-preview-label"><i class="fab fa-whatsapp"></i> Prévia · WhatsApp</div>
-                        <div class="wa-bubble"><span id="waPreviewText"></span><span class="wa-time">agora ✓✓</span></div>
-                    </div>
-                    <div class="chat-final-actions">
-                        <a href="#" class="chat-wa-btn" id="chatSendWa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Enviar no WhatsApp</a>
-                        <button class="chat-copy-btn" id="chatCopyBtn"><i class="far fa-copy"></i> Copiar mensagem</button>
-                    </div>
-                    <p class="chat-note">Ao enviar, o WhatsApp abre em nova aba — você não perde seu lugar aqui no site.</p>
-                    <button type="button" class="chat-back" data-back="chatStep4"><i class="fas fa-pen"></i> Editar respostas</button>
+                    <button type="button" class="chat-back" data-back="chatStep3"><i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar</button>
                 </div>
             </div>
-            <div class="chat-secure"><i class="fas fa-lock"></i> Seus dados são usados só para o agendamento</div>
+            <div class="chat-secure"><i class="fas fa-lock" aria-hidden="true"></i> Seus dados são usados só para o agendamento</div>
         </div>
     </div>
 
@@ -1633,49 +1615,33 @@
         const chatStep2 = document.getElementById('chatStep2');
         const chatStep3 = document.getElementById('chatStep3');
         const chatStep4 = document.getElementById('chatStep4');
-        const chatStep5 = document.getElementById('chatStep5');
-        const allSteps = [chatStep1, chatStep1_5, chatStep2, chatStep3, chatStep4, chatStep5].filter(Boolean);
+        const allSteps = [chatStep1, chatStep1_5, chatStep2, chatStep3, chatStep4].filter(Boolean);
 
         const formStep1_5 = document.getElementById('formStep1_5');
         const inputReasonOther = document.getElementById('chatReasonOther');
+        const reasonOtherError = document.getElementById('chatReasonOtherError');
         const formStep2 = document.getElementById('formStep2');
         const inputDetails = document.getElementById('chatDetails');
-        const skipDetailsBtn = document.getElementById('skipDetailsBtn');
         const formStep3 = document.getElementById('formStep3');
         const inputName = document.getElementById('chatName');
+        const nameError = document.getElementById('chatNameError');
 
         let selectedReason = '', selectedDetails = '', selectedName = '', selectedDoctor = '', selectedPhone = '';
         let historyStack = [];
         let previouslyFocusedElement = null;
 
         const stepMeta = {
-            'chatStep1': { label: 'Etapa 1 de 4 · Motivo', pct: '25%' },
-            'chatStep1_5': { label: 'Etapa 1 de 4 · Motivo', pct: '25%' },
-            'chatStep2': { label: 'Etapa 2 de 4 · Detalhes', pct: '50%' },
-            'chatStep3': { label: 'Etapa 3 de 4 · Seu nome', pct: '72%' },
-            'chatStep4': { label: 'Etapa 4 de 4 · Dentista', pct: '90%' },
-            'chatStep5': { label: 'Pronto para enviar', pct: '100%' }
+            'chatStep1': { label: 'Etapa 1 de 4', pct: '25%' },
+            'chatStep1_5': { label: 'Etapa 1 de 4', pct: '25%' },
+            'chatStep2': { label: 'Etapa 2 de 4', pct: '50%' },
+            'chatStep3': { label: 'Etapa 3 de 4', pct: '75%' },
+            'chatStep4': { label: 'Etapa 4 de 4', pct: '100%' }
         };
 
-        function scrollChatBottom() { if (chatBody) chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' }); }
-
-        function showTypingThen(stepEl, ms) {
-            ms = ms || 450;
-            const tip = document.createElement('div');
-            tip.className = 'chat-typing'; tip.id = 'chatTypingTmp';
-            tip.innerHTML = '<span></span><span></span><span></span>';
-            const old = document.getElementById('chatTypingTmp'); if (old) old.remove();
-            // insere o typing temporário no topo do step seguinte para efeito conversacional
-            stepEl.prepend(tip);
-            stepEl.classList.remove('hidden');
-            const inner = stepEl.querySelectorAll('.chat-bubble-bot, .chat-options-grid, .chat-options-list, .chat-field, .chat-summary, .wa-preview, .chat-final-actions, .chat-note');
-            inner.forEach(el => el.style.visibility = 'hidden');
-            scrollChatBottom();
-            setTimeout(() => {
-                tip.remove();
-                inner.forEach(el => { el.style.visibility = ''; el.style.animation = 'none'; void el.offsetWidth; el.style.animation = ''; });
-                scrollChatBottom();
-            }, ms);
+        function focusFirstIn(stepEl) {
+            if (!stepEl) return;
+            const target = stepEl.querySelector('textarea, input, .chat-option-btn, .chat-doctor-card, .chat-next-btn');
+            if (target) { try { target.focus({ preventScroll: true }); } catch (e) { try { target.focus(); } catch (e2) {} } }
         }
 
         function goToStep(stepToShow, pushHistory) {
@@ -1688,8 +1654,8 @@
                 if (chatProgressFill) chatProgressFill.style.width = meta.pct;
                 if (chatStepLabel) chatStepLabel.textContent = meta.label;
             }
-            showTypingThen(stepToShow);
             if (chatBody) chatBody.scrollTop = 0;
+            focusFirstIn(stepToShow);
         }
 
         function goBack(fallbackId) {
@@ -1700,39 +1666,41 @@
                 allSteps.forEach(s => s.classList.toggle('hidden', s !== prev));
                 const meta = stepMeta[prev.id];
                 if (meta) { if (chatProgressFill) chatProgressFill.style.width = meta.pct; if (chatStepLabel) chatStepLabel.textContent = meta.label; }
+                if (chatBody) chatBody.scrollTop = 0;
+                focusFirstIn(prev);
+            }
+        }
+
+        function showFieldError(inputEl, errorEl, message) {
+            if (errorEl) {
+                errorEl.textContent = message || '';
+                errorEl.classList.toggle('show', !!message);
+            }
+            if (inputEl) {
+                if (message) inputEl.setAttribute('aria-invalid', 'true');
+                else inputEl.removeAttribute('aria-invalid');
             }
         }
 
         function buildMessage() {
-            const det = selectedDetails ? selectedDetails : 'Não informado';
-            return 'Ola, equipe SmileSpace! Vim pelo site e quero agendar uma consulta.\n'
-                + '--------------------------------\n'
-                + '*AGENDAMENTO - SITE*\n'
-                + '--------------------------------\n'
-                + '*Nome:* ' + selectedName + '\n'
-                + '*Motivo:* ' + selectedReason + '\n'
-                + '*Detalhes:* ' + det + '\n'
-                + '*Especialista:* ' + selectedDoctor + '\n'
-                + '--------------------------------\n'
-                + 'Podem me passar os horarios disponiveis? Obrigado(a)!';
-        }
-
-        function renderSummary() {
-            const box = document.getElementById('chatSummaryBox');
-            const preview = document.getElementById('waPreviewText');
-            const sendBtn = document.getElementById('chatSendWa');
-            const msg = buildMessage();
-            if (box) {
-                box.innerHTML =
-                    '<div class="row"><i class="fas fa-user"></i><div><span>' + escapeHtml(selectedName) + '</span></div></div>' +
-                    '<div class="row"><i class="fas fa-tooth"></i><div>' + escapeHtml(selectedReason) + '</div></div>' +
-                    '<div class="row"><i class="fas fa-comment"></i><div>' + escapeHtml(selectedDetails || 'Sem detalhes extras') + '</div></div>' +
-                    '<div class="row"><i class="fas fa-user-md"></i><div><span>' + escapeHtml(selectedDoctor) + '</span></div></div>';
+            const lines = [];
+            lines.push('Olá, equipe SmileSpace!');
+            lines.push('');
+            lines.push('Meu nome é ' + selectedName + ' e estou entrando em contato pelo site.');
+            lines.push('');
+            lines.push('Gostaria de agendar uma consulta.');
+            lines.push('');
+            lines.push('Motivo do contato: ' + selectedReason);
+            if (selectedDetails) {
+                lines.push('');
+                lines.push('Detalhes: ' + selectedDetails);
             }
-            if (preview) preview.textContent = msg;
-            if (sendBtn && selectedPhone) sendBtn.href = 'https://wa.me/' + selectedPhone + '?text=' + encodeURIComponent(msg);
+            lines.push('');
+            lines.push('Poderiam me orientar sobre os próximos horários disponíveis?');
+            lines.push('');
+            lines.push('Obrigado!');
+            return lines.join('\n');
         }
-        function escapeHtml(s) { return String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
 
         function openChat(triggerButton) {
             if (!chatModal) return;
@@ -1740,18 +1708,25 @@
             chatModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             historyStack = [];
+            showFieldError(inputName, nameError, '');
+            showFieldError(inputReasonOther, reasonOtherError, '');
             goToStep(chatStep1, false);
+        }
+
+        function resetChatState() {
+            selectedReason = ''; selectedDetails = ''; selectedName = ''; selectedDoctor = ''; selectedPhone = '';
+            historyStack = [];
+            [formStep1_5, formStep2, formStep3].forEach(form => form && form.reset());
+            showFieldError(inputName, nameError, '');
+            showFieldError(inputReasonOther, reasonOtherError, '');
+            document.querySelectorAll('.chat-option-btn.selected').forEach(b => b.classList.remove('selected'));
         }
 
         function closeChat() {
             if (!chatModal) return;
             chatModal.classList.add('hidden');
             document.body.style.overflow = '';
-            selectedReason = ''; selectedDetails = ''; selectedName = ''; selectedDoctor = ''; selectedPhone = '';
-            historyStack = [];
-            [formStep1_5, formStep2, formStep3].forEach(form => form && form.reset());
-            document.querySelectorAll('.chat-option-btn.selected').forEach(b => b.classList.remove('selected'));
-            const oldTip = document.getElementById('chatTypingTmp'); if (oldTip) oldTip.remove();
+            resetChatState();
             if (previouslyFocusedElement && previouslyFocusedElement.focus) { try { previouslyFocusedElement.focus(); } catch (e) {} previouslyFocusedElement = null; }
         }
 
@@ -1780,60 +1755,67 @@
 
             if (formStep1_5) formStep1_5.addEventListener('submit', (e) => {
                 e.preventDefault();
-                if (!inputReasonOther || inputReasonOther.value.trim() === '') { inputReasonOther && inputReasonOther.focus(); return; }
-                selectedReason = inputReasonOther.value.trim();
+                const v = inputReasonOther ? inputReasonOther.value.trim() : '';
+                if (v.length < 3) {
+                    showFieldError(inputReasonOther, reasonOtherError, 'Descreva em poucas palavras o motivo do contato.');
+                    if (inputReasonOther) inputReasonOther.focus();
+                    return;
+                }
+                showFieldError(inputReasonOther, reasonOtherError, '');
+                selectedReason = v;
                 goToStep(chatStep2);
             });
+            if (inputReasonOther) inputReasonOther.addEventListener('input', () => showFieldError(inputReasonOther, reasonOtherError, ''));
 
             const submitDetails = () => goToStep(chatStep3);
             if (formStep2) formStep2.addEventListener('submit', (e) => { e.preventDefault(); selectedDetails = inputDetails ? inputDetails.value.trim() : ''; submitDetails(); });
-            if (skipDetailsBtn) skipDetailsBtn.addEventListener('click', () => { selectedDetails = ''; if (inputDetails) inputDetails.value = ''; submitDetails(); });
 
             if (formStep3) formStep3.addEventListener('submit', (e) => {
                 e.preventDefault();
-                const v = inputName ? inputName.value.trim() : '';
-                if (v.length < 2) { inputName && inputName.focus(); showToast('Digite seu nome para continuar.', 'error'); return; }
-                if (v.split(/\s+/).length < 2) { inputName && inputName.focus(); showToast('Por favor, digite nome e sobrenome.', 'error'); return; }
+                const v = inputName ? inputName.value.trim().replace(/\s+/g, ' ') : '';
+                if (v.length < 2) {
+                    showFieldError(inputName, nameError, 'Informe seu nome para continuar.');
+                    if (inputName) inputName.focus();
+                    return;
+                }
+                if (v.split(' ').length < 2) {
+                    showFieldError(inputName, nameError, 'Por favor, informe nome e sobrenome.');
+                    if (inputName) inputName.focus();
+                    return;
+                }
+                showFieldError(inputName, nameError, '');
                 selectedName = v;
                 goToStep(chatStep4);
             });
+            if (inputName) inputName.addEventListener('input', () => showFieldError(inputName, nameError, ''));
 
             document.querySelectorAll('#chatStep4 .chat-doctor-card').forEach(btn => {
                 btn.addEventListener('click', () => {
                     selectedDoctor = btn.getAttribute('data-doctor');
                     selectedPhone = btn.getAttribute('data-phone');
                     if (!selectedPhone) return;
-                    renderSummary();
-                    goToStep(chatStep5);
+                    btn.disabled = true;
+                    try {
+                        const msg = buildMessage();
+                        const url = 'https://wa.me/' + selectedPhone + '?text=' + encodeURIComponent(msg);
+                        window.open(url, '_blank', 'noopener');
+                    } finally {
+                        setTimeout(() => { btn.disabled = false; }, 600);
+                        setTimeout(closeChat, 350);
+                    }
                 });
-            });
-
-            const copyBtn = document.getElementById('chatCopyBtn');
-            if (copyBtn) copyBtn.addEventListener('click', async () => {
-                const msg = buildMessage();
-                try {
-                    await navigator.clipboard.writeText(msg);
-                    showToast('Mensagem copiada! Cole no WhatsApp.', 'success');
-                } catch (err) {
-                    const ta = document.createElement('textarea');
-                    ta.value = msg; document.body.appendChild(ta); ta.select();
-                    try { document.execCommand('copy'); showToast('Mensagem copiada!', 'success'); }
-                    catch (e2) { showToast('Não foi possível copiar.', 'error'); }
-                    ta.remove();
-                }
-            });
-
-            const sendBtn = document.getElementById('chatSendWa');
-            if (sendBtn) sendBtn.addEventListener('click', () => {
-                showToast('Abrindo seu WhatsApp...', 'success');
-                setTimeout(closeChat, 800);
             });
 
             document.querySelectorAll('.chat-back').forEach(b => {
                 b.addEventListener('click', () => {
                     const target = b.getAttribute('data-back');
                     if (target === 'prev') goBack('chatStep1');
-                    else if (target) { historyStack.push(allSteps.find(s => !s.classList.contains('hidden')).id); const el = document.getElementById(target); if (el) goToStep(el, false); }
+                    else if (target) {
+                        const current = allSteps.find(s => !s.classList.contains('hidden'));
+                        if (current) historyStack.push(current.id);
+                        const el = document.getElementById(target);
+                        if (el) goToStep(el, false);
+                    }
                 });
             });
         }
