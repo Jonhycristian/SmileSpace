@@ -468,6 +468,7 @@
         .chat-close-btn:hover { background: #e9e9e9; }
         .chat-close-btn:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
         .chat-body { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 14px 12px calc(12px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 8px; background: #f4f3f0; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; min-height: 0; scroll-padding-bottom: 24px; }
+        .chat-body.kb-open { padding-bottom: 45vh; }
         .chat-body::-webkit-scrollbar { width: 4px; }
         .chat-body::-webkit-scrollbar-thumb { background: #d5d3cd; border-radius: 10px; }
         .msg { max-width: 86%; padding: 10px 13px; font-size: 0.88rem; line-height: 1.55; animation: msgIn 0.22s ease both; word-break: break-word; }
@@ -1752,9 +1753,24 @@
             if (target) { try { target.focus({ preventScroll: true }); } catch (e) { try { target.focus(); } catch (e2) {} } }
         }
 
+        function isCoarsePointer() {
+            try { return window.matchMedia && window.matchMedia('(pointer: coarse)').matches; } catch (e) { return false; }
+        }
+
         function ensureFieldVisible() {
             const el = chatFocusedField;
-            if (!el || !chatOpen() || !el.isConnected) return;
+            if (!el || !chatOpen() || !el.isConnected || !chatBody) return;
+            if (isCoarsePointer()) {
+                chatBody.classList.add('kb-open');
+                requestAnimationFrame(() => {
+                    if (!el.isConnected || !chatOpen()) return;
+                    const tRect = chatBody.getBoundingClientRect();
+                    const r = el.getBoundingClientRect();
+                    const targetTop = tRect.top + Math.min(chatBody.clientHeight * 0.3, 220);
+                    chatBody.scrollTop += (r.top - targetTop);
+                });
+                return;
+            }
             try { el.scrollIntoView({ behavior: 'auto', block: 'center' }); } catch (e) {}
             requestAnimationFrame(() => {
                 if (!el.isConnected || !chatOpen()) return;
@@ -2025,6 +2041,7 @@
             selectedReason = ''; selectedDetails = ''; selectedName = ''; selectedDoctor = ''; selectedPhone = '';
             chatFocusedField = null;
             hideCtaBar();
+            if (chatBody) chatBody.classList.remove('kb-open');
             msgSeq = 0;
             Object.keys(stepAnchors).forEach(k => delete stepAnchors[k]);
             if (chatBody) chatBody.innerHTML = '';
@@ -2081,7 +2098,10 @@
             chatBody.addEventListener('focusout', (e) => {
                 setTimeout(() => {
                     const active = document.activeElement;
-                    if (!active || !active.matches || !active.matches('.chat-input, .chat-textarea')) chatFocusedField = null;
+                    if (!active || !active.matches || !active.matches('.chat-input, .chat-textarea')) {
+                        chatFocusedField = null;
+                        if (chatBody) chatBody.classList.remove('kb-open');
+                    }
                 }, 100);
             });
         }
