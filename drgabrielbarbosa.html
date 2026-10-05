@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
     <title>Dr. Gabriel Barbosa (CRO-MG 57245) | Dentista em Belo Horizonte – SmileSpace</title>
     <meta name="description" content="Dr. Gabriel Barbosa, CRO-MG 57245, dentista na SmileSpace Odontologia no Centro de Belo Horizonte. Agende sua avaliação pelo WhatsApp.">
     <meta name="robots" content="noindex, follow">
@@ -150,6 +150,97 @@
             background-color: #1ebe57;
             transform: translateY(-3px);
         }
+
+        /* Atendimento SmileSpace — chat direto (sem escolha de dentista) */
+        .hidden { display: none !important; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+        .chat-modal-overlay { position: fixed; inset: 0; width: 100%; height: 100%; background: rgba(15,15,15,0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s ease; padding: 16px; }
+        .chat-modal-overlay:not(.hidden) { opacity: 1; }
+        .chat-modal-content { background: #ffffff; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.18); width: 100%; max-width: 400px; position: relative; transform: translateY(8px); transition: transform 0.22s ease, opacity 0.22s ease; opacity: 0; max-height: 92vh; max-height: 92dvh; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #eeeeee; }
+        #chatModal .chat-modal-content { height: min(640px, 92vh); height: min(640px, 92dvh); }
+        .chat-modal-overlay:not(.hidden) .chat-modal-content { transform: translateY(0); opacity: 1; }
+        .chat-wa-header { background: #ffffff; color: #111111; padding: 10px 10px 10px 12px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f1f1f1; flex-shrink: 0; }
+        .chat-wa-avatar { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid #e4e4e4; background: #f4f4f4; }
+        .chat-wa-id { flex: 1; min-width: 0; line-height: 1.3; }
+        .chat-wa-id strong { display: block; font-size: 0.92rem; font-weight: 700; color: #111; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .chat-wa-status { display: flex; align-items: center; gap: 5px; font-size: 0.74rem; color: #1b9c4b; font-weight: 600; }
+        .chat-wa-dot { width: 8px; height: 8px; border-radius: 50%; background: #25D366; flex-shrink: 0; animation: waPulse 2s infinite; }
+        @keyframes waPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.45); } 50% { box-shadow: 0 0 0 4px rgba(37,211,102,0); } }
+        .chat-close-btn { background: #f4f4f4; border: 1px solid transparent; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: #333; cursor: pointer; line-height: 1; transition: background 0.2s ease; flex-shrink: 0; }
+        .chat-close-btn:hover { background: #e9e9e9; }
+        .chat-close-btn:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+        .chat-body { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 14px 12px calc(12px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 8px; background: #f4f3f0; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; min-height: 0; scroll-padding-bottom: 24px; }
+        .chat-body.kb-open { padding-bottom: 45vh; }
+        .chat-body::-webkit-scrollbar { width: 4px; }
+        .chat-body::-webkit-scrollbar-thumb { background: #d5d3cd; border-radius: 10px; }
+        .msg { max-width: 86%; padding: 10px 13px; font-size: 0.88rem; line-height: 1.55; animation: msgIn 0.22s ease both; word-break: break-word; }
+        .msg-bot { align-self: flex-start; background: #ffffff; border: 1px solid #ebe9e4; color: #232323; border-radius: 4px 14px 14px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .msg-user { align-self: flex-end; background: #111111; color: #ffffff; border-radius: 14px 4px 14px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.12); }
+        .msg-typing { align-self: flex-start; background: #ffffff; border: 1px solid #ebe9e4; border-radius: 4px 14px 14px 14px; display: inline-flex; gap: 5px; padding: 13px 15px; animation: msgIn 0.2s ease both; }
+        .msg-typing span { width: 7px; height: 7px; border-radius: 50%; background: #b9b3a6; animation: typingBounce 1.1s infinite; }
+        .msg-typing span:nth-child(2) { animation-delay: 0.15s; }
+        .msg-typing span:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes typingBounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.45; } 30% { transform: translateY(-4px); opacity: 1; } }
+        @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @media (prefers-reduced-motion: reduce) { .msg, .msg-typing { animation: none; } .chat-modal-content, .chat-modal-overlay { transition: none; } .chat-wa-dot { animation: none; } }
+        .chat-pick-list { display: flex; flex-direction: column; gap: 8px; width: 100%; animation: msgIn 0.22s ease both; }
+        .chat-option-btn { background: #fff; border: 1px solid #e9e9e9; color: #1c1c1c; padding: 12px 13px; border-radius: 14px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer; text-align: left; transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease; display: flex; align-items: center; gap: 12px; line-height: 1.35; width: 100%; min-height: 56px; }
+        .chat-option-btn .ss-ico { width: 38px; height: 38px; border-radius: 11px; background: #f6f6f4; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .chat-option-btn .ss-ico i { font-size: 1.02rem; color: #6d6350; }
+        .chat-option-btn .ss-label { flex: 1; min-width: 0; }
+        .chat-option-btn .ss-arrow { color: #c9c9c9; font-size: 0.8rem; flex-shrink: 0; }
+        .chat-option-btn:hover { border-color: #111; box-shadow: 0 4px 14px rgba(0,0,0,0.07); }
+        .chat-option-btn:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+        .chat-option-btn.selected { border-color: #111; }
+        .chat-pick-list.is-answered .chat-option-btn { opacity: 0.5; pointer-events: none; }
+        .chat-pick-list.is-answered .chat-option-btn.selected { opacity: 1; border-color: #111; background: #111; color: #fff; }
+        .chat-pick-list.is-answered .chat-option-btn.selected .ss-ico { background: rgba(255,255,255,0.12); }
+        .chat-pick-list.is-answered .chat-option-btn.selected .ss-ico i { color: var(--gold); }
+        .chat-pick-list.is-answered .chat-option-btn.selected .ss-arrow { color: #fff; }
+        .chat-field { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+        .chat-input, .chat-textarea { width: 100%; padding: 14px 15px; border: 1px solid #e0e0e0; border-radius: 12px; font-family: 'Montserrat', sans-serif; font-size: 16px; transition: border-color 0.18s ease, box-shadow 0.18s ease; background: #fff; outline: none; color: #1c1c1c; line-height: 1.5; box-sizing: border-box; }
+        .chat-input::placeholder, .chat-textarea::placeholder { color: #a8a8a8; font-size: 0.9rem; }
+        .chat-input:focus, .chat-textarea:focus { border-color: #111; box-shadow: 0 0 0 3px rgba(0,0,0,0.06); }
+        .chat-input[aria-invalid="true"] { border-color: #b3261e; box-shadow: 0 0 0 3px rgba(179,38,30,0.08); }
+        .chat-textarea { min-height: 96px; resize: vertical; }
+        .chat-error { display: none; background: #fdecea; border: 1px solid #f5c6c2; color: #8f1d17; border-radius: 10px; padding: 10px 12px; font-size: 0.82rem; line-height: 1.5; font-weight: 500; }
+        .chat-error.show { display: block; }
+        .chat-actions { display: flex; gap: 10px; margin-top: 2px; }
+        .chat-next-btn { flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #111111; color: #ffffff; padding: 14px 22px; border-radius: 999px; font-weight: 600; border: 1px solid #111; font-size: 0.93rem; cursor: pointer; font-family: 'Montserrat', sans-serif; min-height: 50px; }
+        .chat-next-btn:hover { background: #222; }
+        .chat-next-btn:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+        .chat-next-btn i { font-size: 0.85rem; }
+        .chat-review-toggle { background: none; border: none; color: #6f6f6f; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 10px; font-family: 'Montserrat', sans-serif; width: 100%; min-height: 40px; }
+        .chat-review-toggle:hover { color: #111; }
+        .chat-review-toggle:focus-visible { outline: 2px solid #111; outline-offset: 2px; border-radius: 8px; }
+        .chat-review-list { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+        .chat-review-list[hidden] { display: none; }
+        .chat-review-item { display: flex; align-items: center; gap: 10px; background: #fff; border: 1px solid #e9e9e9; border-radius: 12px; padding: 9px 12px; font-size: 0.8rem; }
+        .chat-review-item .chat-review-text { flex: 1; min-width: 0; color: #3a3a3a; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .chat-review-item .chat-review-text strong { color: #9a9a9a; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.6px; margin-right: 4px; }
+        .chat-review-item button { background: none; border: none; color: #111; font-size: 0.76rem; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; padding: 6px 4px; text-decoration: underline; text-underline-offset: 2px; flex-shrink: 0; }
+        .chat-review-item button:focus-visible { outline: 2px solid #111; outline-offset: 2px; border-radius: 4px; }
+        .chat-summary-card { border: 1px solid #ebe9e4; border-radius: 14px; padding: 4px 14px; background: #fff; width: 100%; box-shadow: 0 1px 2px rgba(0,0,0,0.05); box-sizing: border-box; }
+        .chat-summary-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f1f1f1; font-size: 0.86rem; }
+        .chat-summary-row:last-child { border-bottom: none; }
+        .chat-summary-row i { color: #6d6350; width: 16px; margin-top: 3px; flex-shrink: 0; text-align: center; }
+        .chat-summary-row .chat-summary-text { flex: 1; min-width: 0; color: #333; line-height: 1.5; word-break: break-word; }
+        .chat-summary-row .chat-summary-text strong { display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.7px; color: #9a9a9a; margin-bottom: 1px; }
+        .chat-wa-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #1faa55; color: #fff; padding: 15px 22px; border-radius: 999px; font-weight: 700; border: none; font-size: 1rem; cursor: pointer; font-family: 'Montserrat', sans-serif; min-height: 56px; width: 100%; box-sizing: border-box; text-decoration: none; text-align: center; }
+        .chat-cta-bar { background: #ffffff; border-top: 1px solid #f1f1f1; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); flex-shrink: 0; }
+        .chat-cta-bar.hidden { display: none; }
+        .chat-wa-cta:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+        .chat-wa-cta i { font-size: 1.2rem; }
+        .chat-hint { font-size: 0.75rem; color: #a0a0a0; text-align: center; line-height: 1.55; margin: 0; }
+        .chat-secure { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.7rem; color: #b0b0b0; padding: 9px 10px 11px; border-top: 1px solid #f4f4f4; background: #fff; }
+        @media (max-width: 480px) {
+          .chat-modal-overlay { padding: 8px; }
+          #chatModal .chat-modal-content { max-width: 100%; border-radius: 16px; height: 94vh; height: 94dvh; max-height: 94vh; max-height: 94dvh; }
+          .chat-body { padding: 12px 10px 10px; }
+          .msg { font-size: 0.86rem; }
+          .chat-option-btn { min-height: 54px; font-size: 0.86rem; }
+          .chat-next-btn { min-height: 52px; }
+        }
     </style>
 </head>
 <body>
@@ -159,10 +250,448 @@
         <img src="img/perfil1.jpg" alt="Foto do Dr. Gabriel Barbosa, dentista em Belo Horizonte (CRO-MG 57245)" width="180" height="180" fetchpriority="high" decoding="async">
         <h1 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 8px; color: var(--primary);">Dr. Gabriel Barbosa</h1>
         <p class="cro">CRO-MG 57245</p>
-        <a href="https://wa.me/553195511435" target="_blank" rel="noopener noreferrer" class="whatsapp-button">
+        <a href="https://wa.me/553195511435" target="_blank" rel="noopener noreferrer" class="whatsapp-button" id="agendarBtn">
             <i class="fab fa-whatsapp"></i> Agendar com Dr. Gabriel
         </a>
     </div>
+
+    <div class="chat-modal-overlay hidden" id="chatModal" role="dialog" aria-modal="true" aria-labelledby="chatModalTitle">
+        <div class="chat-modal-content">
+            <div class="chat-wa-header">
+                <img src="img/favicon.png" alt="Foto de perfil do atendimento SmileSpace" class="chat-wa-avatar" width="38" height="38">
+                <div class="chat-wa-id">
+                    <strong id="chatModalTitle">Atendimento SmileSpace</strong>
+                    <span class="chat-wa-status"><span class="chat-wa-dot" aria-hidden="true"></span> Online</span>
+                </div>
+                <button class="chat-close-btn" id="chatCloseBtn" aria-label="Fechar atendimento">×</button>
+            </div>
+
+            <div class="chat-body" id="chatBody" aria-live="polite" aria-label="Conversa com o atendimento SmileSpace">
+            </div>
+            <div class="chat-cta-bar hidden" id="chatCtaBar">
+                <a href="#" class="chat-wa-cta" id="chatCtaBtn" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> Continuar pelo WhatsApp</a>
+            </div>
+            <div class="chat-secure"><i class="fas fa-lock" aria-hidden="true"></i> Seus dados são usados só para o agendamento</div>
+        </div>
+    </div>
+
+<script>
+/* Atendimento Dr. Gabriel Barbosa — chat direto, sem escolha de dentista */
+(function () {
+    'use strict';
+
+    var DOCTOR = { name: 'Dr. Gabriel Barbosa', phone: '553195511435' };
+
+    var MOTIVES = [
+        { reason: 'Implantes Dentários', label: 'Implantes', icon: 'fas fa-tooth' },
+        { reason: 'Próteses e Protocolos', label: 'Próteses', icon: 'fas fa-teeth' },
+        { reason: 'Aparelho e Alinhadores', label: 'Ortodontia', icon: 'fas fa-smile' },
+        { reason: 'Facetas e Lentes', label: 'Estética', icon: 'fas fa-star' },
+        { reason: 'Clareamento Dental', label: 'Clareamento', icon: 'fas fa-sun' },
+        { reason: 'Tratamento de Canal', label: 'Canal', icon: 'fas fa-plus-circle' },
+        { reason: 'Avaliação Geral / Limpeza', label: 'Avaliação e limpeza', icon: 'fas fa-clipboard-check' },
+        { reason: 'Outro Motivo', label: 'Outro motivo', icon: 'fas fa-comment-dots' }
+    ];
+
+    var agendarBtn = document.getElementById('agendarBtn');
+    var chatModal = document.getElementById('chatModal');
+    var chatCloseBtn = document.getElementById('chatCloseBtn');
+    var chatBody = document.getElementById('chatBody');
+    var chatCtaBar = document.getElementById('chatCtaBar');
+    var chatCtaBtn = document.getElementById('chatCtaBtn');
+
+    var selectedReason = '', selectedDetails = '', selectedName = '';
+    var previouslyFocusedElement = null;
+    var chatFocusedField = null;
+    var msgSeq = 0;
+    var stepAnchors = {};
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function escapeHtml(s) { return String(s || '').replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]; }); }
+    function chatOpen() { return chatModal && !chatModal.classList.contains('hidden'); }
+    function isCoarsePointer() { try { return window.matchMedia && window.matchMedia('(pointer: coarse)').matches; } catch (e) { return false; } }
+    function nextSeq() { msgSeq += 1; return msgSeq; }
+
+    function scrollThread() {
+        if (!chatBody) return;
+        try { chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: reduceMotion ? 'auto' : 'smooth' }); }
+        catch (e) { chatBody.scrollTop = chatBody.scrollHeight; }
+    }
+
+    function botBubble(html) {
+        var d = document.createElement('div');
+        d.className = 'msg msg-bot';
+        d.dataset.seq = String(nextSeq());
+        d.innerHTML = html;
+        chatBody.appendChild(d);
+        scrollThread();
+        return d;
+    }
+
+    function userBubble(text) {
+        var d = document.createElement('div');
+        d.className = 'msg msg-user';
+        d.dataset.seq = String(nextSeq());
+        d.textContent = text;
+        chatBody.appendChild(d);
+        scrollThread();
+        return d;
+    }
+
+    function botWithTyping(html, done) {
+        if (reduceMotion) { botBubble(html); if (done) done(); return; }
+        var t = document.createElement('div');
+        t.className = 'msg-typing';
+        t.setAttribute('aria-hidden', 'true');
+        t.innerHTML = '<span></span><span></span><span></span>';
+        chatBody.appendChild(t);
+        scrollThread();
+        setTimeout(function () {
+            if (!chatOpen() || !document.body.contains(t)) return;
+            t.remove();
+            botBubble(html);
+            if (done) done();
+        }, 550);
+    }
+
+    function controlsWrap() {
+        var w = document.createElement('div');
+        w.className = 'chat-pick-list';
+        w.dataset.seq = String(nextSeq());
+        chatBody.appendChild(w);
+        scrollThread();
+        return w;
+    }
+
+    function lockControls(wrap, selectedEl) {
+        if (!wrap) return;
+        wrap.classList.add('is-answered');
+        wrap.querySelectorAll('button, input, textarea').forEach(function (el) { el.disabled = true; });
+        if (selectedEl) selectedEl.classList.add('selected');
+    }
+
+    function showFieldError(inputEl, errorEl, message) {
+        if (errorEl) {
+            errorEl.textContent = message || '';
+            errorEl.classList.toggle('show', !!message);
+        }
+        if (inputEl) {
+            if (message) inputEl.setAttribute('aria-invalid', 'true');
+            else inputEl.removeAttribute('aria-invalid');
+        }
+    }
+
+    function focusThreadInput(wrap) {
+        var target = wrap && wrap.querySelector('textarea, input');
+        if (target) { try { target.focus({ preventScroll: true }); } catch (e) { try { target.focus(); } catch (e2) {} } }
+    }
+
+    function ensureFieldVisible() {
+        var el = chatFocusedField;
+        if (!el || !chatOpen() || !el.isConnected || !chatBody) return;
+        if (isCoarsePointer()) {
+            chatBody.classList.add('kb-open');
+            requestAnimationFrame(function () {
+                if (!el.isConnected || !chatOpen()) return;
+                var tRect = chatBody.getBoundingClientRect();
+                var r = el.getBoundingClientRect();
+                var targetTop = tRect.top + Math.min(chatBody.clientHeight * 0.3, 220);
+                chatBody.scrollTop += (r.top - targetTop);
+            });
+            return;
+        }
+        try { el.scrollIntoView({ behavior: 'auto', block: 'center' }); } catch (e) {}
+        requestAnimationFrame(function () {
+            if (!el.isConnected || !chatOpen()) return;
+            var r = el.getBoundingClientRect();
+            var visibleBottom = window.innerHeight;
+            if (window.visualViewport) {
+                visibleBottom = window.visualViewport.height + (window.visualViewport.offsetTop || 0);
+            }
+            if (r.bottom > visibleBottom - 12) chatBody.scrollTop += (r.bottom - (visibleBottom - 12));
+        });
+    }
+
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', function () {
+            if (chatFocusedField && chatOpen()) ensureFieldVisible();
+        });
+    }
+    window.addEventListener('resize', function () {
+        if (chatFocusedField && chatOpen()) ensureFieldVisible();
+    });
+    window.addEventListener('orientationchange', function () {
+        if (chatFocusedField && chatOpen()) setTimeout(ensureFieldVisible, 400);
+    });
+
+    function buildMessage() {
+        var lines = [];
+        lines.push('Olá, equipe SmileSpace!');
+        lines.push('');
+        lines.push('Meu nome é ' + selectedName + ' e gostaria de agendar uma consulta com o ' + DOCTOR.name + '.');
+        lines.push('');
+        lines.push('Motivo da consulta: ' + selectedReason);
+        if (selectedDetails) {
+            lines.push('');
+            lines.push('Observações: ' + selectedDetails);
+        }
+        lines.push('');
+        lines.push('Gostaria de verificar a disponibilidade e dar continuidade ao meu agendamento.');
+        return lines.join('\n');
+    }
+
+    function askMotives() {
+        if (!chatOpen()) return;
+        stepAnchors.motivo = msgSeq + 1;
+        botWithTyping('Olá! Sou da equipe do ' + DOCTOR.name + '. Como podemos ajudar?', function () {
+            var wrap = controlsWrap();
+            wrap.innerHTML = MOTIVES.map(function (m) {
+                return '<button type="button" class="chat-option-btn" data-reason="' + escapeHtml(m.reason) + '">'
+                    + '<span class="ss-ico"><i class="' + m.icon + '" aria-hidden="true"></i></span>'
+                    + '<span class="ss-label">' + escapeHtml(m.label) + '</span>'
+                    + '<i class="fas fa-chevron-right ss-arrow" aria-hidden="true"></i></button>';
+            }).join('');
+            scrollThread();
+            var first = wrap.querySelector('.chat-option-btn');
+            if (first) { try { first.focus({ preventScroll: true }); } catch (e) {} }
+        });
+    }
+
+    function onMotivePicked(btn) {
+        var wrap = btn.closest('.chat-pick-list');
+        var reason = btn.getAttribute('data-reason');
+        lockControls(wrap, btn);
+        if (reason === 'Outro Motivo') {
+            selectedReason = '';
+            userBubble('Outro motivo');
+            askCustomReason();
+        } else {
+            selectedReason = reason;
+            userBubble(reason);
+            setTimeout(askDetails, reduceMotion ? 0 : 200);
+        }
+    }
+
+    function askCustomReason() {
+        if (!chatOpen()) return;
+        botWithTyping('Sem problema. Descreva brevemente o motivo do seu contato.', function () {
+            var wrap = controlsWrap();
+            wrap.innerHTML = '<form class="chat-field" novalidate>'
+                + '<label for="chatReasonNow" class="sr-only">Descreva o motivo do contato</label>'
+                + '<textarea id="chatReasonNow" class="chat-textarea" rows="2" placeholder="Ex.: avaliação, dúvida sobre tratamento..." autocomplete="off"></textarea>'
+                + '<div class="chat-error" role="alert"></div>'
+                + '<div class="chat-actions"><button type="submit" class="chat-next-btn">Enviar <i class="fas fa-arrow-right" aria-hidden="true"></i></button></div>'
+                + '</form>';
+            var form = wrap.querySelector('form');
+            var input = wrap.querySelector('textarea');
+            var err = wrap.querySelector('.chat-error');
+            input.addEventListener('input', function () { showFieldError(input, err, ''); });
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var v = input.value.trim();
+                if (v.length < 3) { showFieldError(input, err, 'Descreva em poucas palavras o motivo do contato.'); input.focus(); return; }
+                showFieldError(input, err, '');
+                selectedReason = v;
+                wrap.remove();
+                userBubble(v);
+                setTimeout(askDetails, reduceMotion ? 0 : 200);
+            });
+            scrollThread();
+            focusThreadInput(wrap);
+        });
+    }
+
+    function askDetails() {
+        if (!chatOpen()) return;
+        stepAnchors.detalhes = msgSeq + 1;
+        botWithTyping('Quer nos contar mais? Se quiser, deixe alguma informação que possa nos ajudar no atendimento.', function () {
+            var wrap = controlsWrap();
+            wrap.innerHTML = '<form class="chat-field" novalidate>'
+                + '<label for="chatDetailsNow" class="sr-only">Detalhes adicionais (opcional)</label>'
+                + '<textarea id="chatDetailsNow" class="chat-textarea" rows="2" placeholder="Opcional — ex.: sensibilidade, preferência de horário..." autocomplete="off"></textarea>'
+                + '<div class="chat-actions"><button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button></div>'
+                + '</form>';
+            var form = wrap.querySelector('form');
+            var input = wrap.querySelector('textarea');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var v = input.value.trim();
+                selectedDetails = v;
+                wrap.remove();
+                if (v) userBubble(v);
+                setTimeout(askName, reduceMotion ? 0 : 200);
+            });
+            scrollThread();
+            focusThreadInput(wrap);
+        });
+    }
+
+    function askName() {
+        if (!chatOpen()) return;
+        stepAnchors.nome = msgSeq + 1;
+        botWithTyping('Como podemos te chamar? Informe seu nome e sobrenome.', function () {
+            var wrap = controlsWrap();
+            wrap.innerHTML = '<form class="chat-field" novalidate>'
+                + '<label for="chatNameNow" class="sr-only">Nome e sobrenome</label>'
+                + '<input type="text" id="chatNameNow" class="chat-input" placeholder="Nome e sobrenome" autocomplete="name" enterkeyhint="next">'
+                + '<div class="chat-error" role="alert"></div>'
+                + '<div class="chat-actions"><button type="submit" class="chat-next-btn">Continuar <i class="fas fa-arrow-right" aria-hidden="true"></i></button></div>'
+                + '</form>';
+            var form = wrap.querySelector('form');
+            var input = wrap.querySelector('input');
+            var err = wrap.querySelector('.chat-error');
+            input.addEventListener('input', function () { showFieldError(input, err, ''); });
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var v = input.value.trim().replace(/\s+/g, ' ');
+                if (v.length < 2) { showFieldError(input, err, 'Informe seu nome para continuar.'); input.focus(); return; }
+                if (v.split(' ').length < 2) { showFieldError(input, err, 'Por favor, informe nome e sobrenome.'); input.focus(); return; }
+                showFieldError(input, err, '');
+                selectedName = v;
+                wrap.remove();
+                userBubble(v);
+                setTimeout(showSummary, reduceMotion ? 0 : 200);
+            });
+            scrollThread();
+            focusThreadInput(wrap);
+        });
+    }
+
+    function summaryRowsHtml() {
+        var html = '';
+        html += '<div class="chat-summary-row"><i class="fas fa-tooth" aria-hidden="true"></i><span class="chat-summary-text"><strong>Motivo</strong>' + escapeHtml(selectedReason) + '</span></div>';
+        if (selectedDetails) html += '<div class="chat-summary-row"><i class="fas fa-comment" aria-hidden="true"></i><span class="chat-summary-text"><strong>Observações</strong>' + escapeHtml(selectedDetails) + '</span></div>';
+        html += '<div class="chat-summary-row"><i class="fas fa-user" aria-hidden="true"></i><span class="chat-summary-text"><strong>Nome</strong>' + escapeHtml(selectedName) + '</span></div>';
+        return html;
+    }
+
+    function reviewListHtml() {
+        var items = [
+            { key: 'motivo', label: 'Motivo', value: selectedReason },
+            { key: 'detalhes', label: 'Detalhes', value: selectedDetails || '—' },
+            { key: 'nome', label: 'Nome', value: selectedName }
+        ];
+        return items.map(function (it) {
+            return '<div class="chat-review-item"><span class="chat-review-text"><strong>' + it.label + '</strong>' + escapeHtml(it.value) + '</span>'
+                + '<button type="button" data-edit="' + it.key + '" aria-label="Alterar ' + it.label + '">Alterar</button></div>';
+        }).join('');
+    }
+
+    function showSummary() {
+        if (!chatOpen()) return;
+        stepAnchors.resumo = msgSeq + 1;
+        botWithTyping('Tudo certo? Confira suas respostas:', function () {
+            var wrap = controlsWrap();
+            var url = 'https://wa.me/' + DOCTOR.phone + '?text=' + encodeURIComponent(buildMessage());
+            if (chatCtaBtn) chatCtaBtn.href = url;
+            if (chatCtaBar) chatCtaBar.classList.remove('hidden');
+            wrap.innerHTML = '<div class="chat-summary-card">' + summaryRowsHtml() + '</div>'
+                + '<p class="chat-hint">Toque no botão abaixo para abrir o WhatsApp com sua mensagem pronta.</p>'
+                + '<button type="button" class="chat-review-toggle"><i class="fas fa-pen" aria-hidden="true"></i> Revisar informações</button>'
+                + '<div class="chat-review-list" hidden></div>';
+            var toggle = wrap.querySelector('.chat-review-toggle');
+            var list = wrap.querySelector('.chat-review-list');
+            toggle.addEventListener('click', function () {
+                if (list.hasAttribute('hidden')) {
+                    list.innerHTML = reviewListHtml();
+                    list.removeAttribute('hidden');
+                    toggle.innerHTML = '<i class="fas fa-chevron-up" aria-hidden="true"></i> Ocultar revisão';
+                } else {
+                    list.setAttribute('hidden', '');
+                    list.innerHTML = '';
+                    toggle.innerHTML = '<i class="fas fa-pen" aria-hidden="true"></i> Revisar informações';
+                }
+                scrollThread();
+            });
+            scrollThread();
+            try { chatCtaBtn.focus({ preventScroll: true }); } catch (e) {}
+        });
+    }
+
+    function hideCtaBar() {
+        if (chatCtaBar) chatCtaBar.classList.add('hidden');
+        if (chatCtaBtn) chatCtaBtn.removeAttribute('href');
+    }
+
+    function editAnswer(key) {
+        var anchor = stepAnchors[key];
+        if (anchor == null) return;
+        hideCtaBar();
+        chatBody.querySelectorAll('[data-seq]').forEach(function (el) {
+            if (parseInt(el.dataset.seq, 10) >= anchor) el.remove();
+        });
+        scrollThread();
+        if (key === 'motivo') { selectedReason = ''; selectedDetails = ''; selectedName = ''; askMotives(); }
+        else if (key === 'detalhes') { selectedDetails = ''; selectedName = ''; askDetails(); }
+        else if (key === 'nome') { selectedName = ''; askName(); }
+    }
+
+    function resetChat() {
+        selectedReason = ''; selectedDetails = ''; selectedName = '';
+        chatFocusedField = null;
+        hideCtaBar();
+        if (chatBody) {
+            chatBody.classList.remove('kb-open');
+            chatBody.innerHTML = '';
+        }
+        msgSeq = 0;
+        Object.keys(stepAnchors).forEach(function (k) { delete stepAnchors[k]; });
+    }
+
+    function openChat(triggerButton) {
+        if (!chatModal) return;
+        previouslyFocusedElement = triggerButton || document.activeElement;
+        chatModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        resetChat();
+        askMotives();
+    }
+
+    function closeChat() {
+        if (!chatModal) return;
+        chatModal.classList.add('hidden');
+        document.body.style.overflow = '';
+        resetChat();
+        if (previouslyFocusedElement && previouslyFocusedElement.focus) { try { previouslyFocusedElement.focus(); } catch (e) {} previouslyFocusedElement = null; }
+    }
+
+    if (agendarBtn) agendarBtn.addEventListener('click', function (e) { e.preventDefault(); openChat(agendarBtn); });
+    if (chatCloseBtn) chatCloseBtn.addEventListener('click', closeChat);
+    if (chatModal) chatModal.addEventListener('click', function (e) { if (e.target === chatModal) closeChat(); });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && chatModal && !chatModal.classList.contains('hidden')) closeChat();
+    });
+    if (chatCtaBtn) chatCtaBtn.addEventListener('click', function () {
+        try { localStorage.setItem('ss_wa_lead_at', String(Date.now())); } catch (e) {}
+        setTimeout(closeChat, 600);
+    });
+
+    if (chatBody) {
+        chatBody.addEventListener('click', function (e) {
+            var opt = e.target.closest('.chat-option-btn');
+            if (opt && !opt.disabled) { onMotivePicked(opt); return; }
+            var edit = e.target.closest('[data-edit]');
+            if (edit) { e.preventDefault(); editAnswer(edit.getAttribute('data-edit')); }
+        });
+        chatBody.addEventListener('focusin', function (e) {
+            if (e.target.matches && e.target.matches('.chat-input, .chat-textarea')) {
+                chatFocusedField = e.target;
+                setTimeout(ensureFieldVisible, 350);
+                setTimeout(ensureFieldVisible, 950);
+            }
+        });
+        chatBody.addEventListener('focusout', function (e) {
+            setTimeout(function () {
+                var active = document.activeElement;
+                if (!active || !active.matches || !active.matches('.chat-input, .chat-textarea')) {
+                    chatFocusedField = null;
+                    chatBody.classList.remove('kb-open');
+                }
+            }, 100);
+        });
+    }
+})();
+</script>
 
 </body>
 </html>
