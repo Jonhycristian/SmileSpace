@@ -292,6 +292,8 @@
         .service-features { list-style: none; margin-top: auto; text-align: left; padding-left: 0; }
         .service-features li { position: relative; padding-left: 22px; margin-bottom: 6px; font-size: 0.85rem; color: var(--dark-gray); }
         .service-features li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 3px; color: var(--gold); font-size: 0.8rem; }
+        .service-link { display: inline-block; margin-top: 14px; font-size: 0.85rem; font-weight: 600; color: var(--primary); text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 2px; transition: color 0.3s ease, border-color 0.3s ease; }
+        .service-link:hover, .service-link:focus { color: var(--gold); border-color: var(--primary); outline: none; }
 
         /* Videos Section */
         .videos { background: #f0f0f0; padding: 80px 0; position: relative; }
@@ -796,6 +798,7 @@
                             <h3>Implantes Dentários</h3>
                             <p>Soluções permanentes para substituição de dentes perdidos, com tecnologia de ponta e materiais de alta qualidade.</p>
                             <ul class="service-features"><li>Planejamento digital 3D</li><li>Cirurgia guiada</li><li>Garantia extendida</li></ul>
+                            <a class="service-link" href="implante-dentario-belo-horizonte.html">Saiba mais sobre implantes</a>
                         </div>
                     </article>
                     <article class="service-card" id="servico-proteses-protocolos">
@@ -1200,7 +1203,7 @@
                 <div class="footer-col">
                     <h3>Serviços</h3>
                     <ul class="footer-links">
-                        <li><a href="#servico-implantes-dentarios">Implantes Dentários</a></li> <li><a href="#servico-proteses-protocolos">Próteses e Protocolos</a></li>
+                        <li><a href="implante-dentario-belo-horizonte.html">Implantes Dentários</a></li> <li><a href="#servico-proteses-protocolos">Próteses e Protocolos</a></li>
                         <li><a href="#servico-ortodontia-alinhadores">Ortodontia e Alinhadores</a></li> <li><a href="#servico-facetas-lentes">Facetas/Lentes</a></li>
                         <li><a href="#servico-clareamento-dental">Clareamento Dental</a></li> <li><a href="#servico-tratamento-de-canal">Tratamento de Canal</a></li>
                         <li><a href="#servico-cirurgias-enxertos">Cirurgias e Enxertos</a></li> <li><a href="#servico-fluxo-digital">Fluxo Digital</a></li>
@@ -1757,10 +1760,26 @@
             try { return window.matchMedia && window.matchMedia('(pointer: coarse)').matches; } catch (e) { return false; }
         }
 
+        let kbBaseVV = 0, kbBaseWH = 0;
+        function recordKbBaseline() {
+            try {
+                kbBaseVV = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+                kbBaseWH = window.innerHeight;
+            } catch (e) {}
+        }
+        function keyboardShrink() {
+            let shrink = 0;
+            try {
+                if (window.visualViewport) shrink = Math.max(shrink, kbBaseVV - window.visualViewport.height);
+                shrink = Math.max(shrink, kbBaseWH - window.innerHeight);
+            } catch (e) {}
+            return shrink;
+        }
+
         function ensureFieldVisible() {
             const el = chatFocusedField;
             if (!el || !chatOpen() || !el.isConnected || !chatBody) return;
-            if (isCoarsePointer()) {
+            if (isCoarsePointer() && keyboardShrink() < 120) {
                 chatBody.classList.add('kb-open');
                 requestAnimationFrame(() => {
                     if (!el.isConnected || !chatOpen()) return;
@@ -1771,6 +1790,7 @@
                 });
                 return;
             }
+            chatBody.classList.remove('kb-open');
             try { el.scrollIntoView({ behavior: 'auto', block: 'center' }); } catch (e) {}
             requestAnimationFrame(() => {
                 if (!el.isConnected || !chatOpen()) return;
