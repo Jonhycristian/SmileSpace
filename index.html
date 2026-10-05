@@ -1864,7 +1864,7 @@
         function askProfessional() {
             if (!chatOpen()) return;
             stepAnchors.profissional = msgSeq + 1;
-            const hello = firstName() ? 'Ótimo, ' + firstName() + '! Toque em um profissional para continuar:' : 'Toque em um profissional para continuar:';
+            const hello = firstName() ? 'Ótimo, ' + firstName() + '! Escolha por quem você deseja ser atendido:' : 'Escolha por quem você deseja ser atendido:';
             botWithTyping(escapeHtml(hello), 'profissional', () => {
                 const wrap = controlsWrap();
                 wrap.innerHTML = DOCTORS.map(d =>
