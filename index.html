@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
     <title>SmileSpace Odontologia | Clínica Odontológica em Belo Horizonte</title>
     <meta name="description" content="Clínica odontológica no Centro de Belo Horizonte especializada em implantes, próteses, alinhadores e estética dental. Agende sua avaliação na SmileSpace!">
     <meta name="author" content="SmileSpace Odontologia">
@@ -29,6 +29,7 @@
     <meta property="og:title" content="SmileSpace Odontologia | Clínica Odontológica em Belo Horizonte">
     <meta property="og:description" content="Clínica odontológica no Centro de Belo Horizonte especializada em implantes dentários, próteses e estética dental.">
     <meta property="og:image" content="https://smilespace.com.br/img/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://smilespace.com.br/img/og-image.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:alt" content="SmileSpace Odontologia, clínica odontológica em Belo Horizonte — seu sorriso em boas mãos">
     <meta property="og:image:width" content="1024">
@@ -60,6 +61,11 @@
           "telephone": "+55-31-99511-1435",
           "email": "contato@smilespace.com",
           "priceRange": "$$",
+          "areaServed": {
+            "@type": "City",
+            "name": "Belo Horizonte",
+            "containedInPlace": { "@type": "State", "name": "Minas Gerais" }
+          },
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Rua São Paulo, 638 – Sala 444 – Centro",
@@ -121,7 +127,8 @@
     </script>
 
     <link rel="icon" href="img/favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -459,7 +466,7 @@
         .chat-close-btn { background: #f4f4f4; border: 1px solid transparent; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: #333; cursor: pointer; line-height: 1; transition: background 0.2s ease, transform 0.2s ease; flex-shrink: 0; }
         .chat-close-btn:hover { background: #e9e9e9; }
         .chat-close-btn:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
-        .chat-body { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 14px 12px 12px; display: flex; flex-direction: column; gap: 8px; background: #f4f3f0; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; min-height: 0; }
+        .chat-body { flex: 1; overflow-y: auto; overflow-x: hidden; padding: 14px 12px calc(12px + env(safe-area-inset-bottom)); display: flex; flex-direction: column; gap: 8px; background: #f4f3f0; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; min-height: 0; scroll-padding-bottom: 24px; }
         .chat-body::-webkit-scrollbar { width: 4px; }
         .chat-body::-webkit-scrollbar-thumb { background: #d5d3cd; border-radius: 10px; }
         .msg { max-width: 86%; padding: 10px 13px; font-size: 0.88rem; line-height: 1.55; animation: msgIn 0.22s ease both; word-break: break-word; }
@@ -646,7 +653,7 @@
         <div class="scroll-progress-bar" id="scrollProgressBar"></div>
     </div>
     <header id="header">
-        <div class="container header-container">
+        <div class="container header-container" tabindex="0" role="button" aria-label="Abrir menu de navegação" aria-expanded="false">
             <a href="#home" class="logo">
                 <img src="img/logo.png" alt="SmileSpace Odontologia — clínica odontológica no Centro de Belo Horizonte" width="180" height="60" fetchpriority="high" decoding="async">
             </a>
@@ -1256,18 +1263,31 @@
         function closeMobileMenu() {
             if (navMenu?.classList.contains('active')) navMenu.classList.remove('active');
             document.getElementById('header')?.classList.remove('menu-open');
+            headerContainer?.setAttribute('aria-expanded', 'false');
         }
 
         function toggleMobileMenu() {
             if (!navMenu) return;
             const isOpen = navMenu.classList.toggle('active');
             document.getElementById('header')?.classList.toggle('menu-open', isOpen);
+            headerContainer?.setAttribute('aria-expanded', String(isOpen));
         }
 
         if (headerContainer && navMenu) {
             headerContainer.addEventListener('click', (event) => {
                 if (window.innerWidth > 768) return;
                 if (navMenu.contains(event.target)) return; // links fecham pelo scroll suave
+                event.preventDefault();
+                event.stopPropagation();
+                toggleMobileMenu();
+            });
+        }
+
+        if (headerContainer && navMenu) {
+            headerContainer.addEventListener('keydown', (event) => {
+                if (window.innerWidth > 768) return;
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                if (event.target !== headerContainer) return; // links do menu mantêm comportamento padrão
                 event.preventDefault();
                 event.stopPropagation();
                 toggleMobileMenu();
@@ -1586,6 +1606,7 @@
 
         let selectedReason = '', selectedDetails = '', selectedName = '', selectedDoctor = '', selectedPhone = '';
         let previouslyFocusedElement = null;
+        let chatFocusedField = null;
         let msgSeq = 0;
         const stepAnchors = {};
         const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1669,6 +1690,30 @@
         function focusThreadInput(wrap) {
             const target = wrap && wrap.querySelector('textarea, input');
             if (target) { try { target.focus({ preventScroll: true }); } catch (e) { try { target.focus(); } catch (e2) {} } }
+        }
+
+        function ensureFieldVisible() {
+            const el = chatFocusedField;
+            if (!el || !chatOpen() || !el.isConnected) return;
+            try { el.scrollIntoView({ behavior: 'auto', block: 'center' }); } catch (e) {}
+            requestAnimationFrame(() => {
+                if (!el.isConnected || !chatOpen()) return;
+                const r = el.getBoundingClientRect();
+                let visibleBottom = window.innerHeight;
+                if (window.visualViewport) {
+                    visibleBottom = window.visualViewport.height + (window.visualViewport.offsetTop || 0);
+                }
+                const margin = 12;
+                if (r.bottom > visibleBottom - margin && chatBody) {
+                    chatBody.scrollTop += (r.bottom - (visibleBottom - margin));
+                }
+            });
+        }
+
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', () => {
+                if (chatFocusedField && chatOpen()) ensureFieldVisible();
+            });
         }
 
         function buildMessage() {
@@ -1907,6 +1952,7 @@
 
         function resetChat() {
             selectedReason = ''; selectedDetails = ''; selectedName = ''; selectedDoctor = ''; selectedPhone = '';
+            chatFocusedField = null;
             msgSeq = 0;
             Object.keys(stepAnchors).forEach(k => delete stepAnchors[k]);
             if (chatBody) chatBody.innerHTML = '';
@@ -1953,9 +1999,16 @@
 
             chatBody.addEventListener('focusin', (e) => {
                 if (e.target.matches && e.target.matches('.chat-input, .chat-textarea')) {
-                    const target = e.target;
-                    setTimeout(() => { try { target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' }); } catch (err) {} }, 300);
+                    chatFocusedField = e.target;
+                    setTimeout(ensureFieldVisible, 350);
                 }
+            });
+
+            chatBody.addEventListener('focusout', (e) => {
+                setTimeout(() => {
+                    const active = document.activeElement;
+                    if (!active || !active.matches || !active.matches('.chat-input, .chat-textarea')) chatFocusedField = null;
+                }, 100);
             });
         }
         // Scroll Progress Bar
