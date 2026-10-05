@@ -126,7 +126,8 @@
     }
     </script>
 
-    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="64x64">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -586,6 +587,9 @@
         .site-card-close { background: #f4f4f4; border: none; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 0.95rem; color: #666; cursor: pointer; flex-shrink: 0; }
         .site-card-close:hover { background: #e9e9e9; color: #111; }
         .site-card-close:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+        .site-card-never { background: none; border: none; padding: 3px 0 0; margin-top: 2px; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; font-weight: 600; color: #a0a0a0; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; display: block; }
+        .site-card-never:hover { color: #555; }
+        .site-card-never:focus-visible { outline: 2px solid #111; outline-offset: 2px; border-radius: 4px; }
         @media (max-width: 480px) {
           .site-card { right: 100px; padding: 10px 10px 10px 12px; gap: 10px; }
           .site-card-text span { display: none; }
@@ -1218,7 +1222,7 @@
 
     <div class="site-card hidden" id="installCard" role="region" aria-label="Instalar aplicativo SmileSpace">
         <span class="site-card-ico"><img src="img/favicon.png" alt="" width="26" height="26" aria-hidden="true"></span>
-        <span class="site-card-text"><strong>Leve a SmileSpace com você</strong><span>Instale o app e agende sua consulta em segundos.</span></span>
+        <span class="site-card-text"><strong>Leve a SmileSpace com você</strong><span>Instale o app e agende sua consulta em segundos.</span><button type="button" class="site-card-never" id="installNever">Não mostrar novamente</button></span>
         <span class="site-card-actions">
             <button type="button" class="site-card-btn" id="installCta">Instalar app</button>
             <button type="button" class="site-card-close" id="installDismiss" aria-label="Dispensar instalação">×</button>
@@ -1227,7 +1231,7 @@
 
     <div class="site-card hidden" id="reviewCard" role="region" aria-label="Avaliar a SmileSpace no Google">
         <span class="site-card-ico"><i class="fab fa-google" aria-hidden="true"></i></span>
-        <span class="site-card-text"><strong>Como foi sua experiência na SmileSpace?</strong><span>Sua opinião ajuda outras pessoas a conhecerem a clínica.</span></span>
+        <span class="site-card-text"><strong>Como foi sua experiência na SmileSpace?</strong><span>Sua opinião ajuda outras pessoas a conhecerem a clínica.</span><button type="button" class="site-card-never" id="reviewNever">Não mostrar novamente</button></span>
         <span class="site-card-actions">
             <a href="https://search.google.com/local/writereview?placeid=ChIJp67_agCZpgARe0H8jK7KFNA&amp;utm_source" class="site-card-btn" id="reviewCta" target="_blank" rel="noopener noreferrer">Avaliar no Google</a>
             <button type="button" class="site-card-close" id="reviewDismiss" aria-label="Agora não">×</button>
@@ -1771,6 +1775,12 @@
                 if (chatFocusedField && chatOpen()) ensureFieldVisible();
             });
         }
+        window.addEventListener('resize', () => {
+            if (chatFocusedField && chatOpen()) ensureFieldVisible();
+        });
+        window.addEventListener('orientationchange', () => {
+            if (chatFocusedField && chatOpen()) setTimeout(ensureFieldVisible, 400);
+        });
 
         function buildMessage() {
             const lines = [];
@@ -2064,6 +2074,7 @@
                 if (e.target.matches && e.target.matches('.chat-input, .chat-textarea')) {
                     chatFocusedField = e.target;
                     setTimeout(ensureFieldVisible, 350);
+                    setTimeout(ensureFieldVisible, 950);
                 }
             });
 
@@ -2106,14 +2117,17 @@
         installDismissDays: 30,
         reviewAskedDays: 90,
         reviewSnoozeDays: 30,
-        cardDelayMs: 2500
+        dwellMs: 90000,
+        scrollPx: 300
     };
 
     var K = {
         installDismissed: 'ss_install_dismissed_at',
+        installNever: 'ss_install_never',
         installed: 'ss_installed',
         reviewAsked: 'ss_review_asked_at',
         reviewSnoozed: 'ss_review_snoozed_at',
+        reviewNever: 'ss_review_never',
         waLead: 'ss_wa_lead_at',
         lastVisit: 'ss_last_visit_at'
     };
@@ -2156,17 +2170,20 @@
     window.addEventListener('beforeinstallprompt', function (e) {
         e.preventDefault();
         deferredPrompt = e;
-        maybeShowCards();
+        evaluateCards();
     });
     window.addEventListener('appinstalled', function () {
         try { localStorage.setItem(K.installed, '1'); } catch (e) {}
         hide(installCard);
     });
 
+    function flagOn(key) { try { return localStorage.getItem(key) === '1'; } catch (e) { return false; } }
+    function flagSet(key) { try { localStorage.setItem(key, '1'); } catch (e) {} }
+
     function installDue() {
         if (!deferredPrompt) return false;
         if (isStandalone()) return false;
-        try { if (localStorage.getItem(K.installed) === '1') return false; } catch (e) {}
+        if (flagOn(K.installed) || flagOn(K.installNever)) return false;
         return expired(K.installDismissed, days(CFG.installDismissDays));
     }
 
@@ -2185,12 +2202,19 @@
             deferredPrompt = null;
         }).catch(function () { hide(installCard); });
     });
-    if (installDismiss) installDismiss.addEventListener('click', function () {
+    function dismissInstall() {
         setNow(K.installDismissed);
+        hide(installCard);
+    }
+    if (installDismiss) installDismiss.addEventListener('click', dismissInstall);
+    var installNever = document.getElementById('installNever');
+    if (installNever) installNever.addEventListener('click', function () {
+        flagSet(K.installNever);
         hide(installCard);
     });
 
     function reviewDue() {
+        if (flagOn(K.reviewNever)) return false;
         if (!isReturnVisit) return false;
         if (!getNum(K.waLead)) return false;
         if (!expired(K.reviewAsked, days(CFG.reviewAskedDays))) return false;
@@ -2204,31 +2228,44 @@
         setNow(K.reviewAsked);
         setTimeout(function () { hide(reviewCard); }, 400);
     });
-    if (reviewDismiss) reviewDismiss.addEventListener('click', function () {
+    function dismissReview() {
         setNow(K.reviewSnoozed);
+        hide(reviewCard);
+    }
+    if (reviewDismiss) reviewDismiss.addEventListener('click', dismissReview);
+    var reviewNever = document.getElementById('reviewNever');
+    if (reviewNever) reviewNever.addEventListener('click', function () {
+        flagSet(K.reviewNever);
         hide(reviewCard);
     });
 
-    var cardsScheduled = false;
-    function maybeShowCards() {
-        if (cardsScheduled || anyCardVisible()) return;
-        cardsScheduled = true;
-        setTimeout(function () {
-            if (document.hidden) { cardsScheduled = false; return; }
-            if (reviewDue()) { show(reviewCard); return; }
-            if (installDue()) { show(installCard); }
-        }, CFG.cardDelayMs);
+    var dwellElapsed = false;
+    var scrolledDown = (window.scrollY || 0) > CFG.scrollPx;
+
+    function evaluateCards() {
+        if (!dwellElapsed || anyCardVisible() || document.hidden) return;
+        if (reviewDue()) { show(reviewCard); return; }
+        if (scrolledDown && installDue()) { show(installCard); }
     }
 
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') { hide(installCard); hide(reviewCard); }
+    window.addEventListener('scroll', function () {
+        if (!scrolledDown && (window.scrollY || 0) > CFG.scrollPx) scrolledDown = true;
+        if (scrolledDown) evaluateCards();
+    }, { passive: true });
+    document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) evaluateCards();
     });
 
-    if (document.readyState === 'complete' || document.readyState === 'interactive') {
-        setTimeout(maybeShowCards, 0);
-    } else {
-        document.addEventListener('DOMContentLoaded', function () { setTimeout(maybeShowCards, CFG.cardDelayMs); });
-    }
+    document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        if (installCard && !installCard.classList.contains('hidden')) dismissInstall();
+        else if (reviewCard && !reviewCard.classList.contains('hidden')) dismissReview();
+    });
+
+    setTimeout(function () {
+        dwellElapsed = true;
+        evaluateCards();
+    }, CFG.dwellMs);
 })();
 </script>
 </body>
