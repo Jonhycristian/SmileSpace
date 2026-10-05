@@ -2110,6 +2110,7 @@
             chatBody.addEventListener('focusin', (e) => {
                 if (e.target.matches && e.target.matches('.chat-input, .chat-textarea')) {
                     chatFocusedField = e.target;
+                    recordKbBaseline();
                     setTimeout(ensureFieldVisible, 350);
                     setTimeout(ensureFieldVisible, 950);
                 }

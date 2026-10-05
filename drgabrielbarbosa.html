@@ -386,10 +386,26 @@
         if (target) { try { target.focus({ preventScroll: true }); } catch (e) { try { target.focus(); } catch (e2) {} } }
     }
 
+    var kbBaseVV = 0, kbBaseWH = 0;
+    function recordKbBaseline() {
+        try {
+            kbBaseVV = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+            kbBaseWH = window.innerHeight;
+        } catch (e) {}
+    }
+    function keyboardShrink() {
+        var shrink = 0;
+        try {
+            if (window.visualViewport) shrink = Math.max(shrink, kbBaseVV - window.visualViewport.height);
+            shrink = Math.max(shrink, kbBaseWH - window.innerHeight);
+        } catch (e) {}
+        return shrink;
+    }
+
     function ensureFieldVisible() {
         var el = chatFocusedField;
         if (!el || !chatOpen() || !el.isConnected || !chatBody) return;
-        if (isCoarsePointer()) {
+        if (isCoarsePointer() && keyboardShrink() < 120) {
             chatBody.classList.add('kb-open');
             requestAnimationFrame(function () {
                 if (!el.isConnected || !chatOpen()) return;
@@ -400,6 +416,7 @@
             });
             return;
         }
+        chatBody.classList.remove('kb-open');
         try { el.scrollIntoView({ behavior: 'auto', block: 'center' }); } catch (e) {}
         requestAnimationFrame(function () {
             if (!el.isConnected || !chatOpen()) return;
@@ -676,6 +693,7 @@
         chatBody.addEventListener('focusin', function (e) {
             if (e.target.matches && e.target.matches('.chat-input, .chat-textarea')) {
                 chatFocusedField = e.target;
+                recordKbBaseline();
                 setTimeout(ensureFieldVisible, 350);
                 setTimeout(ensureFieldVisible, 950);
             }
