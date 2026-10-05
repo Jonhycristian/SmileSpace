@@ -507,6 +507,28 @@
         .chat-back { background: none; border: none; color: #8a8a8a; font-size: 0.83rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; padding: 8px 2px; font-family: 'Montserrat', sans-serif; align-self: flex-start; min-height: 36px; }
         .chat-back:hover { color: #111; }
         .chat-back:focus-visible { outline: 2px solid #111; outline-offset: 2px; border-radius: 6px; }
+        .chat-welcome { background: #f6f6f4; border: 1px solid #eeeeee; border-radius: 4px 14px 14px 14px; padding: 12px 14px; font-size: 0.88rem; line-height: 1.6; color: #3a3a3a; }
+        .chat-welcome strong { color: #111; }
+        .chat-echo { display: flex; flex-direction: column; gap: 8px; }
+        .chat-echo:empty { display: none; }
+        .chat-echo-item { display: flex; align-items: flex-start; gap: 10px; background: #f6f6f4; border: 1px solid #eeeeee; border-radius: 12px; padding: 10px 12px; font-size: 0.82rem; line-height: 1.5; }
+        .chat-echo-item .chat-echo-check { color: #1b9c4b; font-size: 0.8rem; margin-top: 3px; flex-shrink: 0; }
+        .chat-echo-item .chat-echo-text { flex: 1; min-width: 0; color: #3a3a3a; }
+        .chat-echo-item .chat-echo-text strong { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.7px; color: #9a9a9a; font-weight: 700; margin-bottom: 1px; }
+        .chat-edit-link { background: none; border: none; color: #8a8a8a; font-size: 0.76rem; font-weight: 700; cursor: pointer; font-family: 'Montserrat', sans-serif; padding: 4px 2px; flex-shrink: 0; text-decoration: underline; text-underline-offset: 2px; }
+        .chat-edit-link:hover { color: #111; }
+        .chat-edit-link:focus-visible { outline: 2px solid #111; outline-offset: 2px; border-radius: 4px; }
+        .chat-summary-card { border: 1px solid #e9e9e9; border-radius: 16px; padding: 6px 14px; background: #fff; }
+        .chat-summary-row { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f1f1f1; font-size: 0.86rem; }
+        .chat-summary-row:last-child { border-bottom: none; }
+        .chat-summary-row i { color: #6d6350; width: 16px; margin-top: 3px; flex-shrink: 0; text-align: center; }
+        .chat-summary-row .chat-summary-text { flex: 1; min-width: 0; color: #333; line-height: 1.5; word-break: break-word; }
+        .chat-summary-row .chat-summary-text strong { display: block; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.7px; color: #9a9a9a; margin-bottom: 1px; }
+        .chat-wa-cta { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: #1faa55; color: #fff; padding: 15px 22px; border-radius: 999px; font-weight: 700; border: none; font-size: 0.94rem; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: transform 0.18s ease, filter 0.18s ease; min-height: 52px; width: 100%; text-decoration: none; text-align: center; }
+        .chat-wa-cta:hover { transform: translateY(-1px); filter: brightness(1.06); }
+        .chat-wa-cta:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+        .chat-wa-cta i { font-size: 1.2rem; }
+        .chat-hint { font-size: 0.75rem; color: #a0a0a0; text-align: center; line-height: 1.55; margin: 0; }
         .chat-secure { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.7rem; color: #b0b0b0; padding: 9px 10px 11px; border-top: 1px solid #f4f4f4; background: #fff; }
         @media (max-width: 480px) {
           .chat-modal-overlay { padding: 10px; align-items: center; }
@@ -1172,6 +1194,7 @@
 
             <div class="chat-body" id="chatBody">
                 <div class="chat-step" id="chatStep1" role="group" aria-labelledby="ssTitle1">
+                    <div class="chat-welcome">Olá! Seja bem-vindo(a) à <strong>SmileSpace</strong>. Vou te ajudar a agendar em menos de 1 minuto.</div>
                     <h2 class="ss-title" id="ssTitle1">Como podemos ajudar?</h2>
                     <p class="ss-sub">Escolha o motivo principal do seu contato.</p>
                     <div class="chat-options-list">
@@ -1199,6 +1222,7 @@
                 </div>
 
                 <div class="chat-step hidden" id="chatStep2" role="group" aria-labelledby="ssTitle2">
+                    <div class="chat-echo" id="echoStep2" aria-live="polite"></div>
                     <h2 class="ss-title" id="ssTitle2">Quer nos contar mais?</h2>
                     <p class="ss-sub">Se quiser, deixe alguma informação que possa nos ajudar no atendimento.</p>
                     <form id="formStep2" class="chat-field" novalidate>
@@ -1212,6 +1236,7 @@
                 </div>
 
                 <div class="chat-step hidden" id="chatStep3" role="group" aria-labelledby="ssTitle3">
+                    <div class="chat-echo" id="echoStep3" aria-live="polite"></div>
                     <h2 class="ss-title" id="ssTitle3">Como podemos te chamar?</h2>
                     <p class="ss-sub">Informe seu nome para que nossa equipe possa continuar o atendimento.</p>
                     <form id="formStep3" class="chat-field" novalidate>
@@ -1224,8 +1249,9 @@
                 </div>
 
                 <div class="chat-step hidden" id="chatStep4" role="group" aria-labelledby="ssTitle4">
+                    <div class="chat-echo" id="echoStep4" aria-live="polite"></div>
                     <h2 class="ss-title" id="ssTitle4">Com quem você gostaria de falar?</h2>
-                    <p class="ss-sub">Escolha um profissional para continuar pelo WhatsApp.</p>
+                    <p class="ss-sub">Escolha um profissional para concluir seu atendimento.</p>
                     <div class="chat-options-list">
                         <button class="chat-doctor-card" data-doctor="Dr. Gabriel Barbosa" data-phone="553195511435">
                             <img src="img/perfil1.jpg" alt="Foto do Dr. Gabriel Barbosa" loading="lazy" decoding="async">
@@ -1239,6 +1265,17 @@
                         </button>
                     </div>
                     <button type="button" class="chat-back" data-back="chatStep3"><i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar</button>
+                </div>
+
+                <div class="chat-step hidden" id="chatStep5" role="group" aria-labelledby="ssTitle5">
+                    <h2 class="ss-title" id="ssTitle5">Tudo certo?</h2>
+                    <p class="ss-sub">Confira suas respostas antes de continuar.</p>
+                    <div class="chat-summary-card" id="chatSummaryCard" aria-live="polite"></div>
+                    <div class="chat-actions">
+                        <a href="#" class="chat-wa-cta" id="chatWaCta" target="_blank" rel="noopener"><i class="fab fa-whatsapp" aria-hidden="true"></i> Continuar pelo WhatsApp</a>
+                    </div>
+                    <p class="chat-hint">Ao continuar, o WhatsApp abre em uma nova aba com sua mensagem pronta.</p>
+                    <button type="button" class="chat-back" data-back="chatStep4"><i class="fas fa-arrow-left" aria-hidden="true"></i> Voltar e corrigir</button>
                 </div>
             </div>
             <div class="chat-secure"><i class="fas fa-lock" aria-hidden="true"></i> Seus dados são usados só para o agendamento</div>
@@ -1615,7 +1652,13 @@
         const chatStep2 = document.getElementById('chatStep2');
         const chatStep3 = document.getElementById('chatStep3');
         const chatStep4 = document.getElementById('chatStep4');
-        const allSteps = [chatStep1, chatStep1_5, chatStep2, chatStep3, chatStep4].filter(Boolean);
+        const chatStep5 = document.getElementById('chatStep5');
+        const allSteps = [chatStep1, chatStep1_5, chatStep2, chatStep3, chatStep4, chatStep5].filter(Boolean);
+        const echoStep2 = document.getElementById('echoStep2');
+        const echoStep3 = document.getElementById('echoStep3');
+        const echoStep4 = document.getElementById('echoStep4');
+        const summaryCard = document.getElementById('chatSummaryCard');
+        const waCta = document.getElementById('chatWaCta');
 
         const formStep1_5 = document.getElementById('formStep1_5');
         const inputReasonOther = document.getElementById('chatReasonOther');
@@ -1627,6 +1670,7 @@
         const nameError = document.getElementById('chatNameError');
 
         let selectedReason = '', selectedDetails = '', selectedName = '', selectedDoctor = '', selectedPhone = '';
+        let isCustomReason = false;
         let historyStack = [];
         let previouslyFocusedElement = null;
 
@@ -1635,8 +1679,51 @@
             'chatStep1_5': { label: 'Etapa 1 de 4', pct: '25%' },
             'chatStep2': { label: 'Etapa 2 de 4', pct: '50%' },
             'chatStep3': { label: 'Etapa 3 de 4', pct: '75%' },
-            'chatStep4': { label: 'Etapa 4 de 4', pct: '100%' }
+            'chatStep4': { label: 'Etapa 4 de 4', pct: '85%' },
+            'chatStep5': { label: 'Resumo', pct: '100%' }
         };
+
+        function escapeHtml(s) { return String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+
+        function echoItem(label, value, gotoId) {
+            return '<div class="chat-echo-item"><i class="fas fa-check chat-echo-check" aria-hidden="true"></i>'
+                + '<span class="chat-echo-text"><strong>' + escapeHtml(label) + '</strong>' + escapeHtml(value) + '</span>'
+                + '<button type="button" class="chat-edit-link" data-goto="' + gotoId + '" aria-label="Corrigir ' + escapeHtml(label) + '">Alterar</button></div>';
+        }
+
+        function renderEchoes() {
+            if (echoStep2) echoStep2.innerHTML = selectedReason ? echoItem('Motivo', selectedReason, isCustomReason ? 'chatStep1_5' : 'chatStep1') : '';
+            if (echoStep3) {
+                let html = '';
+                if (selectedReason) html += echoItem('Motivo', selectedReason, 'chatStep1');
+                if (selectedDetails) html += echoItem('Detalhes', selectedDetails, 'chatStep2');
+                echoStep3.innerHTML = html;
+            }
+            if (echoStep4) {
+                let html = '';
+                if (selectedReason) html += echoItem('Motivo', selectedReason, 'chatStep1');
+                if (selectedDetails) html += echoItem('Detalhes', selectedDetails, 'chatStep2');
+                if (selectedName) html += echoItem('Nome', selectedName, 'chatStep3');
+                echoStep4.innerHTML = html;
+            }
+        }
+
+        function summaryRow(icon, label, value, gotoId) {
+            return '<div class="chat-summary-row"><i class="fas ' + icon + '" aria-hidden="true"></i>'
+                + '<span class="chat-summary-text"><strong>' + escapeHtml(label) + '</strong>' + escapeHtml(value) + '</span>'
+                + '<button type="button" class="chat-edit-link" data-goto="' + gotoId + '" aria-label="Corrigir ' + escapeHtml(label) + '">Alterar</button></div>';
+        }
+
+        function renderSummary() {
+            if (!summaryCard) return;
+            let html = '';
+            html += summaryRow('fa-user', 'Nome', selectedName, 'chatStep3');
+            html += summaryRow('fa-tooth', 'Motivo da consulta', selectedReason, 'chatStep1');
+            if (selectedDetails) html += summaryRow('fa-comment', 'Observações', selectedDetails, 'chatStep2');
+            html += summaryRow('fa-user-md', 'Profissional', selectedDoctor, 'chatStep4');
+            summaryCard.innerHTML = html;
+            if (waCta && selectedPhone) waCta.href = 'https://wa.me/' + selectedPhone + '?text=' + encodeURIComponent(buildMessage());
+        }
 
         function focusFirstIn(stepEl) {
             if (!stepEl) return;
@@ -1655,6 +1742,7 @@
                 if (chatStepLabel) chatStepLabel.textContent = meta.label;
             }
             if (chatBody) chatBody.scrollTop = 0;
+            renderEchoes();
             focusFirstIn(stepToShow);
         }
 
@@ -1684,19 +1772,17 @@
 
         function buildMessage() {
             const lines = [];
-            lines.push('Olá, equipe SmileSpace!');
+            lines.push('Olá, equipe SmileSpace! Gostaria de agendar uma consulta.');
             lines.push('');
-            lines.push('Meu nome é ' + selectedName + ' e estou entrando em contato pelo site.');
-            lines.push('');
-            lines.push('Gostaria de agendar uma consulta.');
-            lines.push('');
-            lines.push('Motivo do contato: ' + selectedReason);
+            lines.push('Dados do atendimento');
+            lines.push('• Nome: ' + selectedName);
+            lines.push('• Motivo da consulta: ' + selectedReason);
+            lines.push('• Profissional: ' + selectedDoctor);
             if (selectedDetails) {
-                lines.push('');
-                lines.push('Detalhes: ' + selectedDetails);
+                lines.push('• Observações: ' + selectedDetails);
             }
             lines.push('');
-            lines.push('Poderiam me orientar sobre os próximos horários disponíveis?');
+            lines.push('Gostaria de verificar a disponibilidade e dar continuidade ao meu agendamento.');
             lines.push('');
             lines.push('Obrigado!');
             return lines.join('\n');
@@ -1715,11 +1801,15 @@
 
         function resetChatState() {
             selectedReason = ''; selectedDetails = ''; selectedName = ''; selectedDoctor = ''; selectedPhone = '';
+            isCustomReason = false;
             historyStack = [];
             [formStep1_5, formStep2, formStep3].forEach(form => form && form.reset());
             showFieldError(inputName, nameError, '');
             showFieldError(inputReasonOther, reasonOtherError, '');
             document.querySelectorAll('.chat-option-btn.selected').forEach(b => b.classList.remove('selected'));
+            [echoStep2, echoStep3, echoStep4].forEach(el => { if (el) el.innerHTML = ''; });
+            if (summaryCard) summaryCard.innerHTML = '';
+            if (waCta) waCta.removeAttribute('href');
         }
 
         function closeChat() {
@@ -1748,8 +1838,8 @@
                     document.querySelectorAll('#chatStep1 .chat-option-btn').forEach(b => b.classList.remove('selected'));
                     btn.classList.add('selected');
                     const reason = btn.getAttribute('data-reason');
-                    if (reason === 'Outro Motivo') { selectedReason = ''; setTimeout(() => goToStep(chatStep1_5), 180); }
-                    else { selectedReason = reason; setTimeout(() => goToStep(chatStep2), 180); }
+                    if (reason === 'Outro Motivo') { selectedReason = ''; isCustomReason = true; setTimeout(() => goToStep(chatStep1_5), 180); }
+                    else { selectedReason = reason; isCustomReason = false; setTimeout(() => goToStep(chatStep2), 180); }
                 });
             });
 
@@ -1763,6 +1853,7 @@
                 }
                 showFieldError(inputReasonOther, reasonOtherError, '');
                 selectedReason = v;
+                isCustomReason = true;
                 goToStep(chatStep2);
             });
             if (inputReasonOther) inputReasonOther.addEventListener('input', () => showFieldError(inputReasonOther, reasonOtherError, ''));
@@ -1794,16 +1885,23 @@
                     selectedDoctor = btn.getAttribute('data-doctor');
                     selectedPhone = btn.getAttribute('data-phone');
                     if (!selectedPhone) return;
-                    btn.disabled = true;
-                    try {
-                        const msg = buildMessage();
-                        const url = 'https://wa.me/' + selectedPhone + '?text=' + encodeURIComponent(msg);
-                        window.open(url, '_blank', 'noopener');
-                    } finally {
-                        setTimeout(() => { btn.disabled = false; }, 600);
-                        setTimeout(closeChat, 350);
-                    }
+                    renderSummary();
+                    goToStep(chatStep5);
                 });
+            });
+
+            if (waCta) waCta.addEventListener('click', () => {
+                setTimeout(closeChat, 600);
+            });
+
+            if (chatBody) chatBody.addEventListener('click', (e) => {
+                const editBtn = e.target.closest('[data-goto]');
+                if (!editBtn) return;
+                e.preventDefault();
+                const current = allSteps.find(s => !s.classList.contains('hidden'));
+                if (current) historyStack.push(current.id);
+                const el = document.getElementById(editBtn.getAttribute('data-goto'));
+                if (el) goToStep(el, false);
             });
 
             document.querySelectorAll('.chat-back').forEach(b => {
