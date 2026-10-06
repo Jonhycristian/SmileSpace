@@ -577,7 +577,7 @@
         .site-card.hidden { display: none; }
         @keyframes siteCardIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .site-card-ico { width: 42px; height: 42px; border-radius: 12px; background: #f6f6f4; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .site-card-ico img { width: 26px; height: 26px; object-fit: contain; }
+        .site-card-ico img { width: 26px; height: 26px; object-fit: contain; border-radius: 50%; }
         .site-card-ico i { font-size: 1.15rem; color: #6d6350; }
         .site-card-ico i.fa-google { color: #DB4437; }
         .site-card-text { flex: 1; min-width: 0; }
@@ -2273,7 +2273,34 @@
         setNow(K.reviewSnoozed);
         hide(reviewCard);
     }
-    if (reviewDismiss) reviewDismiss.addEventListener('click', dismissReview);
+    var reviewToastTimer = null;
+    function hideReviewNudge() {
+        var t = document.getElementById('toast');
+        if (!t) return;
+        t.classList.remove('show');
+        t.onclick = null;
+        t.style.cursor = '';
+    }
+    function nudgeReview() {
+        var t = document.getElementById('toast');
+        var msg = document.getElementById('toastMessage');
+        if (!t || !msg) return;
+        var icon = t.querySelector('i');
+        var url = (typeof reviewCta !== 'undefined' && reviewCta && reviewCta.href) ? reviewCta.href : '';
+        t.className = 'toast success';
+        if (icon) icon.className = 'fas fa-star';
+        msg.textContent = 'Sem problemas! Toque aqui para nos avaliar no Google';
+        t.style.cursor = 'pointer';
+        t.onclick = function () {
+            if (url) { try { window.open(url, '_blank', 'noopener'); } catch (e) {} }
+            setNow(K.reviewAsked);
+            hideReviewNudge();
+        };
+        try { requestAnimationFrame(function () { t.classList.add('show'); }); } catch (e) { t.classList.add('show'); }
+        clearTimeout(reviewToastTimer);
+        reviewToastTimer = setTimeout(hideReviewNudge, 5000);
+    }
+    if (reviewDismiss) reviewDismiss.addEventListener('click', function () { dismissReview(); nudgeReview(); });
     var reviewNever = document.getElementById('reviewNever');
     if (reviewNever) reviewNever.addEventListener('click', function () {
         flagSet(K.reviewNever);
