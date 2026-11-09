@@ -2,7 +2,7 @@
    Sem cache de conteudo: apenas ativa e assume o controle,
    sem risco de servir paginas desatualizadas.
    Versao atualizada para forcar renovacao dos icones PWA. */
-const SMILESPACE_SW_VERSION = "2026-11-09-icons";
+const SMILESPACE_SW_VERSION = "2026-11-09-icons-v2";
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
